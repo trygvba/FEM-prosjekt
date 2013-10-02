@@ -24,6 +24,6 @@ function I = quadrature1D(a,b,Nq,g)
 			disp("Her ble det noe feil, er Nq = 1,2,3,4?")
 			break;
 	end
-	z = y(ztemp);
+	z = feval(y,ztemp);
 	I = (b-a)/2*feval(g,z)*p';
 endfunction
