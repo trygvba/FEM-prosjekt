@@ -18,7 +18,7 @@ end
 I=0;
 for i=1:Nq
     x = p1*eta(i,1)+p2*eta(i,2)+p3*eta(i,3);
-    I = I + weights(i)*g(x(1),x(2));
+    I = I + weights(i)*feval(g,x);
 end
 
 end
