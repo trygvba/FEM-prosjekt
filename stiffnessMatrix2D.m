@@ -9,6 +9,7 @@ dim = size(p,1);
 N = size(tri,1);
 %--------ASSEMBLY:------------------------
 A=zeros(dim);
+b=zeros(dim,1);
 for k=1:N
     p1 = p(tri(k,1),:)';
     p2 = p(tri(k,2),:)';

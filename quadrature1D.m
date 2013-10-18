@@ -1,5 +1,5 @@
-% Approximates a 1-dimensional integral using Gaussian quadrature.
-%Inputs: start- and endpoints (a,b), number of points Nq and the integrand g (as a function pointer.
+ % Approximates a 1-dimensional integral using Gaussian quadrature.
+%Inputs: start- and endpoints (a,b), number of points Nq and the integrand g (as a function pointer).
 
 function I = quadrature1D(a,b,Nq,g)
 	y = @(x) (b-a)/2*x+(b+a)/2;

@@ -1,4 +1,6 @@
 function I = quadrature3D(p1, p2, p3, p4, Nq, g)
+B = [(p2-p1) (p3-p1) (p4-p1)];
+T = det(B)/6;
 
 switch Nq
     case 1
@@ -17,9 +19,7 @@ end
 I = 0;
 for i=1:Nq
     x= eta(i,1)*p1 + eta(i,2)*p2 + eta(i,3)*p3 + eta(i,4)*p4;
-    I = I + weights(i)*feval(g,x);
+    I = I + T*weights(i)*feval(g,x);
 end
-
-
 end
 
