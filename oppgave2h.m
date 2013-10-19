@@ -10,7 +10,7 @@ addpath([pwd '/Grids']);
 f = @(x) -8*pi*cos(2*pi*sum(x.^2))+16*pi^2*sum(x.^2)*sin(2*pi*sum(x.^2));
 
 %Generating grid:
-N = 1500;    %Number of nodes
+N = 500;    %Number of nodes
 [p tri edge] = getDisk(N);
 
 %Assembly of stiffness matrix:

@@ -8,7 +8,7 @@ weights = 1/3*[1 1 1];
 I = zeros(3,1);
 for i=1:3
     x = eta(i,1)*p1 + eta(i,2)*p2 + eta(i,3)*p3;
-    I = I + T*feval(g,x)*eta(i,:)';
+    I = I + T*weights(i)*feval(g,x)*eta(i,:)';
 end
 end
 
