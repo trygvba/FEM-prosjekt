@@ -1,4 +1,0 @@
-counter= zeros(200,1);
-for i = 1:200
-    counter(i) = sum(tri==i);
-end
