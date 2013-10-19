@@ -20,9 +20,6 @@ function I = lineIntegral2D(p1,p2,Nq,g)
 			temp3 =3/7;
 			temp4 = 2*sqrt(6/5)/7;
 			ztemp = [-sqrt(temp3+temp4) -sqrt(temp3-temp4) sqrt(temp3-temp4) sqrt(temp3+temp4)];
-		otherwise
-			disp("Her ble det noe feil, er Nq = 1,2,3,4?")
-			break;
     end
     I=0;
     for i=1:Nq
