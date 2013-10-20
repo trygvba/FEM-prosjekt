@@ -8,7 +8,7 @@ addpath([pwd '/Grids']);
 f = @(x) -12*pi*cos(2*pi*sum(x.^2))+16*pi^2*sum(x.^2)*sin(2*pi*sum(x.^2));
 
 %Generating grid:
-N = 100;
+N = 500;
 [p tet edge] = getSphere(N);
 
 %Assembly of stiffness matrix and loading vector:
@@ -25,5 +25,7 @@ u = addingHomogenous2D(uh,boundary);
 
 %-------POSTPROCESSING:-----------------------
 F = TriScatteredInterp(p,u);
-isosurface(p(:,1),p(:,2),p(:,3),F(p));
+[xg yg zg] = meshgrid(-1:2/50:1);
+vg = F(xg,yg,zg);
+isosurface(xg,yg,zg,vg,'r');
 
