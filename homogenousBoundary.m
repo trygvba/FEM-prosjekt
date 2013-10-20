@@ -2,8 +2,10 @@ function [Ah fh] = homogenousBoundary(A,f,edge)
 Ah = A;
 fh = f;
 N = length(edge);
+bound = sort(edge);
 for i = N:-1:1
-    index = edge(i);
+    index = bound(i);
+    
     if index==1
         Ah = Ah(2:end,2:end);
         fh = fh(2:end);

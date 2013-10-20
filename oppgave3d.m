@@ -11,7 +11,7 @@ f = @(x) -8*pi*cos(2*pi*sum(x.^2))+16*pi^2*sum(x.^2)*sin(2*pi*sum(x.^2));
 g = @(x) 4*pi*sqrt(sum(x.^2))*cos(2*pi*sum(x.^2));
 
 %Generating grid:
-N = 1500;    %Number of nodes
+N = 1000;    %Number of nodes
 [p tri edge] = getDisk(N);
 
 %Assembly of stiffness matrix:
@@ -39,4 +39,4 @@ u = addingHomogenous2D(uh,dir);
 
 
 %----------------POSTPROCESSING:-----------------
-trimesh(tri,p(:,1),p(:,2),u)
+trisurf(tri,p(:,1),p(:,2),u)

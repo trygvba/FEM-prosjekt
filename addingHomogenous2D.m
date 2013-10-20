@@ -1,9 +1,10 @@
 function u = addingHomogenous2D(uh,edge)
-N = length(edge);
+bound = sort(edge);
+N = length(bound);
 u = uh;
 
 for i=1:N
-    index = edge(i);
+    index = bound(i);
     if index >= length(u)
         u = [u; 0];
     elseif index < length(u)
