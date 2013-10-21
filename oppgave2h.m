@@ -33,3 +33,6 @@ u = addingHomogenous2D(uh,edge(:,1));
 
 %----------------POSTPROCESSING:-----------------
 trimesh(tri,p(:,1),p(:,2),u)
+
+filenm = [pwd '/Plots/2h' num2str(N) '.png'];
+print('-dpng',filenm)

@@ -42,3 +42,6 @@ u = addingHomogenous2D(uh,dir);
 trisurf(tri,p(:,1),p(:,2),u)
 xlabel('x-axis');
 ylabel('y-axis');
+
+filenm = [pwd '/Plots/3d' num2str(N) '.png'];
+print('-dpng',filenm)
