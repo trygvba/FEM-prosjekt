@@ -40,3 +40,5 @@ u = addingHomogenous2D(uh,dir);
 
 %----------------POSTPROCESSING:-----------------
 trisurf(tri,p(:,1),p(:,2),u)
+xlabel('x-axis');
+ylabel('y-axis');

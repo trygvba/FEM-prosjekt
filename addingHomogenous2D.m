@@ -3,7 +3,7 @@ bound = sort(edge);
 N = length(bound);
 u = uh;
 
-for i=1:N
+for i=N:-1:1
     index = bound(i);
     if index >= length(u)
         u = [u; 0];
