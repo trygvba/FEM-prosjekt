@@ -1,4 +1,4 @@
-
+function writeVTK(filename,t,p,u)
 % vtk export
 % creates a vtk-file filename.vtk containing a simplicial mesh (2- or 3d)
 % and additional vertex data
@@ -28,8 +28,8 @@
 %
 % (c) Daniel Peterseim, 2009-11-07
 
-filename = [pwd '/test'];
-t = tet;
+%filename = [pwd '/oppgave4d'];
+%t = tet;
 [np,dim]=size(p);
 [nt]=size(t,1);
 celltype=[3,5,10];
@@ -61,3 +61,4 @@ s='%f\n';
 fprintf(FID,s,u);
 
 fclose(FID);
+end

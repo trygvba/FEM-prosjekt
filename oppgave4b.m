@@ -24,10 +24,4 @@ uh = Ah\fh;
 u = addingHomogenous2D(uh,boundary);
 
 %-------POSTPROCESSING:-----------------------
-F = TriScatteredInterp(p,u);
-[xg yg zg] = meshgrid(-1:2/50:1);
-vg = F(xg,yg,zg);
-isosurface(xg,yg,zg,vg,0);
-
-filenm = [pwd '/Plots/4b' num2str(N) '.png'];
-print('-dpng',filenm)
+writeVTK([pwd '/Paraview/oppgave4b'],tet,p,u);
