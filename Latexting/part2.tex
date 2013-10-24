@@ -43,28 +43,43 @@
 \section*{Abstract}
 
 \section*{Introduction}
-
+With the displacement of spatial points in $x_1$- and $x_2$-direction represented as
 \begin{equation*}
-\bold{u} = \begin{bmatrix}
+\boldsymbol{u} = \begin{bmatrix}
 u_1 \\ u_2
 \end{bmatrix}
 \end{equation*}
-is the displacement vector measuring how much each spatial point has been displaced in $x_1$- and $x_2$-direction.
+the strain on each point is
+\begin{equation*}
+\begin{bmatrix}
+\epsilon_{11} \\
+\epsilon_{22} \\
+\epsilon_{12}
+\end{bmatrix}
+=
+\begin{bmatrix}
+\frac{\partial u_1}{\partial x_1} \\
+\frac{\partial u_2}{\partial x_2} \\
+\frac{\partial u_1}{\partial x_2}+\frac{\partial u_2}{\partial x_1}
+\end{bmatrix}
+\end{equation*}
+as many notes on linear elasticity will let you know.\footnote{Note however that this is the form usually called engineer strain.} 
 
 The connection between the strain $\epsilon$ and the stress $\sigma$ is
-\begin{equation*}
+\begin{align*}
 \begin{bmatrix}
 \sigma_{11} \\ \sigma_{22} \\ \sigma_{12}
 \end{bmatrix}
-= \frac{E}{1-\nu^2}\begin{bmatrix}
+&= \frac{E}{1-\nu^2}\begin{bmatrix}
 1 & \nu & 0 \\
 \nu & 1 & 0 \\
 0 & 0 & \frac{1-\nu}{2}
 \end{bmatrix}
 \begin{bmatrix}
 \epsilon_{11} \\ \epsilon_{22} \\ \epsilon_{12}
-\end{bmatrix}
-\end{equation*}
+\end{bmatrix} \\
+\boldsymbol{\sigma} &= C\boldsymbol{\epsilon}
+\end{align*}
 where $E$ is the Young's modulus and $\nu$ is the Poisson's ratio. Young's modulus characterises the solids stiffness, i.e. large $E$ means that you need a large force to deform the solid. Poisson's ratio  is the ratio between the strains in $x_1$- and $x_2$-direction when submitting the solid to a stress in only one of the directions. To clarify: Consider a stress in only the $x_1$-direction direction\footnote{$\sigma_{11}$ being the only stress different from zero.}, then $\nu>0$ will say that the solid contracts in the $x_2$-direction and elongates in the $x_1$-direction. Worth noting is that $\nu<0$ is possible, and some materials actually have this property. Weird.
 
 During the course of this analysis we will let $E$ and $\nu$ completely describe a solid's properties. No stress or strain due to difference in temperature.
