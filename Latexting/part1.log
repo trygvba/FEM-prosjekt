@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.10.17)  19 OCT 2013 14:31
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.10.17)  24 OCT 2013 20:11
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -326,25 +326,59 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
 
-{/usr/lib/texlive/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] (./part1.aux) 
-) 
+{/usr/lib/texlive/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+Overfull \hbox (48.00316pt too wide) in paragraph at lines 90--92
+\T1/cmr/m/n/10.95 for $[] \OT1/cmr/m/n/10.95 = (\OML/cmm/m/it/10.95 x[]; y[]; z
+[]\OT1/cmr/m/n/10.95 )$ \T1/cmr/m/n/10.95 and the ref-er-ence tetra-he-dral de-
+fined by the cor-ner points $\OT1/cmr/m/n/10.95 (0\OML/cmm/m/it/10.95 ; \OT1/cm
+r/m/n/10.95 0\OML/cmm/m/it/10.95 ; \OT1/cmr/m/n/10.95 0)$\T1/cmr/m/n/10.95 ,$\O
+T1/cmr/m/n/10.95 (0\OML/cmm/m/it/10.95 ; \OT1/cmr/m/n/10.95 1\OML/cmm/m/it/10.9
+5 ; \OT1/cmr/m/n/10.95 0)$\T1/cmr/m/n/10.95 ,$\OT1/cmr/m/n/10.95 (0\OML/cmm/m/i
+t/10.95 ; \OT1/cmr/m/n/10.95 0\OML/cmm/m/it/10.95 ; \OT1/cmr/m/n/10.95 1)$
+ []
+
+[2]
+Overfull \hbox (0.82869pt too wide) detected at line 127
+\OMS/cmsy/m/n/10.95 r[]\OML/cmm/m/it/10.95 u\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/1
+0.95 x; y\OT1/cmr/m/n/10.95 ) = [] \OML/cmm/m/it/10.95 u\OT1/cmr/m/n/10.95 (\OM
+L/cmm/m/it/10.95 x; y\OT1/cmr/m/n/10.95 ) = []4\OML/cmm/m/it/10.95 ^^Yx [] [] \
+OT1/cmr/m/n/10.95 + []4\OML/cmm/m/it/10.95 ^^Yy [] []
+ []
+
+[3] [4] [5] [6] (./part1.aux)
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
 Here is how much of TeX's memory you used:
- 4201 strings out of 493308
- 58945 string characters out of 6140929
- 145858 words of memory out of 5000000
- 7589 multiletter control sequences out of 15000+600000
- 11846 words of font info for 33 fonts, out of 8000000 for 9000
+ 4254 strings out of 493308
+ 59607 string characters out of 6140929
+ 151914 words of memory out of 5000000
+ 7624 multiletter control sequences out of 15000+600000
+ 23009 words of font info for 61 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 47i,10n,47p,284b,211s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/lib/texlive/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/li
-b/texlive/texmf-dist/fonts/type1/public/cm-super/sfcc1095.pfb></usr/lib/texlive
-/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></usr/lib/texlive/texmf-di
-st/fonts/type1/public/cm-super/sfrm1440.pfb></usr/lib/texlive/texmf-dist/fonts/
-type1/public/cm-super/sfrm2074.pfb>
-Output written on part1.pdf (1 page, 47011 bytes).
+ 47i,12n,47p,385b,220s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/lib/texlive/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/l
+ib/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/lib/texli
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/lib/texlive/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/lib/texlive/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmmi10.pfb></usr/lib/texlive/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmmi6.pfb></usr/lib/texlive/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmmi8.pfb></usr/lib/texlive/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmr10.pfb></usr/lib/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pf
+b></usr/lib/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/
+lib/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/lib
+/texlive/texmf-dist/fonts/type1/public/cm-super/sfcc1095.pfb></usr/lib/texlive/
+texmf-dist/fonts/type1/public/cm-super/sfcc1200.pfb></usr/lib/texlive/texmf-dis
+t/fonts/type1/public/cm-super/sfcc1440.pfb></usr/lib/texlive/texmf-dist/fonts/t
+ype1/public/cm-super/sfrm1095.pfb></usr/lib/texlive/texmf-dist/fonts/type1/publ
+ic/cm-super/sfrm1440.pfb></usr/lib/texlive/texmf-dist/fonts/type1/public/cm-sup
+er/sfrm2074.pfb></usr/lib/texlive/texmf-dist/fonts/type1/public/cm-super/sfti10
+95.pfb>
+Output written on part1.pdf (6 pages, 210990 bytes).
 PDF statistics:
- 25 PDF objects out of 1000 (max. 8388607)
- 17 compressed objects within 1 object stream
+ 92 PDF objects out of 1000 (max. 8388607)
+ 66 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

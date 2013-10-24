@@ -41,7 +41,7 @@
 \maketitle
 
 \section{Gaussian quadrature}
-Evaluation of definite integrals is an important part of every finite element code. The integrals vary in complexity and many does not even have known analytical solutions. One general way to evaluate such integrals is by the \textit{Gaussian quadrature} approximation:
+Evaluation of definite integrals is an integral part of every finite element code. The integrals vary in complexity and many does not even have known analytical solutions. One general way to evaluate such integrals is by the \textit{Gaussian quadrature} approximation:
 \[ \int_{\hat{\Omega}} \! g(\mathbf{\zeta}) \, \mathrm{d}\mathbf{\zeta} \approx \sum_{q=1}^{N_q} \rho_{q}g(\mathbf{\zeta}_q)
 \]
 The function $g(\mathbf{\zeta})$ is evaluated in the $N_q$ vector quadrature points, $\mathbf{\zeta}_q$, and $\rho_q$ are the associated Gaussian weights. In all numerical quadratures, the points and associated weights are given on a reference domain, $\hat{\Omega}$. It is therefore important to have a map from this domain to the domain at hand.
@@ -68,14 +68,14 @@ as indicated in figure [FIGURE OF AREA COORDINATES]. Then area coordinates $\mat
 Let the reference element be the triangle with corners in (0,0), (0,1) and (1,0) on the $(\xi,\eta)$-plane. Then the lowest order mapping corresponding in each corner is
 \[ \mathbf{x}= \mathbf{p_1}(1-\xi-\eta) +\mathbf{p_2}\xi +\mathbf{p_3}\eta = B_k\left[ \begin{array}{c} \xi\\ \eta\\ \end{array} \right] + \mathbf{p_1},
 \]
-where $B_k$ is the Jacobian matrix of the transformation. The Jacobian determinant is thus
+where $B_k$ is the Jacobian matrix of the transformation. The Jacobian determinant is then
 
 \begin{equation}
 |J(\xi,\eta)| = \mathrm{det}(B_k) = \begin{vmatrix}
   x_2-x_1 & x_3-x_1 \\
   y_2-y_1 & y_3-y_1 \\
-\end{vmatrix}  
-  \label{equation:jacobian2d}
+\end{vmatrix}.
+  \label{eq:jacobian2d}
 \end{equation}
 
 Gaussian quadrature points, $\zeta_q$, and weights, $\rho_q$, in area coordinates are given as triplets. The quadrature rules also introduce a scaling with the element size (here area), $T_\Omega$. The approximation of the integral is thus
@@ -93,7 +93,7 @@ for $\mathbf{p_i} =(x_i,y_i,z_i)$ and the reference tetrahedral defined by the c
 \[ \mathbf{x}= B_k\left[ \begin{array}{c} \xi\\ \eta\\ \psi \end{array} \right] + \mathbf{p_1}.
 \]
 
-where the columns of $B_k$ are given by $\mathbf{p_i}-\mathbf{p_1}$ for $i\neq1$ as before. Then the integral over the element can be approximated by
+where the columns of $B_k$ are given by $\mathbf{p_i}-\mathbf{p_1}$ for $i\neq1$ as before. The integral over the element can be approximated by
 
 \[ \int_{\Omega} \! g(\mathbf{x}) \, \mathrm{d}x\mathrm{d}y\mathrm{d}z  \approx T_{\hat{\Omega}} |J(\xi,\eta,\psi)| \sum_{q=1}^{N_q} \rho_{q}g(\mathbf{x}(\zeta_q)).
 \]
@@ -102,24 +102,24 @@ $T_{\hat{\Omega}}=1/6$ is the volume of the reference element.
 
 \section{Poisson equation in 2 dimensions}
 
-Consider the two-dimensional Poisson problem given by 
+Consider the two-dimensional Poisson problem
 
 \begin{equation}
 \begin{aligned}
 \nabla^2u(x,y) 	&= -f(x,y) \\
 u(x,y)|_{r=1} 	&= 0,
 \end{aligned}
-\label{equation:poisson2d}
+\label{eq:poisson2d}
 \end{equation}
-on the domain $\Omega$ given by the unit disk, i.e $\Omega = \{(x,y) : x^2+y^2\leq 1\}$, and with $f$ given in polar coordinates as
+on the domain $\Omega = \{(x,y) : x^2+y^2\leq 1\}$, and with $f$ given in polar coordinates as
 \[ f(r,\theta)= -8\pi \cos(2\pi r^2)+16\pi^2r^2\sin(2\pi^2 r^2).\]
 
 \subsection{Analytical solution}
-An analytical solution to problem (\ref{equation:poisson2d}) is 
+An analytical solution to problem (\ref{eq:poisson2d}) is 
 
 \begin{equation}
 u(x,y)=\sin\left(2\pi(x^2+y^2)\right)
-\label{equation:poisson2danal}
+\label{eq:poisson2danal}
 \end{equation}
 since
 
@@ -127,9 +127,52 @@ since
 \]\[= 8\pi\cos\left(2\pi(x^2+y^2)\right) -16\pi(x^2+y^2)\sin\left(2\pi(x^2+y^2)\right) = -f(x,y)\]
 
 \subsection{Weak formulation}
+To reach the weak formulation of the problem multiply with a test function $v$ and integrate over the domain. Using Green's theorem one get 
+\[\int_{\Omega}  (\nabla^2u)v = \int_{\partial\Omega} (\partial_n u) v -\int_{\Omega} \nabla u \cdot \nabla v = \int_{\Omega} f v.\]
+The weak formulation of problem (\ref{eq:poisson2d}) is then: Find $u\in H^1_{\partial\Omega}(\Omega)$ such that
+\[a(u,v) = l(v), \forall v \in H^1_{\partial\Omega}\]
+where 
+\begin{eqnarray}
+\begin{aligned}
+H^1(\Omega) &= \{u \in L^2(\Omega) : u_x, u_{xx} \in L^2(\Omega)\} \\
+H^1_{\partial\Omega}(\Omega) &= \{u\in H^1(\Omega) : u=0 \; \mathrm{on} \;  \partial\Omega\} \\
+a(u,v) &= \int_{\Omega} \nabla u\cdot\nabla v \: \mathrm{d}x\mathrm{d}y\\
+l(v) &= \int_{\Omega} f v \: \mathrm{d}x\mathrm{d}y.\\
+\end{aligned}
+\label{eq:poisson2d:Weak}
+\end{eqnarray}
 
+Now $a(u,v)$ is a bilinear functional since $a(\lambda u,v_1+v_2)=\lambda\left(a(u,v_1)+a(u,v_2)\right)$ and
+\[a(w,w)=\int_{\Omega} (\nabla w)^2 \geq 0\] 
+with equalilty only for $w\equiv 0$. $\nabla w=0$ gives constant $w$, but since $w=0$ on the boundary $w$ must be zero everywhere. In the following let $X=H^1_{\partial\Omega}(\Omega)$.
 
 \subsection{Galerkin projection}
+Instead of searching for a solution in the entire space $X$ consider a smaller space $X_h \subset X$. Let $\Omega$ be discretized into $M$ triangles such that $\Omega = \cup^M_{k=1} K_k$. Each triangle $K_k$ is defined by its three corner nodes $\mathbf{p_i}$ as in section 1.2. Each node has a corresponding basis function $\phi_i$. The space $X_h$ is then defined by
+\[ X_h = \{v \in X : v|_{K_k} \in \mathbb{P}_1(K_k),1\leq k\leq M\}\] 
+for which the basis functions $\{\phi_i\}^n_{i=1}$ satisfy
+\[ X_h = \mathrm{span}\{\phi_i\}^n_{i=1} \qquad \phi_j(\mathbf{p_i})=\delta_{ij}\]
+and $\delta_{ij}$ is the Kronecker delta. For solutions $u_h \in X_h$ it is then possible to write $u_h=\sum^n_{i=1} u^i_h\phi_i(x,y)$. This reduces the problem to finding $u_h \in X_h$ such that $a(u_h,v)=l(v) \forall v\in X_h$.
+Since $v$ also can be expressed by the basis functions
+
+\begin{eqnarray}
+\begin{aligned}
+\nonumber
+a(u_h,v) &= l(v) \\
+\int_{\Omega}\sum\limits_{i=1}^n u^i_h\nabla\phi_i\sum\limits_{j=1}^n v^j\nabla\phi_j &= \int_{\Omega}f\sum\limits_{j=1}^n v^j\phi_j.
+\end{aligned}
+\end{eqnarray}
+The coefficients in $v$ cancel and the weak formulation for the Poisson problem on the triangulation is equivalent to finding $\mathbf{u}$ such that
+\[\mathbf{Au}=\mathbf{f}\]  
+with
+\begin{eqnarray}
+\begin{aligned}
+\nonumber
+\mathbf{A} &= [A_{ij}]=[a(\phi_i,\phi_j)]\\
+\mathbf{u} &= [u_{h}^i] \\
+\mathbf{f} &= [f_i]=[l(\phi_i)].
+\end{aligned}
+\end{eqnarray}
+Taking the definitions of $a(\cdot,\cdot)$ and $l(\cdot)$ in (\ref{eq:poisson2d:Weak}).
 
 \subsection{Impementation}
 3 plots. Different grids. N=10,100,1000?
@@ -141,7 +184,7 @@ Consider one element of the triangulation $K_k$ with corner points $\mathbf{p_\a
 
 \[\phi_\alpha(x,y) = a_\alpha +b_\alpha x+c_\alpha y.\]
 
-The Kronecker delta-property of the basis functions then gives that $(a_1, b_1,c_1)$ is govern by the equations $\phi_1(x_1,y_1)=1$, $\phi_1(x_2,y_2)=0$ and $\phi_1(x_3,y_3)=0$, or written in matrix form
+The Kronecker delta-property of the basis functions then gives that $(a_1, b_1,c_1)$ is governed by the equations $\phi_1(x_1,y_1)=1$, $\phi_1(x_2,y_2)=0$ and $\phi_1(x_3,y_3)=0$, or written in matrix form
 
 \begin{equation}
 \begin{bmatrix}
@@ -152,19 +195,18 @@ The Kronecker delta-property of the basis functions then gives that $(a_1, b_1,c
 \begin{bmatrix}
   1 \\ 0\\ 0 \\
 \end{bmatrix}.
-\label{equation:poisson2d:C-matrix}
+\label{eq:poisson2d:C-matrix}
 \end{equation}
 
 Similarly one can find $(a_2, b_2,c_2)$ and $(a_3, b_3,c_3)$. Note that $\nabla \phi_\alpha=(b_\alpha,c_\alpha)$, and hence the gradients are independent of $x$ and $y$ and can be moved outside the integral. The elements of the local stiffness matrix is thus given by
 
 \[ A^K_{\alpha\beta} =\nabla \phi_\alpha \nabla \phi_\beta \int_{K} \mathrm{d}x\mathrm{d}y = \nabla \phi_\alpha \nabla \phi_\beta T_K.\]
 
-This reduces the problem to solving (\ref{equation:poisson2d:C-matrix}) for the gradients and using equation (\ref{equation:jacobian2d}) from section 1.2 to find $T_K$.
+This reduces the problem to solving (\ref{eq:poisson2d:C-matrix}) for the gradients and using equation (\ref{eq:jacobian2d}) from section 1.2 to find $T_K$.
 
 To build the whole matrix A loop over each element and pick out the corner points. Then for each combination of basis functions (9 per element) add the scaled contribution to the full matrix.
 
 \subsection{Loading vector}
-
 
 \subsection{Boundary conditions}
 \subsection{Verification}
@@ -177,12 +219,12 @@ Compare analytical and FE solution
 u(x,y)|_{r=1} 	&= 0, \\
 \left. \frac{\partial u(x,y)}{\partial n}\right|_{\partial\Omega_N} &= g(x,y)
 \end{aligned}
-\label{equation:poisson2d:Neu:problem}
+\label{eq:poisson2d:Neu:problem}
 \end{equation}
 
 \begin{equation}
 g(r,\theta) =4\pi r\cos(2\pi r^2).
-\label{equation:poisson2d:Neu:condition}
+\label{eq:poisson2d:Neu:condition}
 \end{equation}
 
 $\partial\Omega_D = \{x^2+y^2=1,y<0\}$ and $\partial\Omega_N = \{x^2+y^2=1,y>0\}$
