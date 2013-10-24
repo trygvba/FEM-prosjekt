@@ -40,4 +40,161 @@
 \begin{document}
 \maketitle
 
+\section{Gaussian quadrature}
+Evaluation of definite integrals is an important part of every finite element code. The integrals vary in complexity and many does not even have known analytical solutions. One general way to evaluate such integrals is by the \textit{Gaussian quadrature} approximation:
+\[ \int_{\hat{\Omega}} \! g(\mathbf{\zeta}) \, \mathrm{d}\mathbf{\zeta} \approx \sum_{q=1}^{N_q} \rho_{q}g(\mathbf{\zeta}_q)
+\]
+The function $g(\mathbf{\zeta})$ is evaluated in the $N_q$ vector quadrature points, $\mathbf{\zeta}_q$, and $\rho_q$ are the associated Gaussian weights. In all numerical quadratures, the points and associated weights are given on a reference domain, $\hat{\Omega}$. It is therefore important to have a map from this domain to the domain at hand.
+
+\subsection{1D quadrature}
+
+In 1D $\hat{\Omega}=[-1,1]$. So for $\zeta \in [-1,1]$ the mapping
+\[ x=\frac{1}{2} \left((b-a) \zeta +(b+a)\right)
+\]
+
+takes any point onto a general domain [a,b] and gives the approximation
+
+\[ \int_{\Omega} \! g(x) \, \mathrm{d}x = \int_{\hat{\Omega}} \! g\left(x(\zeta)\right) \, \frac{\mathrm{d}z}{\mathrm{d}\zeta}\mathrm{d}x \approx \frac{1}{2}(b-a) \sum_{q=1}^{N_q} \rho_{q}g(x(\zeta_q)).
+\]
+
+\subsection{2D quadrature}
+In higher dimensions a bit more care is needed. Consider triangles on the (x,y)-plane with corner points $\mathbf{p_i}=(x_i,y_i), i=1,2,3$. Then define the area coordinates 
+\[ \zeta_i = \frac{A_i}{A}, \; i=1,2,3,\]
+as indicated in figure [FIGURE OF AREA COORDINATES]. Then area coordinates $\mathbf{\zeta} \in [0,1]$ map to physical coordinates $\mathbf{x}$ via
+
+\[ \mathbf{x} = \zeta_1\mathbf{p_1} +\zeta_2\mathbf{p_2} +\zeta_3\mathbf{p_3}.
+\]
+
+Let the reference element be the triangle with corners in (0,0), (0,1) and (1,0) on the $(\xi,\eta)$-plane. Then the lowest order mapping corresponding in each corner is
+\[ \mathbf{x}= \mathbf{p_1}(1-\xi-\eta) +\mathbf{p_2}\xi +\mathbf{p_3}\eta = B_k\left[ \begin{array}{c} \xi\\ \eta\\ \end{array} \right] + \mathbf{p_1},
+\]
+where $B_k$ is the Jacobian matrix of the transformation. The Jacobian determinant is thus
+
+\begin{equation}
+|J(\xi,\eta)| = \mathrm{det}(B_k) = \begin{vmatrix}
+  x_2-x_1 & x_3-x_1 \\
+  y_2-y_1 & y_3-y_1 \\
+\end{vmatrix}  
+  \label{equation:jacobian2d}
+\end{equation}
+
+Gaussian quadrature points, $\zeta_q$, and weights, $\rho_q$, in area coordinates are given as triplets. The quadrature rules also introduce a scaling with the element size (here area), $T_\Omega$. The approximation of the integral is thus
+\[ \int_{\Omega} \! g(\mathbf{x}) \, \mathrm{d}x\mathrm{d}y = \int_{\hat{\Omega}} \! g(\mathbf{x}) \, |J(\xi,\eta)| \mathrm{d}\xi \mathrm{d}\eta \approx T_{\hat{\Omega}} |J(\xi,\eta)| \sum_{q=1}^{N_q} \rho_{q}g(\mathbf{x}(\zeta_q)).
+\]
+Note that taking $g$ to be constant over the element gives $T_{\Omega}=T_{\hat{\Omega}} |J(\xi,\eta)|$. For our reference element the area is $T_{\hat{\Omega}}=1/2$.
+
+\subsection{3D guadrature}
+The extention into 3 dimensions and for tetrahedral elements is straight forward. Let
+
+\[ \mathbf{x} = \zeta_1\mathbf{p_1} +\zeta_2\mathbf{p_2} +\zeta_3\mathbf{p_3} + \zeta_4\mathbf{p_4} 
+\]
+for $\mathbf{p_i} =(x_i,y_i,z_i)$ and the reference tetrahedral defined by the corner points $(0,0,0)$,$(0,1,0)$,$(0,0,1)$ and $(1,0,0)$ in the $(\xi,\eta,\psi)$-coordinate system. Then the mapping is
+
+\[ \mathbf{x}= B_k\left[ \begin{array}{c} \xi\\ \eta\\ \psi \end{array} \right] + \mathbf{p_1}.
+\]
+
+where the columns of $B_k$ are given by $\mathbf{p_i}-\mathbf{p_1}$ for $i\neq1$ as before. Then the integral over the element can be approximated by
+
+\[ \int_{\Omega} \! g(\mathbf{x}) \, \mathrm{d}x\mathrm{d}y\mathrm{d}z  \approx T_{\hat{\Omega}} |J(\xi,\eta,\psi)| \sum_{q=1}^{N_q} \rho_{q}g(\mathbf{x}(\zeta_q)).
+\]
+
+$T_{\hat{\Omega}}=1/6$ is the volume of the reference element.
+
+\section{Poisson equation in 2 dimensions}
+
+Consider the two-dimensional Poisson problem given by 
+
+\begin{equation}
+\begin{aligned}
+\nabla^2u(x,y) 	&= -f(x,y) \\
+u(x,y)|_{r=1} 	&= 0,
+\end{aligned}
+\label{equation:poisson2d}
+\end{equation}
+on the domain $\Omega$ given by the unit disk, i.e $\Omega = \{(x,y) : x^2+y^2\leq 1\}$, and with $f$ given in polar coordinates as
+\[ f(r,\theta)= -8\pi \cos(2\pi r^2)+16\pi^2r^2\sin(2\pi^2 r^2).\]
+
+\subsection{Analytical solution}
+An analytical solution to problem (\ref{equation:poisson2d}) is 
+
+\begin{equation}
+u(x,y)=\sin\left(2\pi(x^2+y^2)\right)
+\label{equation:poisson2danal}
+\end{equation}
+since
+
+\[\nabla^2u(x,y) = \left( \frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2} \right) u(x,y) = \frac{\partial}{\partial x} 4\pi x\cos\left(2\pi(x^2+y^2)\right) + \frac{\partial}{\partial y} 4\pi y\cos\left(2\pi(x^2+y^2)\right)
+\]\[= 8\pi\cos\left(2\pi(x^2+y^2)\right) -16\pi(x^2+y^2)\sin\left(2\pi(x^2+y^2)\right) = -f(x,y)\]
+
+\subsection{Weak formulation}
+
+
+\subsection{Galerkin projection}
+
+\subsection{Impementation}
+3 plots. Different grids. N=10,100,1000?
+\subsection{Stiffness matrix}
+As shown earlier the elements of the stiffness matrix is given by
+
+\[ A_{ij} = a(\phi_i,\phi_j)=\int_{\Omega} \nabla \phi_i \nabla \phi_j \mathrm{d}x\mathrm{d}y.\] 
+Consider one element of the triangulation $K_k$ with corner points $\mathbf{p_\alpha}=(x_\alpha,y_\alpha)$, $\alpha=1,2,3$. Since the basis functions are linear they are uniquely determined by three coefficients, i.e
+
+\[\phi_\alpha(x,y) = a_\alpha +b_\alpha x+c_\alpha y.\]
+
+The Kronecker delta-property of the basis functions then gives that $(a_1, b_1,c_1)$ is govern by the equations $\phi_1(x_1,y_1)=1$, $\phi_1(x_2,y_2)=0$ and $\phi_1(x_3,y_3)=0$, or written in matrix form
+
+\begin{equation}
+\begin{bmatrix}
+  1 & x_1 & y_1\\
+  1 & x_2 & y_2\\
+  1 & x_3 & y_3\\\end{bmatrix}
+\begin{bmatrix} a_1 \\ b_1\\ c_1 \\ \end{bmatrix} =
+\begin{bmatrix}
+  1 \\ 0\\ 0 \\
+\end{bmatrix}.
+\label{equation:poisson2d:C-matrix}
+\end{equation}
+
+Similarly one can find $(a_2, b_2,c_2)$ and $(a_3, b_3,c_3)$. Note that $\nabla \phi_\alpha=(b_\alpha,c_\alpha)$, and hence the gradients are independent of $x$ and $y$ and can be moved outside the integral. The elements of the local stiffness matrix is thus given by
+
+\[ A^K_{\alpha\beta} =\nabla \phi_\alpha \nabla \phi_\beta \int_{K} \mathrm{d}x\mathrm{d}y = \nabla \phi_\alpha \nabla \phi_\beta T_K.\]
+
+This reduces the problem to solving (\ref{equation:poisson2d:C-matrix}) for the gradients and using equation (\ref{equation:jacobian2d}) from section 1.2 to find $T_K$.
+
+To build the whole matrix A loop over each element and pick out the corner points. Then for each combination of basis functions (9 per element) add the scaled contribution to the full matrix.
+
+\subsection{Loading vector}
+
+
+\subsection{Boundary conditions}
+\subsection{Verification}
+Compare analytical and FE solution
+
+\section{Neumann boundary conditions}
+\begin{equation}
+\begin{aligned}
+\nabla^2u(x,y) 	&= -f(x,y) \\
+u(x,y)|_{r=1} 	&= 0, \\
+\left. \frac{\partial u(x,y)}{\partial n}\right|_{\partial\Omega_N} &= g(x,y)
+\end{aligned}
+\label{equation:poisson2d:Neu:problem}
+\end{equation}
+
+\begin{equation}
+g(r,\theta) =4\pi r\cos(2\pi r^2).
+\label{equation:poisson2d:Neu:condition}
+\end{equation}
+
+$\partial\Omega_D = \{x^2+y^2=1,y<0\}$ and $\partial\Omega_N = \{x^2+y^2=1,y>0\}$
+
+\subsection{Boundary condition}
+\subsection{Variational formulation}
+\subsection{Gauss quadrature}
+\subsection{Implementation}
+
+\section{Problems in 3 dimensions}
+\subsection{The Poisson problem in 3D}
+\subsection{Volume visualization}
+Plot the ball, triscatteredInterp, isosurface
+\subsection{Neumann boundary condition}
 \end{document}
