@@ -1,0 +1,72 @@
+\documentclass[paper=a4, fontsize=11pt]{scrartcl} % A4 paper and 11pt font size
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+\usepackage[english]{babel} % English language/hyphenation
+\usepackage{multirow}
+\usepackage{graphicx}
+\usepackage{amsmath,amsfonts,amsthm} % Math packages
+\usepackage{sectsty} % Allows customizing section commands
+\allsectionsfont{\centering \normalfont\scshape} % Make all sections centered, the default font and small caps
+
+\usepackage{fancyhdr} % Custom headers and footers
+\pagestyle{fancyplain} % Makes all pages in the document conform to the custom headers and footers
+\fancyhead{} % No page header - if you want one, create it in the same way as the footers below
+\fancyfoot[L]{} % Empty left footer
+\fancyfoot[C]{} % Empty center footer
+\fancyfoot[R]{\thepage} % Page numbering for right footer
+\renewcommand{\headrulewidth}{0pt} % Remove header underlines
+\renewcommand{\footrulewidth}{0pt} % Remove footer underlines
+\setlength{\headheight}{13.6pt} % Customize the height of the header
+
+%\numberwithin{equation}{section} % Number equations within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+%\numberwithin{figure}{section} % Number figures within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+%\numberwithin{table}{section} % Number tables within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+
+%\setlength\parindent{0pt} % Removes all indentation from paragraphs - comment this line for an assignment with lots of text
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+
+\title{	
+\normalfont \normalsize 
+\textsc{TMA4220 Numerical Solution of Differential Equations by element methods} \\ [25pt] % Your university, school and/or department name(s)
+\horrule{0.5pt} \\[0.4cm] % Thin top horizontal rule
+\huge Part 2: Vibration analysis \\ % The assignment title
+\horrule{2pt} \\[0.5cm] % Thick bottom horizontal rule
+}
+
+\author{Candidate numbers} % Your name
+
+\date{\normalsize\today} % Today's date or a custom date
+
+\begin{document}
+\maketitle
+
+\section*{Abstract}
+
+\section*{Introduction}
+
+\begin{equation*}
+\bold{u} = \begin{bmatrix}
+u_1 \\ u_2
+\end{bmatrix}
+\end{equation*}
+is the displacement vector measuring how much each spatial point has been displaced in $x_1$- and $x_2$-direction.
+
+The connection between the strain $\epsilon$ and the stress $\sigma$ is
+\begin{equation*}
+\begin{bmatrix}
+\sigma_{11} \\ \sigma_{22} \\ \sigma_{12}
+\end{bmatrix}
+= \frac{E}{1-\nu^2}\begin{bmatrix}
+1 & \nu & 0 \\
+\nu & 1 & 0 \\
+0 & 0 & \frac{1-\nu}{2}
+\end{bmatrix}
+\begin{bmatrix}
+\epsilon_{11} \\ \epsilon_{22} \\ \epsilon_{12}
+\end{bmatrix}
+\end{equation*}
+where $E$ is the Young's modulus and $\nu$ is the Poisson's ratio. Young's modulus characterises the solids stiffness, i.e. large $E$ means that you need a large force to deform the solid. Poisson's ratio  is the ratio between the strains in $x_1$- and $x_2$-direction when submitting the solid to a stress in only one of the directions. To clarify: Consider a stress in only the $x_1$-direction direction\footnote{$\sigma_{11}$ being the only stress different from zero.}, then $\nu>0$ will say that the solid contracts in the $x_2$-direction and elongates in the $x_1$-direction. Worth noting is that $\nu<0$ is possible, and some materials actually have this property. Weird.
+
+During the course of this analysis we will let $E$ and $\nu$ completely describe a solid's properties. No stress or strain due to difference in temperature.
+
+\end{document}
