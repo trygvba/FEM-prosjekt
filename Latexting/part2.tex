@@ -80,8 +80,43 @@ The connection between the strain $\epsilon$ and the stress $\sigma$ is
 \end{bmatrix} \\
 \boldsymbol{\sigma} &= C\boldsymbol{\epsilon}
 \end{align*}
-where $E$ is the Young's modulus and $\nu$ is the Poisson's ratio. Young's modulus characterises the solids stiffness, i.e. large $E$ means that you need a large force to deform the solid. Poisson's ratio  is the ratio between the strains in $x_1$- and $x_2$-direction when submitting the solid to a stress in only one of the directions. To clarify: Consider a stress in only the $x_1$-direction direction\footnote{$\sigma_{11}$ being the only stress different from zero.}, then $\nu>0$ will say that the solid contracts in the $x_2$-direction and elongates in the $x_1$-direction. Worth noting is that $\nu<0$ is possible, and some materials actually have this property. Weird.
-
+where $E$ is the Young's modulus and $\nu$ is the Poisson's ratio. Young's modulus characterises the solid's stiffness, i.e. large $E$ means that you need a large force to deform the solid. Poisson's ratio  is the ratio between the strains in $x_1$- and $x_2$-direction when submitting the solid to a stress in only one of the directions. To clarify: Consider a stress in only the $x_1$-direction direction\footnote{$\sigma_{11}$ being the only stress different from zero.}, then $\nu>0$ will say that the solid contracts in the $x_2$-direction and elongates in the $x_1$-direction. Worth noting is that $\nu<0$ is possible, and some materials actually have this property. Weird.
 During the course of this analysis we will let $E$ and $\nu$ completely describe a solid's properties. No stress or strain due to difference in temperature.
+
+\subsection*{The equation, or how we ended up with an element method}
+In continuum mechanics
+\begin{equation}
+\label{vibDiff}
+\rho \ddot{\boldsymbol{u}} = \nabla \sigma(\boldsymbol{u})
+\end{equation}
+describes the spatial displacement due to internal stresses alone. It is the extension of Hook's law and Newton's second law into a continuous medium. So rather than total mass we look at mass density, here denoted $\rho$.
+
+To eventually arrive at variational formulation of \ref{vibDiff} we should spend some time with the right hand side of this equation to better understand it. For that reason we will take a slight detour and start our journey by considering the equation
+\begin{align}
+\label{linEl}
+\nabla \sigma(\boldsymbol{u}) &= - \boldsymbol{f} \\
+\left[\frac{\partial}{\partial x_1},  \frac{\partial}{\partial x_2}\right]\begin{bmatrix}
+\sigma_{11} & \sigma_{12} \\
+\sigma_{12} & \sigma_{22}
+\end{bmatrix} &= -[f_1,f_2] \notag
+\end{align}
+working on some domain $\Omega$,
+together with some boundary conditions, which in its general form looks a little something like
+\begin{align*}
+\boldsymbol{u} &= \boldsymbol{g}, \quad \text{on } \partial \Omega_D \\
+\sigma(\boldsymbol{u})\cdot \boldsymbol{\hat{n}} &= \boldsymbol{h}, \quad \text{on } \partial \Omega_N
+\end{align*}
+
+As is usual procedure when trying to derive a variational formulation, we multiply \ref{linEl} with some test function $\boldsymbol{v}\in V$, where the function space $V$ will be determined from what seems useful during the derivation. Then we integrate over the domain to get
+\begin{equation}
+\label{step1}
+\int_{\Omega} (\nabla \sigma(\boldsymbol{u}))\cdot \boldsymbol{v}d\Omega = \int_{\Omega}\boldsymbol{f}\cdot \boldsymbol{v} d\Omega .
+\end{equation}
+We aim at applying Green's formula to the left hand side, and since Green's formula states that
+\begin{equation*}
+\int_{\Omega}\nabla \cdot \boldsymbol{a}d\Omega = \int_{\partial \Omega} \boldsymbol{a}\cdot \boldsymbol{\hat{n}}dS 
+\end{equation*}
+we should come up with a good candidate for $\boldsymbol{a}$. A good guess seems to be $\boldsymbol{a} = \sigma(\boldsymbol{u})\boldsymbol{v}$.
+
 
 \end{document}
