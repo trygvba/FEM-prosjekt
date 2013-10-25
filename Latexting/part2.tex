@@ -83,7 +83,7 @@ The connection between the strain $\epsilon$ and the stress $\sigma$ is
 where $E$ is the Young's modulus and $\nu$ is the Poisson's ratio. Young's modulus characterises the solid's stiffness, i.e. large $E$ means that you need a large force to deform the solid. Poisson's ratio  is the ratio between the strains in $x_1$- and $x_2$-direction when submitting the solid to a stress in only one of the directions. To clarify: Consider a stress in only the $x_1$-direction direction\footnote{$\sigma_{11}$ being the only stress different from zero.}, then $\nu>0$ will say that the solid contracts in the $x_2$-direction and elongates in the $x_1$-direction. Worth noting is that $\nu<0$ is possible, and some materials actually have this property. Weird.
 During the course of this analysis we will let $E$ and $\nu$ completely describe a solid's properties. No stress or strain due to difference in temperature.
 
-\subsection*{The equation, or how we ended up with an element method}
+\subsection*{The equation and a variational formulation}
 In continuum mechanics
 \begin{equation}
 \label{vibDiff}
@@ -110,13 +110,54 @@ together with some boundary conditions, which in its general form looks a little
 As is usual procedure when trying to derive a variational formulation, we multiply \ref{linEl} with some test function $\boldsymbol{v}\in V$, where the function space $V$ will be determined from what seems useful during the derivation. Then we integrate over the domain to get
 \begin{equation}
 \label{step1}
-\int_{\Omega} (\nabla \sigma(\boldsymbol{u}))\cdot \boldsymbol{v}d\Omega = \int_{\Omega}\boldsymbol{f}\cdot \boldsymbol{v} d\Omega .
+\int_{\Omega} (\nabla \sigma(\boldsymbol{u}))\cdot \boldsymbol{v}d\Omega = -\int_{\Omega}\boldsymbol{f}\cdot \boldsymbol{v} d\Omega .
 \end{equation}
 We aim at applying Green's formula to the left hand side, and since Green's formula states that
 \begin{equation*}
 \int_{\Omega}\nabla \cdot \boldsymbol{a}d\Omega = \int_{\partial \Omega} \boldsymbol{a}\cdot \boldsymbol{\hat{n}}dS 
 \end{equation*}
-we should come up with a good candidate for $\boldsymbol{a}$. A good guess seems to be $\boldsymbol{a} = \sigma(\boldsymbol{u})\boldsymbol{v}$.
+we should come up with a good candidate for $\boldsymbol{a}$. A good guess seems to be $\boldsymbol{a} = \sigma(\boldsymbol{u})\boldsymbol{v}$. Now, this isn't exactly the form the integrand on the left in \ref{step1} takes, so we need to do some calculations and find a relation between the two. Disclaimer for the following calculation: It is long, tedious and not extremely easy to read. In addition, for convenience's sake we use the notation $\frac{\partial}{\partial x_i} = \partial_{x_i}$.
+\begin{align*}
+\nabla \cdot (\sigma(\boldsymbol{u})\boldsymbol{v}) &= \nabla \cdot \begin{bmatrix}
+\sigma_{11}v_1 + \sigma_{12}v_2 \\
+\sigma_{12}v_1 + \sigma_{22}v_2
+\end{bmatrix}\\
+&= \partial_{x_1}(\sigma_{11}v_1 + \sigma_{12}v_2) + \partial_{x_2}(\sigma_{12}v_1 + \sigma_{22}v_2) \\
+&= v_1\partial_{x_1}\sigma_{11} + \sigma_{11}\partial_{x_1}v_1 + v_2\partial_{x_1}\sigma_{12} + \sigma_{12}\partial_{x1}v_2  \\
+&+ v_1\partial_{x_2}\sigma_{12} + \sigma_{12}\partial_{x2}v_1 + v_2\partial_{x_2}\sigma_{22} + \sigma_{22}\partial_{x_2}v_2 .
+\end{align*}
+Up to this point we've just done a vector dot product and some differentiation using the product rule. Let's continue by rearranging the terms to
+\begin{align*}
+\nabla \cdot (\sigma(\boldsymbol{u})\boldsymbol{v})&= v_1(\partial_{x_1}\sigma_{11} + \partial_{x_2}\sigma_{12}) + v_2(\partial_{x_1}\sigma_{12} + \partial_{x_2}\sigma_{22}) \\
+&+ \sigma_{11}\partial_{x_1}v_1 + \sigma_{12}(\partial_{x_2}v_1+\partial_{x_1}v_2)+\sigma_{22}\partial_{x_2}v_2 .
+\end{align*}
+We're definitely closing in on something. To make it even more easy on the eye we go back to the integrand on the left in \ref{step1} and see that
+\begin{equation*}
+(\nabla \sigma(\boldsymbol{u}))\cdot \boldsymbol{v} = v_1(\partial_{x_1}\sigma_{11} + \partial_{x_2}\sigma_{12}) + v_2(\partial_{x_1}\sigma_{12} + \partial_{x_2}\sigma_{22}),
+\end{equation*}
+which corresponds nicely with the first part of what we have after rearranging terms. The last part we deal with by looking back at how the strain vector was defined. Using these two things we end up with
+\begin{equation}
+\label{step2}
+\nabla \cdot (\sigma(\boldsymbol{u})\boldsymbol{v}) = (\nabla \sigma(\boldsymbol{u}))\cdot \boldsymbol{v} + \boldsymbol{\epsilon}(\boldsymbol{v})\cdot \boldsymbol{\sigma}(\boldsymbol{v}).
+\end{equation}
+The result of putting this into \ref{step1} is
+\begin{equation*}
+\int_{\Omega}\boldsymbol{\epsilon}(\boldsymbol{v})\cdot \boldsymbol{\sigma}(\boldsymbol{v})d\Omega - \int_{\Omega}\nabla \cdot (\sigma(\boldsymbol{u})\boldsymbol{v})d\Omega = \int_{\Omega}\boldsymbol{f}\cdot \boldsymbol{v} d\Omega,
+\end{equation*}
+and we've put ourselves in position to employ Green's formula on the second term on the left hand side. What we end up with is
+\begin{equation*}
+\int_{\Omega}\boldsymbol{\epsilon}(\boldsymbol{v})\cdot \boldsymbol{\sigma}(\boldsymbol{v})d\Omega = \int_{\Omega}\boldsymbol{f}\cdot \boldsymbol{v} d\Omega + \int_{\partial \Omega}(\sigma(\boldsymbol{u})\boldsymbol{v})\cdot\boldsymbol{\hat{n}}dS,
+\end{equation*}
+and can be further simplified by letting $V = H^1_{\Gamma_D}=\{v \in H^1 : v=0$ on $\partial \Omega_D \}$. Then
+\begin{align*}
+\int_{\Omega}\boldsymbol{\epsilon}(\boldsymbol{v})\cdot \boldsymbol{\sigma}(\boldsymbol{v})d\Omega &= \int_{\Omega}\boldsymbol{f}\cdot \boldsymbol{v} d\Omega + \int_{\partial \Omega_N}\boldsymbol{v}\cdot \sigma\boldsymbol{\hat{n}}dS  \notag \\
+&= \int_{\Omega}\boldsymbol{f}\cdot \boldsymbol{v} d\Omega + \int_{\partial \Omega_N}\boldsymbol{v}\cdot\boldsymbol{h}dS
+\end{align*}
 
-
+We are now prepared to make a variational formulation of \ref{linEl}: Find $u \in \{H^1 : u=g,$ on $\partial\Omega_D\}$ so that
+\begin{equation}
+\label{VarForm}
+\int_{\Omega}\boldsymbol{\epsilon}(\boldsymbol{v})\cdot \boldsymbol{\sigma}(\boldsymbol{v})d\Omega = \int_{\Omega}\boldsymbol{f}\cdot \boldsymbol{v} d\Omega + \int_{\partial \Omega_N}\boldsymbol{v}\cdot\boldsymbol{h}dS
+\end{equation}
+for all $v\in V$.
 \end{document}
