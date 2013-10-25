@@ -79,7 +79,7 @@ Gaussian quadrature points, $\zeta_q$, and weights, $\rho_q$, in area coordinate
 \]
 Note that taking $g$ to be constant over the element gives $T_{\Omega}=T_{\hat{\Omega}} |J(\xi,\eta)|$. For our reference element the area is $T_{\hat{\Omega}}=1/2$.
 
-\subsection{3D guadrature}
+\subsection{3D quadrature}
 The extention into 3 dimensions and for tetrahedral elements is straight forward. Let
 
 \[ \mathbf{x} = \zeta_1\mathbf{p_1} +\zeta_2\mathbf{p_2} +\zeta_3\mathbf{p_3} + \zeta_4\mathbf{p_4} 
@@ -219,10 +219,29 @@ This reduces the problem to solving (\ref{eq:poisson2d:C-matrix}) for the gradie
 To build the whole matrix A loop over each element and pick out the corner points. Then for each combination of basis functions (9 per element) add the scaled contribution to the full matrix.
 
 \subsection{Loading vector}
+The elements of vector $\mathbf{f}$ is given by
+\[ f_i = l(\phi_i) = \int_{\Omega}f\phi_i\mathrm{d}x\mathrm{d}y.\]
 
+Remember that $\phi_i(\mathbf{p_j})=\delta_{ij}$ and that $\phi_i$ is linear. This means that $f\phi_i$ only has support (i.e. is different from zero) on triangles in which $\mathbf{p_i}$ is one of the corner nodes. It is therefore smart to find the contribution to $f_i$ from the triangles around $\mathbf{p_i}$. Consider some element $K$. Using the quadrature-rules from section 1.2 and local numbering $\alpha$ for the corners 
+
+\[ l^{K}(\phi_\alpha) = \int_{K}f\phi_\alpha\mathrm{d}x\mathrm{d}y \approx T_K \sum\limits^{3}_{q=1} \rho_q f(\mathbf{x}_q)\zeta_\alpha(q) \qquad \alpha =1,2,3\]
+
+where $\zeta_\alpha(q)$ is the $q$'th element of the quadrature rule and $\mathbf{x}_\alpha=\sum^3_{j=1}\zeta_\alpha(j)\mathbf{p}_j$. Do this for the three quadrature points $\mathbf{x_\alpha}$ to get the contribution to $f$ from $K$ corresponding to the basis function at the corner nodes. Now iterate over the elements and add to the total vector $f$ at appropriate indicies.
 \subsection{Boundary conditions}
+
 \subsection{Verification}
 Compare analytical and FE solution
+\begin{figure}[!htb]
+\minipage{0.5\textwidth}
+  \includegraphics[width=\linewidth]{2h1000.png}
+  \caption{Numerical solution of (\ref{eq:poisson2d}) with 1000 nodes}\label{fig:2h1000}
+\endminipage\hfill
+\minipage{0.5\textwidth}
+  \includegraphics[width=\linewidth]{2d200.png}
+  \caption{200 nodes}\label{fig:2d200}
+\endminipage\hfill
+\end{figure}
+
 
 \section{Neumann boundary conditions}
 \begin{equation}
@@ -245,10 +264,14 @@ $\partial\Omega_D = \{x^2+y^2=1,y<0\}$ and $\partial\Omega_N = \{x^2+y^2=1,y>0\}
 \subsection{Variational formulation}
 \subsection{Gauss quadrature}
 \subsection{Implementation}
+\begin{figure}[!htb]
+  \includegraphics[width=\linewidth]{3d5000.png}
+  \caption{Numerical solution of (\ref{eq:poisson2d:Neu:problem}) with 5000 nodes}\label{fig:3d5000}
+\end{figure}
 
 \section{Problems in 3 dimensions}
 \subsection{The Poisson problem in 3D}
 \subsection{Volume visualization}
-Plot the ball, triscatteredInterp, isosurface
+Plot the ball, triscatteredInterp, isosurface 
 \subsection{Neumann boundary condition}
 \end{document}
