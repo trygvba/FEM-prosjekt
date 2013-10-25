@@ -17,11 +17,7 @@
 \renewcommand{\footrulewidth}{0pt} % Remove footer underlines
 \setlength{\headheight}{13.6pt} % Customize the height of the header
 
-%\numberwithin{equation}{section} % Number equations within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
-%\numberwithin{figure}{section} % Number figures within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
-%\numberwithin{table}{section} % Number tables within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
-
-%\setlength\parindent{0pt} % Removes all indentation from paragraphs - comment this line for an assignment with lots of text
+\graphicspath{ {../Plots/} }
 
 \newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
 
@@ -60,7 +56,7 @@ takes any point onto a general domain [a,b] and gives the approximation
 \subsection{2D quadrature}
 In higher dimensions a bit more care is needed. Consider triangles on the (x,y)-plane with corner points $\mathbf{p_i}=(x_i,y_i), i=1,2,3$. Then define the area coordinates 
 \[ \zeta_i = \frac{A_i}{A}, \; i=1,2,3,\]
-as indicated in figure [FIGURE OF AREA COORDINATES]. Then area coordinates $\mathbf{\zeta} \in [0,1]$ map to physical coordinates $\mathbf{x}$ via
+as indicated in figure [FIGURE OF AREA COORDINATES]. Then area coordinates $\mathbf{\zeta_i} \in [0,1]$ map to physical coordinates $\mathbf{x}$ via
 
 \[ \mathbf{x} = \zeta_1\mathbf{p_1} +\zeta_2\mathbf{p_2} +\zeta_3\mathbf{p_3}.
 \]
@@ -95,10 +91,10 @@ for $\mathbf{p_i} =(x_i,y_i,z_i)$ and the reference tetrahedral defined by the c
 
 where the columns of $B_k$ are given by $\mathbf{p_i}-\mathbf{p_1}$ for $i\neq1$ as before. The integral over the element can be approximated by
 
-\[ \int_{\Omega} \! g(\mathbf{x}) \, \mathrm{d}x\mathrm{d}y\mathrm{d}z  \approx T_{\hat{\Omega}} |J(\xi,\eta,\psi)| \sum_{q=1}^{N_q} \rho_{q}g(\mathbf{x}(\zeta_q)).
+\[ \int_{\Omega} \! g(\mathbf{x}) \, \mathrm{d}x\mathrm{d}y\mathrm{d}z  \approx T_{\hat{\Omega}} |J(\xi,\eta,\psi)| \sum_{q=1}^{N_q} \rho_{q}g(\mathbf{x}(\zeta_q)),
 \]
 
-$T_{\hat{\Omega}}=1/6$ is the volume of the reference element.
+where $T_{\hat{\Omega}}=1/6$ is the volume of the reference element.
 
 \section{Poisson equation in 2 dimensions}
 
@@ -121,15 +117,15 @@ An analytical solution to problem (\ref{eq:poisson2d}) is
 u(x,y)=\sin\left(2\pi(x^2+y^2)\right)
 \label{eq:poisson2danal}
 \end{equation}
-since
+since by direct computation
 
 \[\nabla^2u(x,y) = \left( \frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2} \right) u(x,y) = \frac{\partial}{\partial x} 4\pi x\cos\left(2\pi(x^2+y^2)\right) + \frac{\partial}{\partial y} 4\pi y\cos\left(2\pi(x^2+y^2)\right)
 \]\[= 8\pi\cos\left(2\pi(x^2+y^2)\right) -16\pi(x^2+y^2)\sin\left(2\pi(x^2+y^2)\right) = -f(x,y)\]
 
 \subsection{Weak formulation}
-To reach the weak formulation of the problem multiply with a test function $v$ and integrate over the domain. Using Green's theorem one get 
-\[\int_{\Omega}  (\nabla^2u)v = \int_{\partial\Omega} (\partial_n u) v -\int_{\Omega} \nabla u \cdot \nabla v = \int_{\Omega} f v.\]
-The weak formulation of problem (\ref{eq:poisson2d}) is then: Find $u\in H^1_{\partial\Omega}(\Omega)$ such that
+To reach the weak formulation of the problem multiply with a test function $v\in X$ and integrate over the domain. The space $X$ should be determined to what seems appropriate to the problem. Using Green's theorem on the left hand side one get 
+\[\int_{\Omega}  (\nabla^2u)v = \int_{\partial\Omega} (\partial_n u) v -\int_{\Omega} \nabla u \cdot \nabla v = -\int_{\Omega} f v.\]
+So if $v$ is zero on the boundary the whole boundary term disappear. The weak formulation of problem (\ref{eq:poisson2d}) is then: Find $u\in H^1_{\partial\Omega}(\Omega)$ such that
 \[a(u,v) = l(v), \forall v \in H^1_{\partial\Omega}\]
 where 
 \begin{eqnarray}
@@ -142,9 +138,9 @@ l(v) &= \int_{\Omega} f v \: \mathrm{d}x\mathrm{d}y.\\
 \label{eq:poisson2d:Weak}
 \end{eqnarray}
 
-Now $a(u,v)$ is a bilinear functional since $a(\lambda u,v_1+v_2)=\lambda\left(a(u,v_1)+a(u,v_2)\right)$ and
+Here $H^1$ is the Sobolov space of order 1 on $\Omega$. Now $a(u,v)$ is bilinear since $a(\lambda u,v_1+v_2)=\lambda\left(a(u,v_1)+a(u,v_2)\right)$ and
 \[a(w,w)=\int_{\Omega} (\nabla w)^2 \geq 0\] 
-with equalilty only for $w\equiv 0$. $\nabla w=0$ gives constant $w$, but since $w=0$ on the boundary $w$ must be zero everywhere. In the following let $X=H^1_{\partial\Omega}(\Omega)$.
+with equalilty only for $w\equiv 0$. $\nabla w=0$ gives constant $w$, but since $w=0$ on the boundary $w$ must be zero everywhere. In the following let $X=H^1_{\partial\Omega}(\Omega)$ to keep the notation short.
 
 \subsection{Galerkin projection}
 Instead of searching for a solution in the entire space $X$ consider a smaller space $X_h \subset X$. Let $\Omega$ be discretized into $M$ triangles such that $\Omega = \cup^M_{k=1} K_k$. Each triangle $K_k$ is defined by its three corner nodes $\mathbf{p_i}$ as in section 1.2. Each node has a corresponding basis function $\phi_i$. The space $X_h$ is then defined by
@@ -162,20 +158,36 @@ a(u_h,v) &= l(v) \\
 \end{aligned}
 \end{eqnarray}
 The coefficients in $v$ cancel and the weak formulation for the Poisson problem on the triangulation is equivalent to finding $\mathbf{u}$ such that
-\[\mathbf{Au}=\mathbf{f}\]  
-with
+\[\mathbf{Au}=\mathbf{f}.\]  
+Here
 \begin{eqnarray}
 \begin{aligned}
 \nonumber
 \mathbf{A} &= [A_{ij}]=[a(\phi_i,\phi_j)]\\
 \mathbf{u} &= [u_{h}^i] \\
-\mathbf{f} &= [f_i]=[l(\phi_i)].
+\mathbf{f} &= [f_i]=[l(\phi_i)]
 \end{aligned}
 \end{eqnarray}
-Taking the definitions of $a(\cdot,\cdot)$ and $l(\cdot)$ in (\ref{eq:poisson2d:Weak}).
+using the definitions of $a(\cdot,\cdot)$ and $l(\cdot)$ in (\ref{eq:poisson2d:Weak}).
+
+SOMETHING ABOUT WHY THE A-matrix is singular. (Have not removed the nodes corresponding to the boundary conditions)
 
 \subsection{Impementation}
-3 plots. Different grids. N=10,100,1000?
+\begin{figure}[!htb]
+\minipage{0.32\textwidth}
+  \includegraphics[width=\linewidth]{2d20.png}
+  \caption{20 nodes}\label{fig:2d20}
+\endminipage\hfill
+\minipage{0.32\textwidth}
+  \includegraphics[width=\linewidth]{2d200.png}
+  \caption{200 nodes}\label{fig:2d200}
+\endminipage\hfill
+\minipage{0.32\textwidth}%
+  \includegraphics[width=\linewidth]{2d2000.png}
+  \caption{2000 nodes}\label{fig:2d2000}
+\endminipage
+\end{figure}
+
 \subsection{Stiffness matrix}
 As shown earlier the elements of the stiffness matrix is given by
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.10.17)  25 OCT 2013 10:30
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.10.17)  25 OCT 2013 12:55
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -235,18 +235,18 @@ les
 ) (./part1.aux)
 \openout1 = `part1.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 40.
-LaTeX Font Info:    ... okay on input line 40.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 40.
-LaTeX Font Info:    ... okay on input line 40.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 40.
-LaTeX Font Info:    ... okay on input line 40.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 40.
-LaTeX Font Info:    ... okay on input line 40.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 40.
-LaTeX Font Info:    ... okay on input line 40.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 40.
-LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
 
 (/usr/lib/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -309,17 +309,17 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-LaTeX Font Info:    Try loading font information for T1+cmss on input line 42.
+LaTeX Font Info:    Try loading font information for T1+cmss on input line 38.
 
 (/usr/lib/texlive/texmf-dist/tex/latex/base/t1cmss.fd
 File: t1cmss.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 42.
+LaTeX Font Info:    Try loading font information for U+msa on input line 38.
 
 (/usr/lib/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 42.
+LaTeX Font Info:    Try loading font information for U+msb on input line 38.
 
 (/usr/lib/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -327,7 +327,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 
 {/usr/lib/texlive/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-Overfull \hbox (48.00316pt too wide) in paragraph at lines 90--92
+Overfull \hbox (48.00316pt too wide) in paragraph at lines 86--88
 \T1/cmr/m/n/10.95 for $[] \OT1/cmr/m/n/10.95 = (\OML/cmm/m/it/10.95 x[]; y[]; z
 []\OT1/cmr/m/n/10.95 )$ \T1/cmr/m/n/10.95 and the ref-er-ence tetra-he-dral de-
 fined by the cor-ner points $\OT1/cmr/m/n/10.95 (0\OML/cmm/m/it/10.95 ; \OT1/cm
@@ -338,43 +338,62 @@ t/10.95 ; \OT1/cmr/m/n/10.95 0\OML/cmm/m/it/10.95 ; \OT1/cmr/m/n/10.95 1)$
  []
 
 [2]
-Overfull \hbox (0.82869pt too wide) detected at line 127
+Overfull \hbox (0.82869pt too wide) detected at line 123
 \OMS/cmsy/m/n/10.95 r[]\OML/cmm/m/it/10.95 u\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/1
 0.95 x; y\OT1/cmr/m/n/10.95 ) = [] \OML/cmm/m/it/10.95 u\OT1/cmr/m/n/10.95 (\OM
 L/cmm/m/it/10.95 x; y\OT1/cmr/m/n/10.95 ) = []4\OML/cmm/m/it/10.95 ^^Yx [] [] \
 OT1/cmr/m/n/10.95 + []4\OML/cmm/m/it/10.95 ^^Yy [] []
  []
 
-[3] [4] [5] [6] (./part1.aux) ) 
+[3] [4] <../Plots/2d20.png, id=32, 449.68pt x 337.26pt>
+File: ../Plots/2d20.png Graphic file (type png)
+
+<use ../Plots/2d20.png>
+Package pdftex.def Info: ../Plots/2d20.png used on input line 178.
+(pdftex.def)             Requested size: 133.84483pt x 100.38112pt.
+ <../Plots/2d200.png, id=33, 449.68pt x 337.26pt>
+File: ../Plots/2d200.png Graphic file (type png)
+
+<use ../Plots/2d200.png>
+Package pdftex.def Info: ../Plots/2d200.png used on input line 182.
+(pdftex.def)             Requested size: 133.84483pt x 100.38112pt.
+ <../Plots/2d2000.png, id=34, 449.68pt x 337.26pt>
+File: ../Plots/2d2000.png Graphic file (type png)
+
+<use ../Plots/2d2000.png>
+Package pdftex.def Info: ../Plots/2d2000.png used on input line 186.
+(pdftex.def)             Requested size: 133.84483pt x 100.38112pt.
+ [5 <../Plots/2d20.png (PNG copy)> <../Plots/2d200.png (PNG copy)> <../Plots/2d
+2000.png (PNG copy)>] [6] (./part1.aux) ) 
 Here is how much of TeX's memory you used:
- 4254 strings out of 493308
- 59607 string characters out of 6140929
- 151914 words of memory out of 5000000
- 7624 multiletter control sequences out of 15000+600000
+ 4278 strings out of 493308
+ 59999 string characters out of 6140929
+ 151953 words of memory out of 5000000
+ 7643 multiletter control sequences out of 15000+600000
  23009 words of font info for 61 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 47i,12n,47p,385b,220s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/lib/texlive/texmf-dist/fonts/enc/dvips/cm-
-super/cm-super-t1.enc}</usr/lib/texlive/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmbx10.pfb></usr/lib/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8
-.pfb></usr/lib/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></u
-sr/lib/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/lib/t
-exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/lib/texlive/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/lib/texlive/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/lib/texlive/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmr8.pfb></usr/lib/texlive/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmsy10.pfb></usr/lib/texlive/texmf-dist/fonts/type1/public/amsfonts
-/symbols/msbm10.pfb></usr/lib/texlive/texmf-dist/fonts/type1/public/cm-super/sf
-cc1095.pfb></usr/lib/texlive/texmf-dist/fonts/type1/public/cm-super/sfcc1200.pf
-b></usr/lib/texlive/texmf-dist/fonts/type1/public/cm-super/sfcc1440.pfb></usr/l
-ib/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></usr/lib/texliv
-e/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/lib/texlive/texmf-d
-ist/fonts/type1/public/cm-super/sfrm2074.pfb></usr/lib/texlive/texmf-dist/fonts
-/type1/public/cm-super/sfti1095.pfb>
-Output written on part1.pdf (6 pages, 210990 bytes).
+ 47i,12n,47p,385b,276s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/lib/texlive/texmf-dist/fonts/enc
+/dvips/cm-super/cm-super-t1.enc}</usr/lib/texlive/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmbx10.pfb></usr/lib/texlive/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmbx8.pfb></usr/lib/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex
+10.pfb></usr/lib/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><
+/usr/lib/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/lib/
+texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/lib/texlive/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/lib/texlive/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/lib/texlive/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmsy10.pfb></usr/lib/texlive/texmf-dist/fonts/type1/publi
+c/amsfonts/symbols/msbm10.pfb></usr/lib/texlive/texmf-dist/fonts/type1/public/c
+m-super/sfcc1095.pfb></usr/lib/texlive/texmf-dist/fonts/type1/public/cm-super/s
+fcc1200.pfb></usr/lib/texlive/texmf-dist/fonts/type1/public/cm-super/sfcc1440.p
+fb></usr/lib/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></usr/
+lib/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/lib/texli
+ve/texmf-dist/fonts/type1/public/cm-super/sfrm2074.pfb></usr/lib/texlive/texmf-
+dist/fonts/type1/public/cm-super/sfti1095.pfb>
+Output written on part1.pdf (6 pages, 267192 bytes).
 PDF statistics:
- 92 PDF objects out of 1000 (max. 8388607)
+ 95 PDF objects out of 1000 (max. 8388607)
  66 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 16 words of extra memory for PDF output out of 10000 (max. 10000000)
 
