@@ -52,9 +52,9 @@ u_1 \\ u_2
 the strain on each point is
 \begin{equation*}
 \begin{bmatrix}
-\epsilon_{11} \\
-\epsilon_{22} \\
-\epsilon_{12}
+\varepsilon_{11} \\
+\varepsilon_{22} \\
+\varepsilon_{12}
 \end{bmatrix}
 =
 \begin{bmatrix}
@@ -65,7 +65,7 @@ the strain on each point is
 \end{equation*}
 as many notes on linear elasticity will let you know.\footnote{Note however that this is the form usually called engineer strain.} 
 
-The connection between the strain $\epsilon$ and the stress $\sigma$ is
+The connection between the strain $\varepsilon$ and the stress $\sigma$ is
 \begin{align*}
 \begin{bmatrix}
 \sigma_{11} \\ \sigma_{22} \\ \sigma_{12}
@@ -76,9 +76,9 @@ The connection between the strain $\epsilon$ and the stress $\sigma$ is
 0 & 0 & \frac{1-\nu}{2}
 \end{bmatrix}
 \begin{bmatrix}
-\epsilon_{11} \\ \epsilon_{22} \\ \epsilon_{12}
+\varepsilon_{11} \\ \varepsilon_{22} \\ \varepsilon_{12}
 \end{bmatrix} \\
-\boldsymbol{\sigma} &= C\boldsymbol{\epsilon}
+\boldsymbol{\sigma} &= C\boldsymbol{\varepsilon}
 \end{align*}
 where $E$ is the Young's modulus and $\nu$ is the Poisson's ratio. Young's modulus characterises the solid's stiffness, i.e. large $E$ means that you need a large force to deform the solid. Poisson's ratio  is the ratio between the strains in $x_1$- and $x_2$-direction when submitting the solid to a stress in only one of the directions. To clarify: Consider a stress in only the $x_1$-direction direction\footnote{$\sigma_{11}$ being the only stress different from zero.}, then $\nu>0$ will say that the solid contracts in the $x_2$-direction and elongates in the $x_1$-direction. Worth noting is that $\nu<0$ is possible, and some materials actually have this property. Weird.
 During the course of this analysis we will let $E$ and $\nu$ completely describe a solid's properties. No stress or strain due to difference in temperature.
@@ -138,26 +138,64 @@ We're definitely closing in on something. To make it even more easy on the eye w
 which corresponds nicely with the first part of what we have after rearranging terms. The last part we deal with by looking back at how the strain vector was defined. Using these two things we end up with
 \begin{equation}
 \label{step2}
-\nabla \cdot (\sigma(\boldsymbol{u})\boldsymbol{v}) = (\nabla \sigma(\boldsymbol{u}))\cdot \boldsymbol{v} + \boldsymbol{\epsilon}(\boldsymbol{v})\cdot \boldsymbol{\sigma}(\boldsymbol{v}).
+\nabla \cdot (\sigma(\boldsymbol{u})\boldsymbol{v}) = (\nabla \sigma(\boldsymbol{u}))\cdot \boldsymbol{v} + \boldsymbol{\varepsilon}(\boldsymbol{v})\cdot \boldsymbol{\sigma}(\boldsymbol{u}).
 \end{equation}
 The result of putting this into \ref{step1} is
 \begin{equation*}
-\int_{\Omega}\boldsymbol{\epsilon}(\boldsymbol{v})\cdot \boldsymbol{\sigma}(\boldsymbol{v})d\Omega - \int_{\Omega}\nabla \cdot (\sigma(\boldsymbol{u})\boldsymbol{v})d\Omega = \int_{\Omega}\boldsymbol{f}\cdot \boldsymbol{v} d\Omega,
+\int_{\Omega}\boldsymbol{\varepsilon}(\boldsymbol{v})\cdot \boldsymbol{\sigma}(\boldsymbol{u})d\Omega - \int_{\Omega}\nabla \cdot (\sigma(\boldsymbol{u})\boldsymbol{v})d\Omega = \int_{\Omega}\boldsymbol{f}\cdot \boldsymbol{v} d\Omega,
 \end{equation*}
 and we've put ourselves in position to employ Green's formula on the second term on the left hand side. What we end up with is
 \begin{equation*}
-\int_{\Omega}\boldsymbol{\epsilon}(\boldsymbol{v})\cdot \boldsymbol{\sigma}(\boldsymbol{v})d\Omega = \int_{\Omega}\boldsymbol{f}\cdot \boldsymbol{v} d\Omega + \int_{\partial \Omega}(\sigma(\boldsymbol{u})\boldsymbol{v})\cdot\boldsymbol{\hat{n}}dS,
+\int_{\Omega}\boldsymbol{\varepsilon}(\boldsymbol{v})\cdot \boldsymbol{\sigma}(\boldsymbol{u})d\Omega = \int_{\Omega}\boldsymbol{f}\cdot \boldsymbol{v} d\Omega + \int_{\partial \Omega}(\sigma(\boldsymbol{u})\boldsymbol{v})\cdot\boldsymbol{\hat{n}}dS,
 \end{equation*}
 and can be further simplified by letting $V = H^1_{\Gamma_D}=\{v \in H^1 : v=0$ on $\partial \Omega_D \}$. Then
 \begin{align*}
-\int_{\Omega}\boldsymbol{\epsilon}(\boldsymbol{v})\cdot \boldsymbol{\sigma}(\boldsymbol{v})d\Omega &= \int_{\Omega}\boldsymbol{f}\cdot \boldsymbol{v} d\Omega + \int_{\partial \Omega_N}\boldsymbol{v}\cdot \sigma\boldsymbol{\hat{n}}dS  \notag \\
+\int_{\Omega}\boldsymbol{\varepsilon}(\boldsymbol{v})\cdot \boldsymbol{\sigma}(\boldsymbol{u})d\Omega &= \int_{\Omega}\boldsymbol{f}\cdot \boldsymbol{v} d\Omega + \int_{\partial \Omega_N}\boldsymbol{v}\cdot \sigma\boldsymbol{\hat{n}}dS  \notag \\
 &= \int_{\Omega}\boldsymbol{f}\cdot \boldsymbol{v} d\Omega + \int_{\partial \Omega_N}\boldsymbol{v}\cdot\boldsymbol{h}dS
 \end{align*}
 
-We are now prepared to make a variational formulation of \ref{linEl}: Find $u \in \{H^1 : u=g,$ on $\partial\Omega_D\}$ so that
+We are now prepared to make a variational formulation of \ref{linEl}: 
+
+Find $u \in \{H^1 : u=g,$ on $\partial\Omega_D\}$ so that
 \begin{equation}
 \label{VarForm}
-\int_{\Omega}\boldsymbol{\epsilon}(\boldsymbol{v})\cdot \boldsymbol{\sigma}(\boldsymbol{v})d\Omega = \int_{\Omega}\boldsymbol{f}\cdot \boldsymbol{v} d\Omega + \int_{\partial \Omega_N}\boldsymbol{v}\cdot\boldsymbol{h}dS
+\int_{\Omega}\boldsymbol{\varepsilon}(\boldsymbol{v})\cdot C\boldsymbol{\varepsilon}(\boldsymbol{u})d\Omega = \int_{\Omega}\boldsymbol{f}\cdot \boldsymbol{v} d\Omega + \int_{\partial \Omega_N}\boldsymbol{v}\cdot\boldsymbol{h}dS
 \end{equation}
-for all $v\in V$.
+for all $v\in V$. Here we have now substituted $C\boldsymbol{\varepsilon}$ for $\boldsymbol{\sigma}$.
+
+\subsection*{Galerking projection}
+Since both function spaces we're looking at er infinite dimensional it is a good idea to look let the test function reside in the function space $X_h \subset V$ of piecewise linear functions on a triangulation of $\Omega$. Furthermore, let $X_h =$span$(\varphi_1,\ldots,\varphi_n)$ where $\phi_i$ are basis function with some compact support. Since the test functions $v$ are now vector functions, there will for each node $\hat{i}$ be two test functions
+\begin{align*}
+\varphi_{\hat{i},1} &= \begin{bmatrix}
+\varphi_{\hat{i}} \\ 0
+\end{bmatrix} \\
+\varphi_{\hat{i},2} &= \begin{bmatrix}
+0 \\ \varphi_{\hat{i}}
+\end{bmatrix},
+\end{align*}
+and there should be some connection between the basis number $i$, node number $\hat{i}$ and $d=1,2$. If the total number of nodes are $N$, then total number of basis functions should be $2N$. A good function between the two can be $i = 2\hat{i}+ (d-2)$. Then $i$ ranges from $1$ to $2N$. To build up a linear system of what we have so far we state the Galerkin formulation of the problem: Find $u \in X_h$ so that
+\begin{equation}
+\label{Galerkin}
+\int_{\Omega}\boldsymbol{\varepsilon}(\boldsymbol{v})\cdot C\boldsymbol{\varepsilon}(\boldsymbol{u})d\Omega = \int_{\Omega}\boldsymbol{f}\cdot \boldsymbol{v} d\Omega + \int_{\partial \Omega_N}\boldsymbol{v}\cdot\boldsymbol{h}dS
+\end{equation}
+for all $v\in X_h$.
+
+It is sufficient to find a $u$ where this is true for all the basis frunctions since the right hand side is a bilinear form and the right hand side is a linear functional. That means we can let $\boldsymbol{v} = \varphi_i$ with $i\in\{1,2,\ldots,2N\}$ and $u = \sum_j u_j\varphi_j$. We put this into our Galerking formulation as
+\begin{align*}
+\int_{\Omega}\boldsymbol{\varepsilon}(\boldsymbol{\varphi_i})\cdot C\boldsymbol{\varepsilon}\left(\sum_j u_j\boldsymbol{\varphi_j}\right)d\Omega &= \int_{\Omega}\sum_j u_j\boldsymbol{\varepsilon}(\boldsymbol{\varphi_i})\cdot C\boldsymbol{\varepsilon}(\boldsymbol{\varphi_j})d\Omega \\
+&=\sum_j u_j\int_{\Omega}\boldsymbol{\varepsilon}(\boldsymbol{\varphi_i})\cdot C\boldsymbol{\varepsilon}(\boldsymbol{\varphi_j})d\Omega \\
+&= \int_{\Omega}\boldsymbol{f}\cdot \boldsymbol{\varphi_i} d\Omega + \int_{\partial \Omega_N}\boldsymbol{\varphi_i}\cdot\boldsymbol{h}dS.
+\end{align*}
+Taking this to be true over all $i$ we get the linear system
+\begin{equation*}
+A\boldsymbol{u} = \boldsymbol{b},
+\end{equation*}
+where
+\begin{align*}
+A_{ij} &= \int_{\Omega}\boldsymbol{\varepsilon}(\boldsymbol{\varphi_i})\cdot C\boldsymbol{\varepsilon}(\boldsymbol{\varphi_j})d\Omega \\
+b_i &=  \int_{\Omega}\boldsymbol{f}\cdot \boldsymbol{\varphi_i} d\Omega + \int_{\partial \Omega_N}\boldsymbol{\varphi_i}\cdot\boldsymbol{h}dS.
+\end{align*}
+This linear system is what we will be implementing.
+
+
 \end{document}
