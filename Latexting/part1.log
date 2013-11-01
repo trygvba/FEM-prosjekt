@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.10.17)  25 OCT 2013 12:55
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.10.17)  1 NOV 2013 14:29
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -232,7 +232,11 @@ les
 \f@ncyO@erf=\skip59
 \f@ncyO@olf=\skip60
 \f@ncyO@orf=\skip61
-) (./part1.aux)
+) (./part1.aux
+
+LaTeX Warning: Label `fig:2d200' multiply defined.
+
+)
 \openout1 = `part1.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 36.
@@ -247,8 +251,7 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 36.
 LaTeX Font Info:    ... okay on input line 36.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 36.
 LaTeX Font Info:    ... okay on input line 36.
-
-(/usr/lib/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
+ (/usr/lib/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count102
 \scratchdimen=\dimen116
@@ -349,51 +352,77 @@ OT1/cmr/m/n/10.95 + []4\OML/cmm/m/it/10.95 ^^Yy [] []
 File: ../Plots/2d20.png Graphic file (type png)
 
 <use ../Plots/2d20.png>
-Package pdftex.def Info: ../Plots/2d20.png used on input line 178.
+Package pdftex.def Info: ../Plots/2d20.png used on input line 181.
 (pdftex.def)             Requested size: 133.84483pt x 100.38112pt.
  <../Plots/2d200.png, id=33, 449.68pt x 337.26pt>
 File: ../Plots/2d200.png Graphic file (type png)
 
 <use ../Plots/2d200.png>
-Package pdftex.def Info: ../Plots/2d200.png used on input line 182.
+Package pdftex.def Info: ../Plots/2d200.png used on input line 185.
 (pdftex.def)             Requested size: 133.84483pt x 100.38112pt.
  <../Plots/2d2000.png, id=34, 449.68pt x 337.26pt>
 File: ../Plots/2d2000.png Graphic file (type png)
 
 <use ../Plots/2d2000.png>
-Package pdftex.def Info: ../Plots/2d2000.png used on input line 186.
+Package pdftex.def Info: ../Plots/2d2000.png used on input line 189.
 (pdftex.def)             Requested size: 133.84483pt x 100.38112pt.
  [5 <../Plots/2d20.png (PNG copy)> <../Plots/2d200.png (PNG copy)> <../Plots/2d
-2000.png (PNG copy)>] [6] (./part1.aux) ) 
+2000.png (PNG copy)>]
+<../Plots/2h1000.png, id=38, 578.16pt x 433.62pt>
+File: ../Plots/2h1000.png Graphic file (type png)
+ <use ../Plots/2h1000.png>
+Package pdftex.def Info: ../Plots/2h1000.png used on input line 241.
+(pdftex.def)             Requested size: 209.12778pt x 156.84413pt.
+
+Underfull \hbox (badness 1540) in paragraph at lines 242--242
+[]\T1/cmr/m/n/10.95 Numerical so-lu-tion of (2[]) with
+ []
+
+File: ../Plots/2d200.png Graphic file (type png)
+<use ../Plots/2d200.png>
+Package pdftex.def Info: ../Plots/2d200.png used on input line 245.
+(pdftex.def)             Requested size: 209.12778pt x 156.84485pt.
+ [6] [7 <../Plots/2h1000.png (PNG copy)>]
+<../Plots/3d5000.png, id=46, 578.16pt x 433.62pt>
+File: ../Plots/3d5000.png Graphic file (type png)
+ <use ../Plots/3d5000.png>
+Package pdftex.def Info: ../Plots/3d5000.png used on input line 290.
+(pdftex.def)             Requested size: 418.25555pt x 313.68826pt.
+
+[8] [9 <../Plots/3d5000.png (PNG copy)>] (./part1.aux)
+
+LaTeX Warning: There were multiply-defined labels.
+
+ ) 
 Here is how much of TeX's memory you used:
- 4278 strings out of 493308
- 59999 string characters out of 6140929
- 151953 words of memory out of 5000000
- 7643 multiletter control sequences out of 15000+600000
+ 4290 strings out of 493308
+ 60233 string characters out of 6140929
+ 152008 words of memory out of 5000000
+ 7653 multiletter control sequences out of 15000+600000
  23009 words of font info for 61 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 47i,12n,47p,385b,276s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/lib/texlive/texmf-dist/fonts/enc
-/dvips/cm-super/cm-super-t1.enc}</usr/lib/texlive/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmbx10.pfb></usr/lib/texlive/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmbx8.pfb></usr/lib/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex
-10.pfb></usr/lib/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><
-/usr/lib/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/lib/
-texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/lib/texlive/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/lib/texlive/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/lib/texlive/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmsy10.pfb></usr/lib/texlive/texmf-dist/fonts/type1/publi
-c/amsfonts/symbols/msbm10.pfb></usr/lib/texlive/texmf-dist/fonts/type1/public/c
-m-super/sfcc1095.pfb></usr/lib/texlive/texmf-dist/fonts/type1/public/cm-super/s
-fcc1200.pfb></usr/lib/texlive/texmf-dist/fonts/type1/public/cm-super/sfcc1440.p
-fb></usr/lib/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></usr/
-lib/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/lib/texli
-ve/texmf-dist/fonts/type1/public/cm-super/sfrm2074.pfb></usr/lib/texlive/texmf-
-dist/fonts/type1/public/cm-super/sfti1095.pfb>
-Output written on part1.pdf (6 pages, 267192 bytes).
+ 47i,12n,47p,547b,276s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/lib/texlive/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/l
+ib/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/lib/texli
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/lib/texlive/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/lib/texlive/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmmi10.pfb></usr/lib/texlive/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmmi6.pfb></usr/lib/texlive/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmmi8.pfb></usr/lib/texlive/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmr10.pfb></usr/lib/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pf
+b></usr/lib/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/
+lib/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/lib
+/texlive/texmf-dist/fonts/type1/public/cm-super/sfcc1095.pfb></usr/lib/texlive/
+texmf-dist/fonts/type1/public/cm-super/sfcc1200.pfb></usr/lib/texlive/texmf-dis
+t/fonts/type1/public/cm-super/sfcc1440.pfb></usr/lib/texlive/texmf-dist/fonts/t
+ype1/public/cm-super/sfrm1095.pfb></usr/lib/texlive/texmf-dist/fonts/type1/publ
+ic/cm-super/sfrm1440.pfb></usr/lib/texlive/texmf-dist/fonts/type1/public/cm-sup
+er/sfrm2074.pfb></usr/lib/texlive/texmf-dist/fonts/type1/public/cm-super/sfti10
+95.pfb>
+Output written on part1.pdf (9 pages, 399510 bytes).
 PDF statistics:
- 95 PDF objects out of 1000 (max. 8388607)
- 66 compressed objects within 1 object stream
+ 108 PDF objects out of 1000 (max. 8388607)
+ 74 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 16 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 26 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -37,10 +37,10 @@
 \maketitle
 
 \section{Gaussian quadrature}
-Evaluation of definite integrals is an integral part of every finite element code. The integrals vary in complexity and many does not even have known analytical solutions. One general way to evaluate such integrals is by the \textit{Gaussian quadrature} approximation:
-\[ \int_{\hat{\Omega}} \! g(\mathbf{\zeta}) \, \mathrm{d}\mathbf{\zeta} \approx \sum_{q=1}^{N_q} \rho_{q}g(\mathbf{\zeta}_q)
+Evaluation of definite integrals is an integral part of every finite element code. The integrals vary in complexity and many does not even have known analytical solutions. One general way find approximate solutions to them is by  \textit{Gaussian quadrature}
+\[ \int_{\hat{\Omega}} \! g(\mathbf{\zeta}) \, \mathrm{d}\mathbf{\zeta} \approx \sum_{q=1}^{N_q} \rho_{q}g(\mathbf{\zeta}_q).
 \]
-The function $g(\mathbf{\zeta})$ is evaluated in the $N_q$ vector quadrature points, $\mathbf{\zeta}_q$, and $\rho_q$ are the associated Gaussian weights. In all numerical quadratures, the points and associated weights are given on a reference domain, $\hat{\Omega}$. It is therefore important to have a map from this domain to the domain at hand.
+The function $g(\mathbf{\zeta})$ is evaluated in the $N_q$ vector quadrature points, $\mathbf{\zeta}_q$, with $\rho_q$ as the associated Gaussian weights. In all numerical quadratures, the points and weights are given on a reference domain, $\hat{\Omega}$. It is therefore important to have a map from this domain to the domain at hand.
 
 \subsection{1D quadrature}
 
@@ -56,7 +56,7 @@ takes any point onto a general domain [a,b] and gives the approximation
 \subsection{2D quadrature}
 In higher dimensions a bit more care is needed. Consider triangles on the (x,y)-plane with corner points $\mathbf{p_i}=(x_i,y_i), i=1,2,3$. Then define the area coordinates 
 \[ \zeta_i = \frac{A_i}{A}, \; i=1,2,3,\]
-as indicated in figure [FIGURE OF AREA COORDINATES]. Then area coordinates $\mathbf{\zeta_i} \in [0,1]$ map to physical coordinates $\mathbf{x}$ via
+as indicated in figure [FIGURE OF AREA COORDINATES]. Now area coordinates $\mathbf{\zeta_i} \in [0,1]$ map to physical coordinates $\mathbf{x}$ via
 
 \[ \mathbf{x} = \zeta_1\mathbf{p_1} +\zeta_2\mathbf{p_2} +\zeta_3\mathbf{p_3}.
 \]
@@ -79,7 +79,7 @@ Gaussian quadrature points, $\zeta_q$, and weights, $\rho_q$, in area coordinate
 \]
 Note that taking $g$ to be constant over the element gives $T_{\Omega}=T_{\hat{\Omega}} |J(\xi,\eta)|$. For our reference element the area is $T_{\hat{\Omega}}=1/2$.
 
-\subsection{3D guadrature}
+\subsection{3D quadrature}
 The extention into 3 dimensions and for tetrahedral elements is straight forward. Let
 
 \[ \mathbf{x} = \zeta_1\mathbf{p_1} +\zeta_2\mathbf{p_2} +\zeta_3\mathbf{p_3} + \zeta_4\mathbf{p_4} 
@@ -147,23 +147,24 @@ Instead of searching for a solution in the entire space $X$ consider a smaller s
 \[ X_h = \{v \in X : v|_{K_k} \in \mathbb{P}_1(K_k),1\leq k\leq M\}\] 
 for which the basis functions $\{\phi_i\}^n_{i=1}$ satisfy
 \[ X_h = \mathrm{span}\{\phi_i\}^n_{i=1} \qquad \phi_j(\mathbf{p_i})=\delta_{ij}\]
-and $\delta_{ij}$ is the Kronecker delta. For solutions $u_h \in X_h$ it is then possible to write $u_h=\sum^n_{i=1} u^i_h\phi_i(x,y)$. This reduces the problem to finding $u_h \in X_h$ such that $a(u_h,v)=l(v) \forall v\in X_h$.
-Since $v$ also can be expressed by the basis functions
+with $\delta_{ij}$ as the Kronecker delta. For solutions $u_h\in X_h$ it is then possible to write $u_h(\mathbf{x})=\sum^n_{i=1} u^i_h\phi_i(\mathbf{x})$. This reduces the problem to finding $u_h \in X_h$ such that $a(u_h,v)=l(v) \; \forall v\in X_h$.
+Since $v(\mathbf{x})$ also can be expressed by the basis functions, $v(\mathbf{x})=\phi_j(\mathbf{x})$,
 
 \begin{eqnarray}
 \begin{aligned}
 \nonumber
 a(u_h,v) &= l(v) \\
-\int_{\Omega}\sum\limits_{i=1}^n u^i_h\nabla\phi_i\sum\limits_{j=1}^n v^j\nabla\phi_j &= \int_{\Omega}f\sum\limits_{j=1}^n v^j\phi_j.
+\int_{\Omega}(\nabla\sum\limits_{i=1}^n u^i_h\phi_i)(\nabla\phi_j) &= \int_{\Omega}\! f \phi_j, \qquad j=1,2,..,n \\
+\sum\limits_{i=1}^n u^i_h\int_{\Omega}\nabla\phi_i \nabla\phi_j &= \int_{\Omega}\! f \phi_j, \qquad j=1,2,..,n
 \end{aligned}
 \end{eqnarray}
-The coefficients in $v$ cancel and the weak formulation for the Poisson problem on the triangulation is equivalent to finding $\mathbf{u}$ such that
-\[\mathbf{Au}=\mathbf{f}.\]  
+Hence the weak formulation for the Poisson problem on the triangulation is equivalent to finding $\mathbf{u}$ such that
+\[A\mathbf{u}=\mathbf{f}.\]  
 Here
 \begin{eqnarray}
 \begin{aligned}
 \nonumber
-\mathbf{A} &= [A_{ij}]=[a(\phi_i,\phi_j)]\\
+A &= [A_{ij}]=[a(\phi_i,\phi_j)]\\
 \mathbf{u} &= [u_{h}^i] \\
 \mathbf{f} &= [f_i]=[l(\phi_i)]
 \end{aligned}
@@ -173,6 +174,8 @@ using the definitions of $a(\cdot,\cdot)$ and $l(\cdot)$ in (\ref{eq:poisson2d:W
 SOMETHING ABOUT WHY THE A-matrix is singular. (Have not removed the nodes corresponding to the boundary conditions)
 
 \subsection{Impementation}
+Having the problem on the form $A\mathbf{u}=\mathbf{f}$ the next step is to implement and solve it on the computer. First make a grid (triangulation) of the domain. This is done by the MATLAB-function getDisk. It takes the number of wanted nodes and provides the nodal points, the elements (with numbering of each node on the element) and the edges.
+
 \begin{figure}[!htb]
 \minipage{0.32\textwidth}
   \includegraphics[width=\linewidth]{2d20.png}
@@ -187,6 +190,7 @@ SOMETHING ABOUT WHY THE A-matrix is singular. (Have not removed the nodes corres
   \caption{2000 nodes}\label{fig:2d2000}
 \endminipage
 \end{figure}
+Then build the stiffness matrix $A$ and loading vector $\mathbf{f}$.
 
 \subsection{Stiffness matrix}
 As shown earlier the elements of the stiffness matrix is given by
@@ -219,36 +223,76 @@ This reduces the problem to solving (\ref{eq:poisson2d:C-matrix}) for the gradie
 To build the whole matrix A loop over each element and pick out the corner points. Then for each combination of basis functions (9 per element) add the scaled contribution to the full matrix.
 
 \subsection{Loading vector}
+The elements of vector $\mathbf{f}$ is given by
+\[ f_i = l(\phi_i) = \int_{\Omega}f\phi_i\mathrm{d}x\mathrm{d}y.\]
 
+Remember that $\phi_i(\mathbf{p_j})=\delta_{ij}$ and that $\phi_i$ is linear. This means that $f\phi_i$ only has support (i.e. is different from zero) on triangles in which $\mathbf{p_i}$ is one of the corner nodes. It is therefore smart to find the contribution to $f_i$ from the triangles around $\mathbf{p_i}$. Consider some element $K$. Using the quadrature-rules from section 1.2 and local numbering $\alpha$ for the corners 
+
+\[ l^{K}(\phi_\alpha) = \int_{K}f\phi_\alpha\mathrm{d}x\mathrm{d}y \approx T_K \sum\limits^{3}_{q=1} \rho_q f(\mathbf{x}_q)\zeta_\alpha(q) \qquad \alpha =1,2,3\]
+
+where $\zeta_\alpha(q)$ is the $q$'th element of the quadrature rule and $\mathbf{x}_\alpha=\sum^3_{j=1}\zeta_\alpha(j)\mathbf{p}_j$. Do this for the three quadrature points $\mathbf{x_\alpha}$ to get the contribution to $\mathbf{f}$ from $K$ corresponding to the basis function at the corner nodes. Now iterate over the elements and add to the total vector $\mathbf{f}$ at appropriate indices.
 \subsection{Boundary conditions}
+To force the boundary condition in (\ref{eq:poisson2d}), $u$ has to be zero on the boundary. This can be done in the following way. Seperate the internal nodes and edge nodes into two arrays. Remove the rows and columns in $A$ and element in $\mathbf{f}$ corresponding to the nodes at the boundary. Solve the reduced linear system $A_\mathrm{int}\mathbf{u}_\mathrm{int}=\mathbf{f}_\mathrm{int}$, which is no longer singular. Construct $\mathbf{u}$ again from $\mathbf{u}_\mathrm{int}$ and letting the edge nodes be zero.  
+
 \subsection{Verification}
 Compare analytical and FE solution
+\begin{figure}[!htb]
+\minipage{0.5\textwidth}
+  \includegraphics[width=\linewidth]{2h1000.png}
+  \caption{Numerical solution of (\ref{eq:poisson2d}) with 1000 nodes}\label{fig:2h1000}
+\endminipage\hfill
+\minipage{0.5\textwidth}
+  \includegraphics[width=\linewidth]{2d200.png}
+  \caption{200 nodes}\label{fig:2d200}
+\endminipage\hfill
+\end{figure}
+
 
 \section{Neumann boundary conditions}
+Consider now the Poisson problem in 2D with Neumann boundary condition
 \begin{equation}
 \begin{aligned}
 \nabla^2u(x,y) 	&= -f(x,y) \\
-u(x,y)|_{r=1} 	&= 0, \\
-\left. \frac{\partial u(x,y)}{\partial n}\right|_{\partial\Omega_N} &= g(x,y)
+\left. u(x,y)\right|_{\partial\Omega_D} 	&= 0, \\
+\left. \frac{\partial u(x,y)}{\partial n}\right|_{\partial\Omega_N} &= g(x,y).
 \end{aligned}
 \label{eq:poisson2d:Neu:problem}
 \end{equation}
+The source term $f$ and exact solution $u$ is still as in (\ref{eq:poisson2d}) and (\ref{eq:poisson2danal}), and $g$ given by
 
 \begin{equation}
 g(r,\theta) =4\pi r\cos(2\pi r^2).
 \label{eq:poisson2d:Neu:condition}
 \end{equation}
-
-$\partial\Omega_D = \{x^2+y^2=1,y<0\}$ and $\partial\Omega_N = \{x^2+y^2=1,y>0\}$
+The domains of the boundary given by $\partial\Omega_D = \{x^2+y^2=1,y<0\}$ and $\partial\Omega_N = \{x^2+y^2=1,y>0\}$.
 
 \subsection{Boundary condition}
+The equation (\ref{eq:poisson2d:Neu:condition}) is a solution to (\ref{eq:poisson2d:Neu:problem}) on the neumann boundary since
+\[\left. \frac{\partial u(x,y)}{\partial n}\right|_{\partial\Omega_N} = \frac{\partial}{\partial r} \sin(2\pi r^2) = 4\pi r\cos(2\pi r^2) = g(x,y).\]
 \subsection{Variational formulation}
-\subsection{Gauss quadrature}
-\subsection{Implementation}
+With the introduction of the new boundary condition the weak formulation changes. As before take a test function $v\in V$ and integrate over the domain. Using Green's theorem we get
 
+\[\int_{\Omega}  (\nabla^2u)v = \int_{\partial\Omega_D} (\partial_n u) v + \int_{\partial\Omega_N} (\partial_n u) v-\int_{\Omega} \nabla u \cdot \nabla v = -\int_{\Omega} f v,\]
+or 
+\[\int_{\Omega} \nabla u \cdot \nabla v = \int_{\Omega} f v +  \int_{\partial\Omega_N} \! g v\]
+if $v\in V= H^1_{\partial\Omega_D}(\Omega) = \{u\in H^1(\Omega) : u=0 \; \mathrm{on} \;  \partial\Omega_D\}$.
+
+Hence it is similar to solving $A\mathbf{u}=\mathbf{f}$ for the Dirichlet case, only that $l(\cdot)$ changes to
+
+\[l(v)=\int_{\Omega} f v  +  \int_{\partial\Omega_N} \! g v.\]
+\subsection{Gauss quadrature}
+Now to construct the $\mathbf{f}$-vector line integrals must be evaluated. The method in section 1.1 must be changed to work in two dimensions.
+
+FORTSETT HER
+
+\subsection{Implementation}
+\begin{figure}[!htb]
+  \includegraphics[width=\linewidth]{3d5000.png}
+  \caption{Numerical solution of (\ref{eq:poisson2d:Neu:problem}) with 5000 nodes}\label{fig:3d5000}
+\end{figure}
 \section{Problems in 3 dimensions}
 \subsection{The Poisson problem in 3D}
 \subsection{Volume visualization}
-Plot the ball, triscatteredInterp, isosurface
+Plot the ball, triscatteredInterp, isosurface 
 \subsection{Neumann boundary condition}
 \end{document}
