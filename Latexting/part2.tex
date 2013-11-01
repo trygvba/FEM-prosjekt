@@ -91,7 +91,7 @@ In continuum mechanics
 \end{equation}
 describes the spatial displacement due to internal stresses alone. It is the extension of Hook's law and Newton's second law into a continuous medium. So rather than total mass we look at mass density, here denoted $\rho$.
 
-To eventually arrive at variational formulation of \ref{vibDiff} we should spend some time with the right hand side of this equation to better understand it. For that reason we will take a slight detour and start our journey by considering the equation
+To eventually arrive at variational formulation of (\ref{vibDiff}) we should spend some time with the right hand side of this equation to better understand it. For that reason we will take a slight detour and start our journey by considering the equation
 \begin{align}
 \label{linEl}
 \nabla \sigma(\boldsymbol{u}) &= - \boldsymbol{f} \\
@@ -107,7 +107,7 @@ together with some boundary conditions, which in its general form looks a little
 \sigma(\boldsymbol{u})\cdot \boldsymbol{\hat{n}} &= \boldsymbol{h}, \quad \text{on } \partial \Omega_N
 \end{align*}
 
-As is usual procedure when trying to derive a variational formulation, we multiply \ref{linEl} with some test function $\boldsymbol{v}\in V$, where the function space $V$ will be determined from what seems useful during the derivation. Then we integrate over the domain to get
+As is usual procedure when trying to derive a variational formulation, we multiply (\ref{linEl}) with some test function $\boldsymbol{v}\in V$, where the function space $V$ will be determined from what seems useful during the derivation. Then we integrate over the domain to get
 \begin{equation}
 \label{step1}
 \int_{\Omega} (\nabla \sigma(\boldsymbol{u}))\cdot \boldsymbol{v}d\Omega = -\int_{\Omega}\boldsymbol{f}\cdot \boldsymbol{v} d\Omega .
@@ -116,7 +116,7 @@ We aim at applying Green's formula to the left hand side, and since Green's form
 \begin{equation*}
 \int_{\Omega}\nabla \cdot \boldsymbol{a}d\Omega = \int_{\partial \Omega} \boldsymbol{a}\cdot \boldsymbol{\hat{n}}dS 
 \end{equation*}
-we should come up with a good candidate for $\boldsymbol{a}$. A good guess seems to be $\boldsymbol{a} = \sigma(\boldsymbol{u})\boldsymbol{v}$. Now, this isn't exactly the form the integrand on the left in \ref{step1} takes, so we need to do some calculations and find a relation between the two. Disclaimer for the following calculation: It is long, tedious and not extremely easy to read. In addition, for convenience's sake we use the notation $\frac{\partial}{\partial x_i} = \partial_{x_i}$.
+we should come up with a good candidate for $\boldsymbol{a}$. A good guess seems to be $\boldsymbol{a} = \sigma(\boldsymbol{u})\boldsymbol{v}$. Now, this isn't exactly the form the integrand on the left in (\ref{step1}) takes, so we need to do some calculations and find a relation between the two. Disclaimer for the following calculation: It is long, tedious and not extremely easy to read. In addition, for convenience's sake we use the notation $\frac{\partial}{\partial x_i} = \partial_{x_i}$.
 \begin{align*}
 \nabla \cdot (\sigma(\boldsymbol{u})\boldsymbol{v}) &= \nabla \cdot \begin{bmatrix}
 \sigma_{11}v_1 + \sigma_{12}v_2 \\
@@ -131,7 +131,7 @@ Up to this point we've just done a vector dot product and some differentiation u
 \nabla \cdot (\sigma(\boldsymbol{u})\boldsymbol{v})&= v_1(\partial_{x_1}\sigma_{11} + \partial_{x_2}\sigma_{12}) + v_2(\partial_{x_1}\sigma_{12} + \partial_{x_2}\sigma_{22}) \\
 &+ \sigma_{11}\partial_{x_1}v_1 + \sigma_{12}(\partial_{x_2}v_1+\partial_{x_1}v_2)+\sigma_{22}\partial_{x_2}v_2 .
 \end{align*}
-We're definitely closing in on something. To make it even more easy on the eye we go back to the integrand on the left in \ref{step1} and see that
+We're definitely closing in on something. To make it even more easy on the eye we go back to the integrand on the left in (\ref{step1}) and see that
 \begin{equation*}
 (\nabla \sigma(\boldsymbol{u}))\cdot \boldsymbol{v} = v_1(\partial_{x_1}\sigma_{11} + \partial_{x_2}\sigma_{12}) + v_2(\partial_{x_1}\sigma_{12} + \partial_{x_2}\sigma_{22}),
 \end{equation*}
@@ -140,7 +140,7 @@ which corresponds nicely with the first part of what we have after rearranging t
 \label{step2}
 \nabla \cdot (\sigma(\boldsymbol{u})\boldsymbol{v}) = (\nabla \sigma(\boldsymbol{u}))\cdot \boldsymbol{v} + \boldsymbol{\varepsilon}(\boldsymbol{v})\cdot \boldsymbol{\sigma}(\boldsymbol{u}).
 \end{equation}
-The result of putting this into \ref{step1} is
+The result of putting this into (\ref{step1}) is
 \begin{equation*}
 \int_{\Omega}\boldsymbol{\varepsilon}(\boldsymbol{v})\cdot \boldsymbol{\sigma}(\boldsymbol{u})d\Omega - \int_{\Omega}\nabla \cdot (\sigma(\boldsymbol{u})\boldsymbol{v})d\Omega = \int_{\Omega}\boldsymbol{f}\cdot \boldsymbol{v} d\Omega,
 \end{equation*}
@@ -154,7 +154,7 @@ and can be further simplified by letting $V = H^1_{\Gamma_D}=\{v \in H^1 : v=0$ 
 &= \int_{\Omega}\boldsymbol{f}\cdot \boldsymbol{v} d\Omega + \int_{\partial \Omega_N}\boldsymbol{v}\cdot\boldsymbol{h}dS
 \end{align*}
 
-We are now prepared to make a variational formulation of \ref{linEl}: 
+We are now prepared to make a variational formulation of (\ref{linEl}): 
 
 Find $u \in \{H^1 : u=g,$ on $\partial\Omega_D\}$ so that
 \begin{equation}
@@ -197,5 +197,73 @@ b_i &=  \int_{\Omega}\boldsymbol{f}\cdot \boldsymbol{\varphi_i} d\Omega + \int_{
 \end{align*}
 This linear system is what we will be implementing.
 
+\subsection*{A simple test case}
+When using a finite element implementation it's in most cases a sound strategy to have compared to a test case where the exact solution is known. To build some confidence in the implementation. As a test example we are going to consider the following:
+\begin{equation}
+\label{testCase}
+\begin{cases}\nabla \boldsymbol{\sigma}(\boldsymbol{u}) &= -\boldsymbol{f}, \quad \text{in } \Omega \\
+\boldsymbol{u} &= \boldsymbol{0} \quad \text{on } \partial \Omega
+\end{cases}
+\end{equation}
+where $\Omega = \{(x,y)\in \mathbb{R}^2: |x|,|y|<1\}$ and $\boldsymbol{f}$ is given as
+\begin{align*}
+f_1 &= \frac{E}{1-\nu^2}\left(-2y^2-x^2+\nu x^2-2\nu xy - 2xy + 3 - \nu\right) \\
+f_2 &= \frac{E}{1-\nu^2}\left(-2x^2-y^2+\nu y^2-2\nu xy - 2xy + 3 - \nu\right).
+\end{align*}
+In addition we are given
+\begin{equation*}
+\boldsymbol{u} = \begin{bmatrix}
+(x^2-1)(y^2-1) \\ (x^2-1)(y^2-1)
+\end{bmatrix},
+\end{equation*}
+and all we need to do is verify that this is in fact the solution of (\ref{testCase}). So let's do just that. To begin with we notice easily that the boundary condition is satisfied, so we proceed by calculating the strains as
+\begin{equation*}
+\begin{bmatrix}
+\varepsilon_{11} \\
+\varepsilon_{22} \\
+\varepsilon_{12}
+\end{bmatrix}
+=
+\begin{bmatrix}
+2x(y^2-1) \\
+2y(x^2-1) \\
+2y(x^2-1)+2x(y^2-1)
+\end{bmatrix}.
+\end{equation*}
+Now we make use of the affine relation between $\sigma$ and $\varepsilon$ to deduce that
+\begin{align*}
+\begin{bmatrix}
+\sigma_{11} \\
+\sigma_{22} \\
+\sigma_{12} \\
+\end{bmatrix}
+&= \frac{E}{1-\nu^2}\begin{bmatrix}
+\varepsilon_{11} + \nu \varepsilon_{22} \\
+\nu \varepsilon_{11} + \varepsilon_{22} \\
+\frac{1-\nu}{2}\varepsilon_{12}
+\end{bmatrix}
+\\
+&=\frac{E}{1-\nu^2}\begin{bmatrix}
+2x(y^2-1) + 2\nu y(x^2-1) \\
+2\nu x(y^2-1) +2y(x^2-1) \\
+(1-\nu)(y(x^2-1)+x(y^2-1))
+\end{bmatrix}
+\end{align*} 
+What follows is a tedious calculation, so brace yourself. The gradient of the stress is
+\begin{align*}
+\nabla \cdot \sigma(\boldsymbol{u}) &= \begin{bmatrix}
+\partial_x \sigma_{11} + \partial_y \sigma_{12} \\
+\partial_x \sigma_{12} + \partial_y \sigma_{22} 
+\end{bmatrix} \\
+&= \frac{E}{1-\nu^2}\begin{bmatrix}
+2(y^2-1)+4\nu xy + (1-\nu)(x^2-1+2xy) \\
+(1-\nu)(2xy + y^2-1)+4\nu xy +2(x^2 -1)
+\end{bmatrix} \\
+&= \frac{-E}{1-\nu^2}\begin{bmatrix}
+-2y^2 - x^2 + \nu  x^2 - 2\nu xy - 2xy + 3 - \nu \\
+-2x^2-y^2 + \nu y^2 - 2\nu xy -2xy + 3 -\nu
+\end{bmatrix} \\
+&= -\boldsymbol{f}
+\end{align*}
 
 \end{document}
