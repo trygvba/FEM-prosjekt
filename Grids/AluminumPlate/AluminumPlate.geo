@@ -1,6 +1,6 @@
 // Gmsh project created on Sun Nov  3 16:32:37 2013
-lc = 0.01;	//Characteristic length
-h = 0.01;	//Height of plate.
+lc = 0.05;	//Characteristic length
+h = 0.1;	//Height of plate.
 Point(1) = {0, 0, 0, lc};
 Point(2) = {1, 0, 0, lc};
 Point(3) = {1, 1, 0, lc};
@@ -39,4 +39,4 @@ Plane Surface(24) = {23};
 Surface Loop(25) = {14, 18, 16, 24, 22, 20};
 Volume(26) = {25};
 
-Physical Surface(27) = {20, 24, 22, 18, 14, 16}; //Boundary har ID 27!!
+//Physical Surface(27) = {20, 24, 22, 18, 14, 16}; //Boundary har ID 27!!
