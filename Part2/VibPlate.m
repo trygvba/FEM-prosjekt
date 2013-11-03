@@ -1,4 +1,5 @@
 addpath(genpath('../Part1'))
+addpath(genpath('../Converter'))
 
 E = 390;
 v = 0.25;
@@ -11,4 +12,7 @@ A = Stiffness3D(tetr,p,C);
 
 M = MassMatrix3D(tetr,p);
 
+[V D]=eig(full(A),full(M));
 
+save('EigVec',V);
+save('EigVal',D);
