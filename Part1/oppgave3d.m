@@ -43,5 +43,5 @@ trimesh(tri,p(:,1),p(:,2),u)
 xlabel('x-axis');
 ylabel('y-axis');
 
-filenm = [fileparts(pwd) '/Plots/3d' num2str(N) '.png'];
-print('-dpng',filenm)
+%filenm = [fileparts(pwd) '/Plots/3d' num2str(N) '.png'];
+%print('-dpng',filenm)
