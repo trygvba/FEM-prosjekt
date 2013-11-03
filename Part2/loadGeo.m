@@ -4,11 +4,11 @@ function [p tri tetr] = loadGeo(filenm)
 addpath(genpath('../Grids'))
 
 p = load([filenm '_nodes.m' ]);
-p = p[:,2:4];
+p = p(:,2:4);
 
-tri = load([filnm '_tri.m']);
-tri = tri[:,1:3];
+tri = load([filenm '_tri.m']);
+tri = tri(:,1:3);
 
-tetr = load([filnm '_tetr.m']);
+tetr = load([filenm '_tetr.m']);
 
 end
