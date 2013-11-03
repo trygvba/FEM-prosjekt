@@ -10,5 +10,5 @@ tri = load([filenm '_tri.m']);
 tri = tri(:,1:3);
 
 tetr = load([filenm '_tetr.m']);
-
+tetr = tetr(:,1:4);
 end
