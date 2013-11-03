@@ -1,6 +1,6 @@
 // Gmsh project created on Sun Nov  3 16:32:37 2013
 lc = 0.01;	//Characteristic length
-h = 0.01;	//Height of plate.
+h = 1;	//Height of plate.
 Point(1) = {0, 0, 0, lc};
 Point(2) = {1, 0, 0, lc};
 Point(3) = {1, 1, 0, lc};
