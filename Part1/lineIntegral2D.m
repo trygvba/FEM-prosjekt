@@ -1,7 +1,5 @@
 function I = lineIntegral2D(p1,p2,Nq,g)
-    a = 0;
-    b= 1;
-	y = @(x) (b-a)/2*x+(b+a)/2;
+
     L=sqrt((p2-p1)'*(p2-p1));
 	switch Nq
 		case 1

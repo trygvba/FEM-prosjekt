@@ -3,7 +3,7 @@ function I = quadrature2D(p1, p2, p3, Nq, g)
 %   Detailed explanation goes here
 B =[(p2-p1) (p3-p1)];
 T = 0.5*det(B);
-
+    
 switch Nq
     case 1
         eta = 1/3*[1 1 1];
