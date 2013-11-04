@@ -4,7 +4,7 @@ close all;
 addpath(genpath('../Part1'))
 addpath(genpath('../Converter'));
 
-E = 390*10^9;
+E = 100;
 v = 0.25;
 rho = 3.9*10^3;
 B1 = E/(2*v^2+v-1)*[(v-1) -v -v; -v (v-1) -v; -v -v (v-1)];
@@ -34,6 +34,6 @@ m = 3;	%Number of periods
 counter = 1;
 for t=linspace(0,m*2*pi,100)
 	x = p+alpha*sin(t)*uvec;
-	writeVTK(['../Animations/Pawn/Pawn' num2str(n) '/timestep_' num2str(counter)],tetr,p,ones(length(p),1));
+	writeVTK(['../Animations/Pawn/Pawn' num2str(n) '/timestep_' num2str(counter)],tetr,x,ones(length(p),1));
 	counter = counter +1;
 end

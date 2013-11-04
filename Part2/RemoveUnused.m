@@ -17,7 +17,7 @@ function [p tetr, tri] = removeUnused(p, tetr, tri),
 tmp  = tetr(:,1:4);
 N    = size(p,1);
 used = zeros(N,1);
-used(tetr(:)) = 1;
+used(tmp(:)) = 1;
 uu = sort(find(used == 1)); 
 
 offset = zeros(1,N);
