@@ -27,3 +27,11 @@ for i = 1:3:length(u)
 	uvec(ceil(i/3),:) = [u(i) u(i+1) u(i+2)];
 end
 
+alpha = 0.5;
+m = 3;	%Number of periods
+counter = 1;
+for t=linspace(0,m*2*pi,100)
+	x = p+alpha*sin(t)*uvec;
+	writeVTK(['../Animations/Pawn/Pawn' num2str(n) '/timestep_' num2str(counter)],tetr,p,ones(length(p),1));
+	counter = counter +1;
+end
