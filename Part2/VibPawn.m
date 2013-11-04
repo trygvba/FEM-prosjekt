@@ -13,9 +13,9 @@ C = [B1 zeros(3); zeros(3) B2];
 
 [p tri tetr] = loadGeo('Pawn');
 
-A = Stiffness3D(tetr,p,C);
+[A M] = MassAndStiffnessMatrix3D(tetr,p,C);
+M = rho*M;
 
-M = rho*MassMatrix3D(tetr,p);
 
 [V D] = eigs(A,M,20,100);
 eigenvalues = diag(D);

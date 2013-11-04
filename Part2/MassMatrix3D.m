@@ -1,4 +1,4 @@
-function M = MassMatrix3D(tet,p)
++function M = MassMatrix3D(tet,p)
 %Calculates the 3-dimensional mass matrix.
 %tet is should be a Nx4-matrix where N is number of elements. Each row
 %corresponds to the node indices making up one tetrahedron.
