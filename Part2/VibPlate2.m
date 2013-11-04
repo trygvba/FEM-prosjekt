@@ -4,9 +4,9 @@ close all;
 addpath(genpath('../Part1'))
 addpath(genpath('../Converter'));
 
-E =390*10^9 ;
-v = 0.25;
-rho = 3.9*10^3;
+E =190*10^9 ;
+v = 0.30;
+rho = 7.5*10^3;
 B1 = E/(2*v^2+v-1)*[(v-1) -v -v; -v (v-1) -v; -v -v (v-1)];
 B2 = E/(1-v^2)*[(1-v)/2 0 0; 0 (1-v)/2 0; 0 0 (1-v)/2];
 C = [B1 zeros(3); zeros(3) B2];
@@ -17,10 +17,10 @@ C = [B1 zeros(3); zeros(3) B2];
 M = rho*M;
 
 
-[V D] = eigs(A,M,20,3*10^9);
+[V D] = eigs(A,M,20,'sm');
 eigenvalues = diag(D);
 %Pick the n'th eigenvalue we should analyse:
-n = 12;
+n = 10;
 omega = eigenvalues(n);
 
 u = V(:,n);
