@@ -17,10 +17,10 @@ C = [B1 zeros(3); zeros(3) B2];
 M = rho*M;
 
 
-[V D] = eigs(A,M,20,'sm');
+[V D] = eigs(A,M,40,'sm');
 eigenvalues = diag(D);
 %Pick the n'th eigenvalue we should analyse:
-n = 15;
+n = 37;
 omega = eigenvalues(n);
 
 u = V(:,n);
@@ -34,6 +34,6 @@ m = 3;	%Number of periods
 counter = 1;
 for t=linspace(0,m*2*pi,100)
 	x = p+alpha*sin(t)*uvec;
-	writeVTK(['../Animations/Pawn/Pawn' num2str(n)  '/timestep_' num2str(counter)],tetr,x,ones(length(p),1));
+	writeVTK(['../Animations/Pawn/temp'   '/timestep_' num2str(counter)],tetr,x,ones(length(p),1));
 	counter = counter +1;
 end
