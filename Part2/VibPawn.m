@@ -4,7 +4,7 @@ close all;
 addpath(genpath('../Part1'))
 addpath(genpath('../Converter'));
 
-E = 100;
+E = 390;
 v = 0.25;
 rho = 3.9*10^3;
 B1 = E/(2*v^2+v-1)*[(v-1) -v -v; -v (v-1) -v; -v -v (v-1)];
