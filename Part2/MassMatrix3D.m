@@ -8,21 +8,21 @@ dim = size(p,1);
 N = size(tet,1);
 I = eye(4);
 
+Mp = 1/120*[2 1 1 1; 1 2 1 1; 1 1 2 1; 1 1 1 2];
+
 M = zeros(3*dim);
 for k=1:N
     p1 = p(tet(k,1),:)';
     p2 = p(tet(k,2),:)';
     p3 = p(tet(k,3),:)';
     p4 = p(tet(k,4),:)';
-    Coeff = [1 p1'; 1 p2'; 1 p3'; 1 p4'];
+    P = [(p2-p1) (p3-p1) (p4-p1)];
+    T = det(P);
     for alpha = 1:4
-        c_alpha = Coeff\I(:,alpha);
         ihat = tet(k,alpha);
         for beta = 1:4
-            c_beta = Coeff\I(:,beta);
             jhat = tet(k,beta);
-            phiProduct = @(x) (c_alpha'*[1; x])*(c_beta'*[1; x]);
-            MassContribution = quadrature3D(p1,p2,p3,p4,4,phiProduct);
+            MassContribution = T*Mp(alpha,beta);
             for d=1:3
                 i = 3*ihat+d-3;
                 j = 3*jhat+d-3;
