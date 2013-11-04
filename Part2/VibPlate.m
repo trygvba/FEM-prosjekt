@@ -14,5 +14,4 @@ M = MassMatrix3D(tetr,p);
 
 [V D]=eig(full(A),full(M));
 
-save('EigVec',V);
-save('EigVal',D);
+save('../../vibplate.mat'); %lagrer lokalt 1 directory over mastermappa pga stor fil
