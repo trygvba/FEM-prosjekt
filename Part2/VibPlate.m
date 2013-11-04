@@ -13,6 +13,8 @@ A = Stiffness3D(tetr,p,C);
 
 M = rho*MassMatrix3D(tetr,p);
 
-[V D]=eig(full(A),full(M));
+%[V D]=eig(full(A),full(M));
 
-save('../../vibplate.mat'); %lagrer lokalt 1 directory over mastermappa pga stor fil
+%eigval = diag(D);
+
+%save('../../vibplate.mat'); %lagrer lokalt 1 directory over mastermappa pga stor fil
