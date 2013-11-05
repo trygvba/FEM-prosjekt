@@ -27,19 +27,35 @@ Line(9) = {2,7};
 Line(10) = {4,9};
 Line(11) = {3,8};
 Line(12) = {5,10};
-Line Loop(13) = {5, -11, -1, 9};
+
+//Line Loop(13) = {5, -11, -1, 9};
+//Ruled Surface(14) = {13};
+//Line Loop(15) = {11, 6, -10, -2};
+//Ruled Surface(16) = {15};
+//Line Loop(17) = {10, 7, -12, -3};
+//Ruled Surface(18) = {17};
+//Line Loop(19) = {12, 8, -9, -4};
+//Ruled Surface(20) = {19};
+//Line Loop(21) = {5, 6, 7, 8};
+//Ruled Surface(22) = {21};
+//Line Loop(23) = {2, 3, 4, 1};
+//Ruled Surface(24) = {23};
+//Surface Loop(25) = {20, 18, 16, 14, 22, 24};
+//Volume(26) = {25};
+
+
+
+Line Loop(13) = {6, -10, -2, 11};
 Ruled Surface(14) = {13};
-Line Loop(15) = {11, 6, -10, -2};
+Line Loop(15) = {12, -7, -10, 3};
 Ruled Surface(16) = {15};
-Line Loop(17) = {10, 7, -12, -3};
+Line Loop(17) = {12, 8, -9, -4};
 Ruled Surface(18) = {17};
-Line Loop(19) = {12, 8, -9, -4};
+Line Loop(19) = {5, -11, -1, 9};
 Ruled Surface(20) = {19};
 Line Loop(21) = {5, 6, 7, 8};
-Ruled Surface(22) = {21};
-Line Loop(23) = {2, 3, 4, 1};
-Ruled Surface(24) = {23};
-Surface Loop(25) = {20, 18, 16, 14, 22, 24};
+Plane Surface(22) = {21};
+Line Loop(23) = {4, 1, 2, 3};
+Plane Surface(24) = {23};
+Surface Loop(25) = {24, 18, 16, 22, 20, 14};
 Volume(26) = {25};
-
-Volume(27) = {25};
