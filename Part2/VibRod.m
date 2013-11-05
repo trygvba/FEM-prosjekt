@@ -20,11 +20,8 @@ M = rho*M;
 [V D] = eigs(A,M,20,'sm');
 eigenvalues = diag(D);
 %Pick the n'th eigenvalue we should analyse:
-<<<<<<< HEAD
 n = 20;
-=======
-n = 15;
->>>>>>> e96f4a43bd42c63ea59cc73c3303084c52bacbf8
+
 omega = eigenvalues(n);
 
 u = V(:,n);

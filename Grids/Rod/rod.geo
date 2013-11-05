@@ -1,16 +1,18 @@
 // Gmsh project created on Tue Nov  5 12:32:02 2013
-lc = 0.2;
+lc = 0.1;
 h = 4;
+r=0.5;
+w = r/5;
 Point(1) = {0, 0, 0, lc};
-Point(2) = {0, 0.5, 0, lc};
-Point(3) = {0.5, 0, 0, lc};
-Point(4) = {0, -0.5, 0, lc};
-Point(5) = {-0.5, 0, 0, lc};
+Point(2) = {0, r, 0, lc};
+Point(3) = {r, 0, 0, lc};
+Point(4) = {0, r, 0, lc};
+Point(5) = {r, 0, 0, lc};
 Point(6) = {0, 0, h, lc};
-Point(7) = {0, 0.5, h, lc};
-Point(8) = {0.5, 0, h, lc};
-Point(9) = {0, -0.5, h, lc};
-Point(10) = {-0.5, 0, h, lc};
+Point(7) = {0, r, h, lc};
+Point(8) = {r, 0, h, lc};
+Point(9) = {0, r, h, lc};
+Point(10) = {r, 0, h, lc};
 
 
 
