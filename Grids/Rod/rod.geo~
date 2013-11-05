@@ -2,15 +2,15 @@
 lc = 0.1;
 h = 5;
 Point(1) = {0, 0, 0, lc};
-Point(2) = {0, 1, 0, lc};
-Point(3) = {1, 0, 0, lc};
-Point(4) = {0, -1, 0, lc};
-Point(5) = {-1, 0, 0, lc};
+Point(2) = {0, 0.5, 0, lc};
+Point(3) = {0.5, 0, 0, lc};
+Point(4) = {0, -0.5, 0, lc};
+Point(5) = {-0.5, 0, 0, lc};
 Point(6) = {0, 0, h, lc};
-Point(7) = {0, 1, h, lc};
-Point(8) = {1, 0, h, lc};
-Point(9) = {0, -1, h, lc};
-Point(10) = {-1, 0, h, lc};
+Point(7) = {0, 0.5, h, lc};
+Point(8) = {0.5, 0, h, lc};
+Point(9) = {0, -0.5, h, lc};
+Point(10) = {-0.5, 0, h, lc};
 
 
 
