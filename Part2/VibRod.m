@@ -20,7 +20,7 @@ M = rho*M;
 [V D] = eigs(A,M,20,'sm');
 eigenvalues = diag(D);
 %Pick the n'th eigenvalue we should analyse:
-n = 10;
+n = 15;
 omega = eigenvalues(n);
 
 u = V(:,n);
