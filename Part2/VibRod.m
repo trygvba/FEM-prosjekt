@@ -20,7 +20,11 @@ M = rho*M;
 [V D] = eigs(A,M,20,'sm');
 eigenvalues = diag(D);
 %Pick the n'th eigenvalue we should analyse:
+<<<<<<< HEAD
+n = 20;
+=======
 n = 15;
+>>>>>>> e96f4a43bd42c63ea59cc73c3303084c52bacbf8
 omega = eigenvalues(n);
 
 u = V(:,n);
@@ -30,7 +34,7 @@ for i = 1:3:length(u)
 	mag(ceil(i/3),:) = (u(i)^2+u(i+1)^2+u(i+2)^2)^0.5;
 end
 
-alpha = 0.1;
+alpha = 5;
 m = 3;	%Number of periods
 counter = 1;
 for t=linspace(0,m*2*pi,100)
