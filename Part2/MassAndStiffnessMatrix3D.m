@@ -2,8 +2,8 @@ function [A M] = MassAndStiffnessMatrix3D(tet,p,C)
 N = size(tet,1);
 dim = size(p,1);
 
-A = zeros(3*dim);
-M = zeros(3*dim);
+A =sparse(3*dim,3*dim);
+M = sparse(3*dim,3*dim);
 
 Mp = 1/120*[2 1 1 1; 1 2 1 1; 1 1 2 1; 1 1 1 2];
 I = eye(4);
@@ -52,8 +52,8 @@ for k=1:N
         end
     end
 end
-M = sparse(M);
-A = sparse(A);
+%M = sparse(M);
+%A = sparse(A);
 
 
 end

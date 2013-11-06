@@ -17,10 +17,11 @@ C = [B1 zeros(3); zeros(3) B2];
 M = rho*M;
 
 
-[V D] = eigs(A,M,20,'sm');
+[V D] = eigs(A,M,20,10^9);
 eigenvalues = diag(D);
 %Pick the n'th eigenvalue we should analyse:
-n = 10;
+%n = 10;
+for n = 5:20
 omega = eigenvalues(n);
 
 u = V(:,n);
@@ -37,4 +38,5 @@ for t=linspace(0,m*2*pi,100)
 	x = p+alpha*sin(t)*uvec;
 	writeVTK(['../Animations/Plate/Plate' num2str(n) '/timestep_' num2str(counter)],tetr,x,mag);
 	counter = counter +1;
+end
 end
