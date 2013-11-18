@@ -392,7 +392,7 @@ The implementation of the stiffness matrix is the exact analogue of the 2D case 
 \end{equation*}
 maps $\boldsymbol{x}=(x,y,z)^T$ to $\boldsymbol{\xi}=(\xi_1,\xi_2,\xi_3)^T$ which lies in the tetrahedron with vertices $(0,0,0)^T,(1,0,0)^T,(0,1,0)^T$ and $(0,0,1)^T$. Worth remarking on is that
 \begin{equation}
-A = \begin{bmatrix}
+B = \begin{bmatrix}
 (p_2 - p_1) & (p_3-p_1) & (p_4-p_1)
 \end{bmatrix}.
 \end{equation} This tetrahedron we'll in the following call $S$ and it has has basis functions
@@ -405,9 +405,9 @@ Notice now that the contribution to the mass matrix is
 \int_{T_k}\rho \varphi_i(\boldsymbol{x})\cdot \varphi_j(\boldsymbol{x})d\Omega &= \int_{T_k}\rho \varphi_{\hat{i},d}(\boldsymbol{x})\cdot \varphi_{\hat{j},d}(\boldsymbol{x})d\Omega \\
 &= \rho\cdot \text{det}(B)\int_S\mathcal{H}_{\alpha}(\boldsymbol{\xi})\mathcal{H}_{\beta}(\boldsymbol{\xi})dS.
 \end{align*}
-In the first equality we have taken advantage of the fact that $M_{ij}=0$ unless $\varphi_{\hat{i}}$ and $\varphi_{\hat{j}}$ are placed on the same element in the vector, i.e. when the $d$ in the local-to-global index mapping is the same for both $i$ and $j$. $\alpha, \beta = 1,2,3,4$ and corresponds to which of the vertices the original basis function should evaluate to one for. If we can calculate the mass matrix for the reference element $S$ we can use this to calculate the contributions. Let's call this mass matrix the prototype mass matrix and denote it $M_P$. The calculation isn't all that interesting so we just state the result, which is
+In the first equality we have taken advantage of the fact that $M_{ij}=0$ unless $\varphi_{\hat{i}}$ and $\varphi_{\hat{j}}$ are placed on the same element in the vector, i.e. when the $d$ in the local-to-global index mapping is the same for both $i$ and $j$. $\alpha, \beta = 1,2,3,4$ and corresponds to which of the vertices the original basis function should evaluate to one for. If we can calculate the mass matrix for the reference element $S$ we can use this to calculate the contributions. Let's call this mass matrix the prototype mass matrix and denote it $M^P$. The calculation isn't all that interesting so we just state the result, which is
 \begin{equation*}
-M_P = \frac{1}{60}\begin{bmatrix}
+M^P = \frac{1}{60}\begin{bmatrix}
 2 & 1 & 1 & 1 \\
 1 & 2 & 1 & 1 \\
 1 & 1 & 2 & 1 \\
@@ -415,7 +415,7 @@ M_P = \frac{1}{60}\begin{bmatrix}
 \end{bmatrix}.
 \end{equation*}
 And so the elements contribution to M is simply
-\begin{equation}
-\rho\cdot \text{det}(A)
-\end{equation}
+\begin{equation*}
+\rho\cdot \text{det}(B)M^P_{\alpha,\beta}
+\end{equation*}
 \end{document}
