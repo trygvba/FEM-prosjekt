@@ -415,7 +415,34 @@ M^P = \frac{1}{60}\begin{bmatrix}
 \end{bmatrix}.
 \end{equation*}
 And so the elements contribution to M is simply
+\begin{equation}
+\rho\cdot \text{det}(B)M^P_{\alpha,\beta}.
+\end{equation}
+
+\subsection*{Eigenfrequencies and --modes}
+
+After taking in some geometry, meshing it\footnote{In this case we've either been given a geometry and its mesh or created one ourselves using gmsh.} and assembled the mass-- and stiffness matrices we are done with what we can call the preprocessing part of the implementation. Now comes the solving of the system: We are interested in periodic solutions of the form
 \begin{equation*}
-\rho\cdot \text{det}(B)M^P_{\alpha,\beta}
+\boldsymbol{u} = \boldsymbol{u}e^{i\omega t}.
 \end{equation*}
+We put this into our system and get
+\begin{equation*}
+\omega^2M\boldsymbol{u} = A\boldsymbol{u}.
+\end{equation*}
+We see that this type of solutions is periodic with frequency $\omega$ and we call them eigenfrequencies because $\omega^2$ are generalized eigenvalues of the system. Their corresponding vectors $\boldsymbol{u}$ are called eigenmodes. Since the meshing of our domain can contain a lot of nodes the matrices $A$ and $M$ will have a high number of rows and columns. This will yield a lot of eigenvalues, most of which we aren't all that interested in. Fortuitously Matlab has the 'eigs'-function at its disposal which can give out only the, say, $20, 30, 40$ or $k$ smallest eigenvalues and their corresponding eigenvectors. To maybe better understand why we are only interested in the $k$ \textit{smallest} eigenvalues consider e.g. a piano. When hitting one of the keys the sound you hear is the superposition of many of that tones harmonics. In particular, the one you hear most clearly is the first harmonic, and then the second harmonic and so forth, and it is the smallest frequencies (lowest tones) that correspond to the first harmonics. This is analogous to any structure being put to vibrate by some means. The lowest frequencies will be the most expressed in the total vibration, and so naturally we would be most interested in them.
+
+Actually, we are done with the solving part and all that remains is post processing.
+
+\subsection*{Results}
+After using the 'eigs'-function in matlab we end up with $k$ eigenvalues and --vectors. For the post processing part we used Paraview, and so we need a script for converting our results into something Praview can read. Happily, this could easily be gotten from the internet. Legally, I might add.
+\begin{figure}
+\centering
+\includegraphics[scale=0.4]{PawnMode15.png}
+\caption{Vibration mode 14 of a chess pawn.}
+\label{fig:Pawn14}
+\end{figure}
+ Although a structure's natural modes of vibration aren't well-represented in a picture refer to fig. $\ref{fig:Pawn14}$ to see what the 14'th mode of vibration for a chess pawn look like according to our findings. Note that the displacement is scaled for easier appreciation from the viewer. Since the chess pawn already has been analysed by Kjetil Johannesen it would be natural to compare our modes to those he found and submitted to youtube. All that can be stated here is that our results for the 7'th, 10'th and 14'th modes corresponded well with his results.
+
+This method lends itself not only to the geometries of chess pawn, but to a wide variety of geometries.
+
 \end{document}
