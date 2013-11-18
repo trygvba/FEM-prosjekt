@@ -10,7 +10,7 @@
 % modify this file as you see fit and even to delete this copyright
 % notice. 
 
-\documentclass{beamer}
+\documentclass{beamer}[10pt]
 
 % There are many different themes available for Beamer. A comprehensive
 % list with examples is given here:
@@ -113,7 +113,21 @@
     Semi-discretization on (\ref{eq:Free Vibration}) yields
     \begin{equation}
     M\ddot{\boldsymbol{u}} = -A\boldsymbol{u}
+    \label{eq:free vib, linear sys}
     \end{equation}
+    \footnotesize
+    \begin{align*}
+    A  = \left[ A_{ij} \right] & = \iiint\limits_{\Omega} \overline{\epsilon}\left( \varphi_i \right)^T C\overline{\epsilon}\left( \varphi_j \right) \mathrm{d} V \\
+    M  = \left[ M_{ij} \right] &= \iiint\limits_{\Omega} \ \rho \varphi_{i}^T \varphi_j \mathrm{d} V \\ 
+    \end{align*}
+    \normalsize
+  }
+  \item {
+	Assuming $\boldsymbol{u} = \boldsymbol{u}e^{i\omega t}$ on (\ref{eq:free vib, linear sys}) yields the generalized eigenvalue problem
+	\begin{equation}
+	\omega^2 M\boldsymbol{u} = A\boldsymbol{u}
+	\label{eq:eigenvalue problem}
+	\end{equation}	  
   }
   \end{itemize}
 \end{frame}
