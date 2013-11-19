@@ -11,7 +11,9 @@
 % notice. 
 
 \documentclass{beamer}[10pt]
+%\usepackage{graphicx}
 
+\graphicspath{ {../Animations/LargePlate/4000/}{../Animations/Plate/Plate20/}{../Plots/} }
 % There are many different themes available for Beamer. A comprehensive
 % list with examples is given here:
 % http://deic.uab.es/~iblanes/beamer_gallery/index_by_theme.html
@@ -45,7 +47,7 @@
 %\usetheme{Szeged}
 %\usetheme{Warsaw}
 
-\title{TMA4220 - Numerical Solution of Partial Differential Equations Using Finite Element Methods}
+\title{TMA4220 - PDEs /w FEM}
 
 % A subtitle is optional and this may be deleted
 \subtitle{Programming Project}
@@ -129,16 +131,14 @@ We want a variational formulation of (\ref{eq:Free Vibration})
 \item {
 Usual procedure: Multiply (\ref{eq:Free Vibration}) with a test function $v$ and integrate over the domain to obtain 
 \begin{equation}
-\rho \int\limits_{\Omega} \ddot{u}\cdot v\mathrm{d}\Omega = - \int\limits_{\Omega}\epsilon\left(v\right)\cdot C \cdot \epsilon\left(u\right)\mathrm{d}\Omega
+\rho \int\limits_{\Omega} \ddot{u}\cdot v\mathrm{d}\Omega = - \int\limits_{\Omega}\epsilon\left(v\right)\cdot C \epsilon\left(u\right)\mathrm{d}\Omega
 \label{eq:Variational Form}
 \end{equation}
 }
 \end{itemize}
 \end{frame}
 
-\subsection{The Problem}
-
-\begin{frame}{The Problem}{Optional Subtitle}
+\begin{frame}{Introduction}
 
 
   \begin{itemize}
@@ -150,7 +150,7 @@ Usual procedure: Multiply (\ref{eq:Free Vibration}) with a test function $v$ and
     \end{equation}
     \footnotesize
     \begin{align*}
-    A  = \left[ A_{ij} \right] & = \int\limits_{\Omega} \overline{\epsilon}\left( \varphi_i \right)^T C\overline{\epsilon}\left( \varphi_j \right) \mathrm{d} \Omega \\
+    A  = \left[ A_{ij} \right] & = \int\limits_{\Omega} \varepsilon \left( \varphi_i \right)^T C\varepsilon\left( \varphi_j \right) \mathrm{d} \Omega \\
     M  = \left[ M_{ij} \right] &= \int\limits_{\Omega} \ \rho \varphi_{i}^T \varphi_j \mathrm{d} \Omega \\ 
     \end{align*}
     \normalsize
@@ -165,6 +165,98 @@ Usual procedure: Multiply (\ref{eq:Free Vibration}) with a test function $v$ and
   \end{itemize}
 \end{frame}
 
+\begin{frame}{Building $A$ and $M$}
+\centering
+\begin{equation*}
+\varphi_{\hat{i},1} = \begin{bmatrix}
+\varphi_{\hat{i}} \\ 0 \\ 0
+\end{bmatrix}, \quad
+\varphi_{\hat{i},2} = \begin{bmatrix}
+ 0 \\ \varphi_{\hat{i}}\\ 0
+\end{bmatrix}, \quad
+\varphi_{\hat{i},3} = \begin{bmatrix}
+0 \\ 0 \\ \varphi_{\hat{i}}
+\end{bmatrix}.
+\end{equation*}
+$\varphi_{\hat{i}}\big|_{T_k} = c_0 + c_1x+c_2y + c_3z$
+\begin{equation*}
+\boldsymbol{\varepsilon}\left(\varphi_{\hat{i},d}\right) = \begin{bmatrix}
+c_1 \\ 0 \\ 0 \\ c_2 \\c_3 \\ 0
+\end{bmatrix}
+, \begin{bmatrix}
+0 \\ c_2 \\ 0 \\ c_1 \\ 0 \\ c_3 \end{bmatrix},
+\begin{bmatrix}
+0 \\ 0 \\ c_3 \\ 0 \\ c_1 \\ c_2 \end{bmatrix}
+\end{equation*}
+\end{frame}
+\begin{frame}{Building $A$ and $M$}
+\begin{itemize}
+\item {
+Stiffness matrix $A$:
+\begin{equation*}
+    \varepsilon\left( \varphi_i \right)^T C\varepsilon\left( \varphi_j \right) \mathrm{area}(T_k)
+\end{equation*}}
+\item {
+Mass matrix $M$:
+\begin{equation*}
+ \rho\cdot \text{det}(B)M^P_{\alpha,\beta}
+\end{equation*}
+}
+\end{itemize}
+\end{frame}
+\begin{frame}{Implementation}
+\begin{itemize}
+\item {Solve $	\omega^2 M\boldsymbol{u} = A\boldsymbol{u}$ for the $k$ lowest eigenvalues using \textsc{Matlab}'s \texttt{eigs}}
+\item {Use the different eivenvectors $\boldsymbol{u_i}$ to make animations}
+\item {$\boldsymbol{x}=\boldsymbol{x_0}+\alpha \boldsymbol{u_i}\sin(t)$}
+\item {Collection of \textsc{Matlab} scripts/functions}
+\item {Open to different geometries (chess pawn, gun, plate) and materials}
+\item {ParaView for the post processing}
+\end{itemize}
+\end{frame}
+\begin{frame}{Boundary condition}
+\centering
+Can we have boundary conditions?
+\vspace*{2em}
+  \begin{columns}[T]
+    \begin{column}{.5\textwidth}
+    \begin{itemize}
+    		\item {Physical interpretation}
+		\item {Free vibration}
+		\item {Can use Dirichlet}
+	\end{itemize}
+    \end{column}
+    \begin{column}{.5\textwidth}
+    \includegraphics[width=0.7\textwidth>]{PawnMode15.png}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Back to the plate}
+\begin{itemize}
+\item { An example of our results (3443 Hz):
+\begin{figure}
+\centering
+\includegraphics[scale=0.3, trim= 100mm 0mm 100mm 0mm, clip]{1small.png}
+\end{figure}}
+\item{Needs finer mesh}
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Back to the plate (cont.)}
+\begin{itemize}
+\item {
+Finer mesh gives (3031.6 Hz):
+\begin{figure}
+\centering
+\includegraphics[scale=0.3, trim= 100mm 0mm 100mm 0mm, clip]{18.png}
+\end{figure}
+}
+\item {Picks up frequencies closer together.}
+\end{itemize}
+
+\end{frame}
 
 
 \end{document}

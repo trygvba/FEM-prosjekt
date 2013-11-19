@@ -17,11 +17,11 @@ C = [B1 zeros(3); zeros(3) B2];
 M = rho*M;
 
 
-[V D] = eigs(A,M,20,10^9);
+[V D] = eigs(A,M,20,9*10^6);
 eigenvalues = diag(D);
 %Pick the n'th eigenvalue we should analyse:
 %n = 10;
-for n = 5:20
+for n = 1:1
 omega = eigenvalues(n);
 
 u = V(:,n);
