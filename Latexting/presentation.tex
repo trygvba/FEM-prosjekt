@@ -98,27 +98,60 @@
 % and table of contents.
 \section{Presentation}
 
-\subsection{The Problem}
-
-\begin{frame}{The Problem}{Optional Subtitle}
+\subsection{Introduction}
+\begin{frame}{Introduction}
+  \begin{itemize}
   \begin{block}{The Free Vibration Equation}
 \begin{equation}
 \rho\frac{\partial^2u}{\partial t^2} = \nabla\sigma(u)
 \label{eq:Free Vibration}
 \end{equation}
 \end{block}
+  \item {   
+    Is it possible to model 
+    \begin{figure}
+    \centering
+    \includegraphics[scale=0.1]{yosnap.png}
+    \end{figure}
+	with Finite Element Methods?  
+  }
+  % You can also specify when the content should appear
+  % by using <n->:
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Introduction}	
+\begin{itemize}
+\item {
+We want a variational formulation of (\ref{eq:Free Vibration})
+
+}
+\item {
+Usual procedure: Multiply (\ref{eq:Free Vibration}) with a test function $v$ and integrate over the domain to obtain 
+\begin{equation}
+\rho \int\limits_{\Omega} \ddot{u}\cdot v\mathrm{d}\Omega = - \int\limits_{\Omega}\epsilon\left(v\right)\cdot C \cdot \epsilon\left(u\right)\mathrm{d}\Omega
+\label{eq:Variational Form}
+\end{equation}
+}
+\end{itemize}
+\end{frame}
+
+\subsection{The Problem}
+
+\begin{frame}{The Problem}{Optional Subtitle}
+
 
   \begin{itemize}
   \item {
-    Semi-discretization on (\ref{eq:Free Vibration}) yields
+    Semi-discretization on (\ref{eq:Variational Form}) yields
     \begin{equation}
     M\ddot{\boldsymbol{u}} = -A\boldsymbol{u}
     \label{eq:free vib, linear sys}
     \end{equation}
     \footnotesize
     \begin{align*}
-    A  = \left[ A_{ij} \right] & = \iiint\limits_{\Omega} \overline{\epsilon}\left( \varphi_i \right)^T C\overline{\epsilon}\left( \varphi_j \right) \mathrm{d} V \\
-    M  = \left[ M_{ij} \right] &= \iiint\limits_{\Omega} \ \rho \varphi_{i}^T \varphi_j \mathrm{d} V \\ 
+    A  = \left[ A_{ij} \right] & = \int\limits_{\Omega} \overline{\epsilon}\left( \varphi_i \right)^T C\overline{\epsilon}\left( \varphi_j \right) \mathrm{d} \Omega \\
+    M  = \left[ M_{ij} \right] &= \int\limits_{\Omega} \ \rho \varphi_{i}^T \varphi_j \mathrm{d} \Omega \\ 
     \end{align*}
     \normalsize
   }
@@ -132,108 +165,7 @@
   \end{itemize}
 \end{frame}
 
-\subsection{Second Subsection}
 
-% You can reveal the parts of a slide one at a time
-% with the \pause command:
-\begin{frame}{Second Slide Title}
-  \begin{itemize}
-  \item {
-    First item.
-    \pause % The slide will pause after showing the first item
-  }
-  \item {   
-    Second item.
-  }
-  % You can also specify when the content should appear
-  % by using <n->:
-  \item<3-> {
-    Third item.
-  }
-  \item<4-> {
-    Fourth item.
-  }
-  % or you can use the \uncover command to reveal general
-  % content (not just \items):
-  \item<5-> {
-    Fifth item. \uncover<6->{Extra text in the fifth item.}
-  }
-  \end{itemize}
-\end{frame}
-
-\section{Second Main Section}
-
-\subsection{Another Subsection}
-
-\begin{frame}{Blocks}
-\begin{block}{Block Title}
-You can also highlight sections of your presentation in a block, with it's own title
-\end{block}
-\begin{theorem}
-There are separate environments for theorems, examples, definitions and proofs.
-\end{theorem}
-\begin{example}
-Here is an example of an example block.
-\end{example}
-\end{frame}
-
-% Placing a * after \section means it will not show in the
-% outline or table of contents.
-\section*{Summary}
-
-\begin{frame}{Summary}
-  \begin{itemize}
-  \item
-    The \alert{first main message} of your talk in one or two lines.
-  \item
-    The \alert{second main message} of your talk in one or two lines.
-  \item
-    Perhaps a \alert{third message}, but not more than that.
-  \end{itemize}
-  
-  \begin{itemize}
-  \item
-    Outlook
-    \begin{itemize}
-    \item
-      Something you haven't solved.
-    \item
-      Something else you haven't solved.
-    \end{itemize}
-  \end{itemize}
-\end{frame}
-
-
-
-% All of the following is optional and typically not needed. 
-\appendix
-\section<presentation>*{\appendixname}
-\subsection<presentation>*{For Further Reading}
-
-\begin{frame}[allowframebreaks]
-  \frametitle<presentation>{For Further Reading}
-    
-  \begin{thebibliography}{10}
-    
-  \beamertemplatebookbibitems
-  % Start with overview books.
-
-  \bibitem{Author1990}
-    A.~Author.
-    \newblock {\em Handbook of Everything}.
-    \newblock Some Press, 1990.
- 
-    
-  \beamertemplatearticlebibitems
-  % Followed by interesting articles. Keep the list short. 
-
-  \bibitem{Someone2000}
-    S.~Someone.
-    \newblock On this and that.
-    \newblock {\em Journal of This and That}, 2(1):50--100,
-    2000.
-  \end{thebibliography}
-\end{frame}
 
 \end{document}
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.10.17)  19 NOV 2013 10:56
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.10.17)  19 NOV 2013 16:51
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -903,26 +903,28 @@ Overfull \hbox (11.11754pt too wide) has occurred while \output is active
 [1
 
 {/usr/lib/texlive/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-LaTeX Font Info:    Try loading font information for U+msa on input line 133.
+LaTeX Font Info:    Try loading font information for U+msa on input line 121.
 
 (/usr/lib/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 133.
+LaTeX Font Info:    Try loading font information for U+msb on input line 121.
 
 (/usr/lib/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Try loading font information for OT1+mathkerncmss on input 
-line 133.
+line 121.
 
 (/usr/lib/texlive/texmf-dist/tex/latex/sansmathaccent/ot1mathkerncmss.fd
 File: ot1mathkerncmss.fd 2013/03/27 Fontinst v1.933 font definitions for OT1/ma
 thkerncmss.
 )
-Overfull \vbox (0.17728pt too high) detected at line 133
- []
-
+<yosnap.png, id=81, 1122.1925pt x 685.56125pt>
+File: yosnap.png Graphic file (type png)
+ <use yosnap.png>
+Package pdftex.def Info: yosnap.png used on input line 121.
+(pdftex.def)             Requested size: 112.22581pt x 68.56013pt.
 
 Overfull \hbox (132.45853pt too wide) has occurred while \output is active
  [][][][]  
@@ -935,7 +937,7 @@ Overfull \hbox (11.11754pt too wide) has occurred while \output is active
 
 [2
 
-]
+ <./yosnap.png>]
 Overfull \hbox (132.45853pt too wide) has occurred while \output is active
  [][][][]  
  []
@@ -954,97 +956,12 @@ Overfull \hbox (132.45853pt too wide) has occurred while \output is active
 
 
 Overfull \hbox (11.11754pt too wide) has occurred while \output is active
- [][]|  \OT1/cmss/m/n/6 3
+ [][]|  \OT1/cmss/m/n/6 4
  []
 
 [4
 
 ]
-Overfull \hbox (132.45853pt too wide) has occurred while \output is active
- [][][][]  
- []
-
-
-Overfull \hbox (11.11754pt too wide) has occurred while \output is active
- [][]|  \OT1/cmss/m/n/6 3
- []
-
-[5
-
-]
-Overfull \hbox (132.45853pt too wide) has occurred while \output is active
- [][][][]  
- []
-
-
-Overfull \hbox (11.11754pt too wide) has occurred while \output is active
- [][]|  \OT1/cmss/m/n/6 3
- []
-
-[6
-
-]
-Overfull \hbox (132.45853pt too wide) has occurred while \output is active
- [][][][]  
- []
-
-
-Overfull \hbox (11.11754pt too wide) has occurred while \output is active
- [][]|  \OT1/cmss/m/n/6 3
- []
-
-[7
-
-]
-Overfull \hbox (132.45853pt too wide) has occurred while \output is active
- [][][][]  
- []
-
-
-Overfull \hbox (11.11754pt too wide) has occurred while \output is active
- [][]|  \OT1/cmss/m/n/6 3
- []
-
-[8
-
-]
-Overfull \hbox (132.45853pt too wide) has occurred while \output is active
- [][][][]  
- []
-
-
-Overfull \hbox (11.11754pt too wide) has occurred while \output is active
- [][]|  \OT1/cmss/m/n/6 4
- []
-
-[9
-
-]
-Overfull \hbox (132.45853pt too wide) has occurred while \output is active
- [][][][]  
- []
-
-
-Overfull \hbox (11.11754pt too wide) has occurred while \output is active
- [][]|  \OT1/cmss/m/n/6 5
- []
-
-[10
-
-]
-Overfull \hbox (132.45853pt too wide) has occurred while \output is active
- [][][][]  
- []
-
-
-Overfull \hbox (11.11754pt too wide) has occurred while \output is active
- [][]|  \OT1/cmss/m/n/6 6
- []
-
-[11
-
- </usr/lib/texlive/texmf-dist/tex/latex/beamer/art/beamericonbook.pdf> </usr/li
-b/texlive/texmf-dist/tex/latex/beamer/art/beamericonarticle.pdf>]
 \tf@nav=\write6
 \openout6 = `presentation.nav'.
 
@@ -1054,47 +971,78 @@ b/texlive/texmf-dist/tex/latex/beamer/art/beamericonarticle.pdf>]
 \tf@snm=\write8
 \openout8 = `presentation.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 238.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 238.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 170.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 170.
+ (./presentation.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 170.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 170.
 
-(./presentation.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 238.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 238.
-Package rerunfilecheck Info: File `presentation.out' has not changed.
-(rerunfilecheck)             Checksum: DB54AB00BD90A09A2053EF8EFD086E6B;294.
 
+Package rerunfilecheck Warning: File `presentation.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `presentation.out':
+(rerunfilecheck)             Before: D1177A589A73404F758DD067FF6A592B;356
+(rerunfilecheck)             After:  B19B8DB081BCF0783EDE149023670617;168.
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 1.0pt have occurred.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 238.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 170.
  ) 
 Here is how much of TeX's memory you used:
- 16056 strings out of 493308
- 302682 string characters out of 6140929
- 377733 words of memory out of 5000000
- 19071 multiletter control sequences out of 15000+600000
- 20950 words of font info for 68 fonts, out of 8000000 for 9000
+ 15936 strings out of 493308
+ 298767 string characters out of 6140929
+ 373769 words of memory out of 5000000
+ 18963 multiletter control sequences out of 15000+600000
+ 20289 words of font info for 66 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 55i,17n,63p,429b,617s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/lib/texlive/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/l
-ib/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex9.pfb></usr/lib/t
-exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/lib/texlive/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/lib/texlive/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/lib/texlive/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmr9.pfb></usr/lib/texlive/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmss10.pfb></usr/lib/texlive/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmss12.pfb></usr/lib/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cms
-s8.pfb></usr/lib/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></
-usr/lib/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/lib
-/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb></usr/lib/texlive
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi9.pfb></usr/lib/texlive/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/lib/texlive/texmf-dist/font
-s/type1/public/cm-super/sfso1000.pfb>
-Output written on presentation.pdf (11 pages, 162737 bytes).
+ 55i,17n,57p,429b,616s stack positions out of 5000i,500n,10000p,200000b,80000s
+pdfTeX warning (dest): name{Navigation5} has been referenced but does not exi
+st, replaced by a fixed one
+
+pdfTeX warning (dest): name{Navigation11} has been referenced but does not exis
+t, replaced by a fixed one
+
+pdfTeX warning (dest): name{Navigation10} has been referenced but does not exis
+t, replaced by a fixed one
+
+pdfTeX warning (dest): name{Navigation13} has been referenced but does not exis
+t, replaced by a fixed one
+
+pdfTeX warning (dest): name{Navigation12} has been referenced but does not exis
+t, replaced by a fixed one
+
+pdfTeX warning (dest): name{Outline0.2.1.11} has been referenced but does not e
+xist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Outline0.2} has been referenced but does not exist,
+ replaced by a fixed one
+
+pdfTeX warning (dest): name{Outline0.1.3.5} has been referenced but does not ex
+ist, replaced by a fixed one
+
+{/usr/lib/texlive/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/lib
+/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/lib/texlive
+/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex9.pfb></usr/lib/texlive/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/lib/texlive/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/lib/texlive/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmmi9.pfb></usr/lib/texlive/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmr10.pfb></usr/lib/texlive/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmr9.pfb></usr/lib/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10
+.pfb></usr/lib/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></u
+sr/lib/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/lib/te
+xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></usr/lib/texlive/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/lib/texlive/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmssi8.pfb></usr/lib/texlive/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmssi9.pfb></usr/lib/texlive/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmsy10.pfb></usr/lib/texlive/texmf-dist/fonts/type1/public/cm-s
+uper/sfso1000.pfb>
+Output written on presentation.pdf (4 pages, 738301 bytes).
 PDF statistics:
- 459 PDF objects out of 1000 (max. 8388607)
- 408 compressed objects within 5 object streams
- 37 named destinations out of 1000 (max. 500000)
- 125 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 253 PDF objects out of 1000 (max. 8388607)
+ 214 compressed objects within 3 object streams
+ 24 named destinations out of 1000 (max. 500000)
+ 126 words of extra memory for PDF output out of 10000 (max. 10000000)
 
