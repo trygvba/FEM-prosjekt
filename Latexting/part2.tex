@@ -1,6 +1,7 @@
 \documentclass[paper=a4, fontsize=11pt]{scrartcl} % A4 paper and 11pt font size
 \usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
 \usepackage[english]{babel} % English language/hyphenation
+\usepackage[utf8]{inputenc}
 \usepackage{multirow}
 \usepackage{graphicx}
 \usepackage{amsmath,amsfonts,amsthm} % Math packages
@@ -8,6 +9,7 @@
 \allsectionsfont{\centering \normalfont\scshape} % Make all sections centered, the default font and small caps
 
 \usepackage{fancyhdr} % Custom headers and footers
+
 \pagestyle{fancyplain} % Makes all pages in the document conform to the custom headers and footers
 \fancyhead{} % No page header - if you want one, create it in the same way as the footers below
 \fancyfoot[L]{} % Empty left footer
@@ -16,7 +18,8 @@
 \renewcommand{\headrulewidth}{0pt} % Remove header underlines
 \renewcommand{\footrulewidth}{0pt} % Remove footer underlines
 \setlength{\headheight}{13.6pt} % Customize the height of the header
-\graphicspath{{../Plots/}}
+\graphicspath{{../Plots/}{../Animations/LargePlate/4000/}}
+
 %\numberwithin{equation}{section} % Number equations within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
 %\numberwithin{figure}{section} % Number figures within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
 %\numberwithin{table}{section} % Number tables within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
@@ -33,7 +36,7 @@
 \horrule{2pt} \\[0.5cm] % Thick bottom horizontal rule
 }
 
-\author{Candidate numbers} % Your name
+\author{Trygve Bærland, Geir Amund Svan Hasle \& Eirik Ingebritsen} % Your name
 
 \date{\normalsize\today} % Today's date or a custom date
 
@@ -41,7 +44,7 @@
 \maketitle
 
 \section*{Abstract}
-
+In this project we've developed a finite element method for solving the free vibration equation and finding a geometry's natural frequencies and modes of vibration. We've used linear elements, giving satisfactory qualitative results.
 \section*{Introduction}
 With the displacement of spatial points in $x_1$- and $x_2$-direction represented as
 \begin{equation*}
@@ -83,7 +86,7 @@ The connection between the strain $\varepsilon$ and the stress $\sigma$ is
 where $E$ is the Young's modulus and $\nu$ is the Poisson's ratio. Young's modulus characterises the solid's stiffness, i.e. large $E$ means that you need a large force to deform the solid. Poisson's ratio  is the ratio between the strains in $x_1$- and $x_2$-direction when submitting the solid to a stress in only one of the directions. To clarify: Consider a stress in only the $x_1$-direction direction\footnote{$\sigma_{11}$ being the only stress different from zero.}, then $\nu>0$ will say that the solid contracts in the $x_2$-direction and elongates in the $x_1$-direction. Worth noting is that $\nu<0$ is possible, and some materials actually have this property. Weird.
 During the course of this analysis we will let $E$ and $\nu$ completely describe a solid's properties. No stress or strain due to difference in temperature.
 
-\subsection*{The equation and a variational formulation}
+\section*{The equation and a variational formulation}
 In continuum mechanics
 \begin{equation}
 \label{vibDiff}
@@ -163,7 +166,7 @@ Find $u \in \{H^1 : u=g,$ on $\partial\Omega_D\}$ so that
 \end{equation}
 for all $v\in V$. Here we have now substituted $C\boldsymbol{\varepsilon}$ for $\boldsymbol{\sigma}$.
 
-\subsection*{Galerking projection}
+\section*{Galerking projection}
 Since both function spaces we're looking at er infinite dimensional it is a good idea to let the test function reside in the function space $X_h \subset V$ of piecewise linear functions on a triangulation of $\Omega$. Furthermore, let $X_h =$span$(\varphi_1,\ldots,\varphi_n)$ where $\varphi_i$ are basis function with some compact support. Since the test functions $v$ are now vector functions, there will for each node $\hat{i}$ be two test functions
 \begin{align*}
 \varphi_{\hat{i},1} &= \begin{bmatrix}
@@ -197,7 +200,7 @@ b_i &=  \int_{\Omega}\boldsymbol{f}\cdot \boldsymbol{\varphi_i} d\Omega + \int_{
 \end{align*}
 This linear system is what we will be implementing.
 
-\subsection*{A simple test case}
+\section*{A simple test case}
 When using a finite element implementation it's in most cases a sound strategy to have compared to a test case where the exact solution is known. To build some confidence in the implementation. As a test example we are going to consider the following:
 \begin{equation}
 \label{testCase}
@@ -268,7 +271,7 @@ What follows is a tedious calculation, so brace yourself. The gradient of the st
 
 So we now have a simple problem we know the analytic solution of and we can therefore use this to compare with what will become our finite element implementation.
 
-\subsection*{Implementation in 2D}
+\section*{Implementation in 2D}
 Every implementation of the finite element method can roughly be separated into three steps: Preprocessing, solving the system and postprocessing the data. As for our test example given by (\ref{testCase}) the triangulated grid is given to us by the matlab script \textit{getPlate.m}, so the next step is constructing both stiffness matrix and the loading vector. As is standard procedure for finite element implementations we go through each element and calculate that element's contribution to both the stiffness matrix and loading vector.  Keep in mind that we are using triangular, linear elements, so every nodal basis function restricted to an element $T_k$ can be written $\varphi_{\hat{i}}\big|_{T_k} = c_0 + c_1x+c_2y$ for some coefficients $c_0,c_1$ and $c_2$. Furthermore, since we will restrict ourselves to using a Lagrangian nodal basis, the function evaluation of some basis function $\varphi_{\hat{i}}$ in the node $\textbf{x}_{\hat{j}}$ is $\varphi_{\hat{i}}(\textbf{x}_{\hat{j}}) = \delta_{\hat{i}\hat{j}}$\footnote{The Kronecker delta.}.
 
 To determine these coefficients, let's say the domain of an element is the triangle with vertices $p_1, p_2$ and $p_3$, then the vector $[c_0, c_1, c_2]^T$ solves
@@ -313,7 +316,7 @@ So to sum up thus far: We go through each element on our global domain and calcu
 \end{figure}
 Instead of delving into analysing the error of our method we conclude from the figure that it seems to be working satisfactory.
 
-\subsection*{Back to our main problem and moving up to 3D}
+\section*{Back to our main problem and moving up to 3D}
 Finally we shall return to (\ref{vibDiff}) and consider a three-dimensional body. We have now that 
 \begin{equation*}
 \boldsymbol{\varepsilon} = 
@@ -419,30 +422,52 @@ And so the elements contribution to M is simply
 \rho\cdot \text{det}(B)M^P_{\alpha,\beta}.
 \end{equation}
 
-\subsection*{Eigenfrequencies and --modes}
+\section*{Eigenfrequencies and --modes}
 
 After taking in some geometry, meshing it\footnote{In this case we've either been given a geometry and its mesh or created one ourselves using gmsh.} and assembled the mass-- and stiffness matrices we are done with what we can call the preprocessing part of the implementation. Now comes the solving of the system: We are interested in periodic solutions of the form
 \begin{equation*}
 \boldsymbol{u} = \boldsymbol{u}e^{i\omega t}.
 \end{equation*}
 We put this into our system and get
-\begin{equation*}
+\begin{equation}
 \omega^2M\boldsymbol{u} = A\boldsymbol{u}.
-\end{equation*}
+\label{eigenGeneralized}
+\end{equation}
 We see that this type of solutions is periodic with frequency $\omega$ and we call them eigenfrequencies because $\omega^2$ are generalized eigenvalues of the system. Their corresponding vectors $\boldsymbol{u}$ are called eigenmodes. Since the meshing of our domain can contain a lot of nodes the matrices $A$ and $M$ will have a high number of rows and columns. This will yield a lot of eigenvalues, most of which we aren't all that interested in. Fortuitously Matlab has the 'eigs'-function at its disposal which can give out only the, say, $20, 30, 40$ or $k$ smallest eigenvalues and their corresponding eigenvectors. To maybe better understand why we are only interested in the $k$ \textit{smallest} eigenvalues consider e.g. a piano. When hitting one of the keys the sound you hear is the superposition of many of that tones harmonics. In particular, the one you hear most clearly is the first harmonic, and then the second harmonic and so forth, and it is the smallest frequencies (lowest tones) that correspond to the first harmonics. This is analogous to any structure being put to vibrate by some means. The lowest frequencies will be the most expressed in the total vibration, and so naturally we would be most interested in them.
 
 Actually, we are done with the solving part and all that remains is post processing.
 
-\subsection*{Results}
+\section*{Results}
 After using the 'eigs'-function in matlab we end up with $k$ eigenvalues and --vectors. For the post processing part we used Paraview, and so we need a script for converting our results into something Praview can read. Happily, this could easily be gotten from the internet. Legally, I might add.
 \begin{figure}
 \centering
-\includegraphics[scale=0.4]{PawnMode15.png}
+\includegraphics[scale=0.3]{PawnMode15.png}
 \caption{Vibration mode 14 of a chess pawn.}
 \label{fig:Pawn14}
 \end{figure}
  Although a structure's natural modes of vibration aren't well-represented in a picture refer to fig. $\ref{fig:Pawn14}$ to see what the 14'th mode of vibration for a chess pawn look like according to our findings. Note that the displacement is scaled for easier appreciation from the viewer. Since the chess pawn already has been analysed by Kjetil Johannesen it would be natural to compare our modes to those he found and submitted to youtube. All that can be stated here is that our results for the 7'th, 10'th and 14'th modes corresponded well with his results.
 
-This method lends itself not only to the geometries of chess pawn, but to a wide variety of geometries.
+This method lends itself not only to the geometries of chess pawn, but to a wide variety of geometries. Considering the experiment depicted in \textit{http://www.youtube.com/watch?v=wvJAgrUBF4w} we sought to recreate some of these patterns numerically. 
+\begin{figure}
+\centering
+\includegraphics[scale=0.4, trim=100mm 0mm 100mm 0mm, clip]{18.png}
+\caption{An eigenmode pattern for a uniform, thin plate.}
+\label{fig:LargePlate18}
+\end{figure}
+See fig. \ref{fig:LargePlate18} for an example of a pattern we managed to create. Here the colour coding corresponds to the magnitude of $\boldsymbol{u}$ in that point. Where it's blue there are small to no displacements and this is where the salt in the experiment would have settled. A slight problem was that we didn't have the time, nor means, to recreate the experiment, and the material of the plate in the video is up to discussion. It would seem that our choice of material (reflected in numerical values of $E$ and $\nu$) is a bit stiffer than that in the video. However, that is not the biggest problem: Say that a plate has $k$ eigenfrequencies in some interval. If $k$ is large enough and the meshing of the plate is coarse you would only get out a few eigenfrequencies in that interval, and they would be crude approximations of any of the actual frequencies. So a coarse mesh of linear elements will not reflect reality well, and in some engineering settings where accuracy is important this can have dire consequences. A natural remedy would of course be to make the mesh finer, and that will yield better results, but this will lengthen the computational time considerably. Fig. \ref{fig:LargePlate18} is the result of a fine mesh that took about a week to process and assemble the mass-- and stiffness matrix of. So better results come at the price of greatly increasing the computation time.
 
+\section*{Adding some boundary conditions}
+Looking back at (\ref{eigenGeneralized}) it's worth noting the lack of boundary conditions. In our system it isn't necessary, but it can be interesting to consider it nonetheless. Since (\ref{eigenGeneralized}) doesn't have any loading vector in which we can put contributions from a possible Neumann or Robin condition these types of conditions seems out of the question. However Dirichlet boundary condition, and especially homogenous Dirichlet seems attractive. If the domain has homogenous Dirichlet conditions on some part of the boundary, this translates to keeping that part immovable (by e.g. welding it fast to some large solid). In the way our code has been structured homogenous Dirichlet is also quite easy to implement. Just identify the nodes that are part of the Dirichlet boundary and remove the corresponding rows and columns from $M$ and $A$, and insert the boundary values in the right places of the resulting eigenvectors.
+\begin{figure}
+\centering
+\includegraphics[scale=0.3]{HmgPawn.png}
+\caption{A vibration mode for a chess pawn with homogenous Dirichlet condition on the bottom of it.}
+\label{fig:HmgPawn}
+\end{figure}
+See fig. \ref{fig:HmgPawn} for an example. Here we've taken homogenous boundary conditions on the bottom part of the chess pawn, resulting in some interesting, new vibration modes.
+
+\section*{Discussion}
+We've seen that the code generated from what has been outlined in this text is flexible in the sense that we can easily take in new, complex geometries and study their vibrational modes. Although not done in this project it would be possible to extend the code so that a geometry can be made up of more than one uniform material. The code is also flexible in that we can impose Dirichlet boundary conditions on the domain with relative ease. Other types of boundary conditions make little sense in the way we've formulated the problem (eq. \ref{eigenGeneralized}).
+
+It also seems that using linear elements, easy as the are to make into code, are a bit naive. They do give nice results when the mesh is fine, but at the cost of a long computation time. As a conclusion we can say that the code gives good qualitative results and can make for good insights in that regard, but if it's fast and accurate results you're after, more refined methods are advised. There is definitely a potential for improving the code, e.g. using parallellization, more advanced element types or possibly some other methods outside of the practical scope of the TMA4220 course.
 \end{document}
