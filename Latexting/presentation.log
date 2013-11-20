@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.10.17)  20 NOV 2013 11:25
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.10.17)  20 NOV 2013 11:45
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -877,18 +877,9 @@ Dictionary: translator-theorem-dictionary, Language: English
 )
 LaTeX Info: Redefining \includegraphics on input line 94.
  (./presentation.nav)
-Overfull \hbox (11.11754pt too wide) in paragraph at lines 94--94
- [][]|  \OT1/cmss/m/n/6 0
- []
-
 
 LaTeX Font Warning: Font shape `OT1/cmss/m/n' in size <4> not available
 (Font)              size <5> substituted on input line 98.
-
-
-Overfull \hbox (11.11754pt too wide) has occurred while \output is active
- [][]|  \OT1/cmss/m/n/6 1
- []
 
 [1
 
@@ -915,59 +906,24 @@ File: yosnap.png Graphic file (type png)
  <use yosnap.png>
 Package pdftex.def Info: yosnap.png used on input line 124.
 (pdftex.def)             Requested size: 112.22581pt x 68.56013pt.
+ [2
 
-Overfull \hbox (11.11754pt too wide) has occurred while \output is active
- [][]|  \OT1/cmss/m/n/6 2
- []
+ <./yosnap.png>] [3
 
-[2
+] [4
 
- <./yosnap.png>]
-Overfull \hbox (11.11754pt too wide) has occurred while \output is active
- [][]|  \OT1/cmss/m/n/6 3
- []
+] [5
 
-[3
-
-]
-Overfull \hbox (11.11754pt too wide) has occurred while \output is active
- [][]|  \OT1/cmss/m/n/6 4
- []
-
-[4
-
-]
-Overfull \hbox (11.11754pt too wide) has occurred while \output is active
- [][]|  \OT1/cmss/m/n/6 5
- []
-
-[5
-
-]
-Overfull \hbox (11.11754pt too wide) has occurred while \output is active
- [][]|  \OT1/cmss/m/n/6 6
- []
-
-[6
+] [6
 
 ]
 
 LaTeX Font Warning: Font shape `OT1/cmss/m/sc' in size <10.95> not available
 (Font)              Font shape `OT1/cmr/m/sc' tried instead on input line 217.
 
-
-Overfull \hbox (11.11754pt too wide) has occurred while \output is active
- [][]|  \OT1/cmss/m/n/6 7
- []
-
 [7
 
-]
-Overfull \hbox (11.11754pt too wide) has occurred while \output is active
- [][]|  \OT1/cmss/m/n/6 8
- []
-
-[8
+] [8
 
 ] <../Plots/PawnMode15.png, id=282, 856.19875pt x 840.13875pt>
 File: ../Plots/PawnMode15.png Graphic file (type png)
@@ -975,12 +931,7 @@ File: ../Plots/PawnMode15.png Graphic file (type png)
 <use ../Plots/PawnMode15.png>
 Package pdftex.def Info: ../Plots/PawnMode15.png used on input line 251.
 (pdftex.def)             Requested size: 119.80283pt x 117.55452pt.
-
-Overfull \hbox (11.11754pt too wide) has occurred while \output is active
- [][]|  \OT1/cmss/m/n/6 9
- []
-
-[9
+ [9
 
  <../Plots/PawnMode15.png (PNG copy)>]
 <../Animations/LargePlate/4000/1small.png, id=311, 1475.5125pt x 635.37375pt>
@@ -992,11 +943,6 @@ Package pdftex.def Info: ../Animations/LargePlate/4000/1small.png used on input
 (pdftex.def)             Requested size: 271.93932pt x 190.61359pt.
 
 Overfull \vbox (1.4805pt too high) detected at line 263
- []
-
-
-Overfull \hbox (14.30508pt too wide) has occurred while \output is active
- [][]|  \OT1/cmss/m/n/6 10
  []
 
 [10
@@ -1013,11 +959,6 @@ e 277.
 Overfull \vbox (3.60966pt too high) detected at line 277
  []
 
-
-Overfull \hbox (14.30508pt too wide) has occurred while \output is active
- [][]|  \OT1/cmss/m/n/6 11
- []
-
 [11
 
  <../Animations/LargePlate/4000/18.png (PNG copy)>]
@@ -1028,12 +969,7 @@ File: ../Animations/LargePlate/8000/13angle.png Graphic file (type png)
 Package pdftex.def Info: ../Animations/LargePlate/8000/13angle.png used on inpu
 t line 292.
 (pdftex.def)             Requested size: 271.93932pt x 190.61359pt.
-
-Overfull \hbox (14.30508pt too wide) has occurred while \output is active
- [][]|  \OT1/cmss/m/n/6 12
- []
-
-[12
+ [12
 
  <../Animations/LargePlate/8000/13angle.png (PNG copy)>]
 <../Animations/LargePlate/8000/12a.png, id=399, 1475.5125pt x 635.37375pt>
@@ -1043,12 +979,7 @@ File: ../Animations/LargePlate/8000/12a.png Graphic file (type png)
 Package pdftex.def Info: ../Animations/LargePlate/8000/12a.png used on input li
 ne 305.
 (pdftex.def)             Requested size: 271.93932pt x 190.61359pt.
-
-Overfull \hbox (14.30508pt too wide) has occurred while \output is active
- [][]|  \OT1/cmss/m/n/6 13
- []
-
-[13
+ [13
 
  <../Animations/LargePlate/8000/12a.png (PNG copy)>]
 <../Animations/LargePlate/8000/11a.png, id=429, 1475.5125pt x 635.37375pt>
@@ -1058,12 +989,7 @@ File: ../Animations/LargePlate/8000/11a.png Graphic file (type png)
 Package pdftex.def Info: ../Animations/LargePlate/8000/11a.png used on input li
 ne 318.
 (pdftex.def)             Requested size: 271.93932pt x 190.61359pt.
-
-Overfull \hbox (14.30508pt too wide) has occurred while \output is active
- [][]|  \OT1/cmss/m/n/6 14
- []
-
-[14
+ [14
 
  <../Animations/LargePlate/8000/11a.png (PNG copy)>]
 <../Animations/LargePlate/8000/10a.png, id=458, 1475.5125pt x 635.37375pt>
@@ -1073,12 +999,7 @@ File: ../Animations/LargePlate/8000/10a.png Graphic file (type png)
 Package pdftex.def Info: ../Animations/LargePlate/8000/10a.png used on input li
 ne 331.
 (pdftex.def)             Requested size: 271.93932pt x 190.61359pt.
-
-Overfull \hbox (14.30508pt too wide) has occurred while \output is active
- [][]|  \OT1/cmss/m/n/6 15
- []
-
-[15
+ [15
 
  <../Animations/LargePlate/8000/10a.png (PNG copy)>]
 <../Animations/LargePlate/8000/7a.png, id=488, 1475.5125pt x 635.37375pt>
@@ -1088,12 +1009,7 @@ File: ../Animations/LargePlate/8000/7a.png Graphic file (type png)
 Package pdftex.def Info: ../Animations/LargePlate/8000/7a.png used on input lin
 e 344.
 (pdftex.def)             Requested size: 271.93932pt x 190.61359pt.
-
-Overfull \hbox (14.30508pt too wide) has occurred while \output is active
- [][]|  \OT1/cmss/m/n/6 16
- []
-
-[16
+ [16
 
  <../Animations/LargePlate/8000/7a.png (PNG copy)>]
 <../Animations/LargePlate/8000/1a.png, id=517, 1475.5125pt x 635.37375pt>
@@ -1103,12 +1019,7 @@ File: ../Animations/LargePlate/8000/1a.png Graphic file (type png)
 Package pdftex.def Info: ../Animations/LargePlate/8000/1a.png used on input lin
 e 358.
 (pdftex.def)             Requested size: 271.93932pt x 190.61359pt.
-
-Overfull \hbox (14.30508pt too wide) has occurred while \output is active
- [][]|  \OT1/cmss/m/n/6 17
- []
-
-[17
+ [17
 
  <../Animations/LargePlate/8000/1a.png (PNG copy)>]
 <../Animations/LargePlate/8000/5a.png, id=545, 1475.5125pt x 635.37375pt>
@@ -1118,12 +1029,7 @@ File: ../Animations/LargePlate/8000/5a.png Graphic file (type png)
 Package pdftex.def Info: ../Animations/LargePlate/8000/5a.png used on input lin
 e 372.
 (pdftex.def)             Requested size: 271.93932pt x 190.61359pt.
-
-Overfull \hbox (14.30508pt too wide) has occurred while \output is active
- [][]|  \OT1/cmss/m/n/6 18
- []
-
-[18
+ [18
 
  <../Animations/LargePlate/8000/5a.png (PNG copy)>]
 \tf@nav=\write6
@@ -1152,7 +1058,7 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 383.
 Here is how much of TeX's memory you used:
  16035 strings out of 493308
  301217 string characters out of 6140929
- 376542 words of memory out of 5000000
+ 376504 words of memory out of 5000000
  19023 multiletter control sequences out of 15000+600000
  25989 words of font info for 85 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
@@ -1178,7 +1084,7 @@ mssi9.pfb></usr/lib/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pf
 b></usr/lib/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/
 lib/texlive/texmf-dist/fonts/type1/public/cm-super/sfso0800.pfb></usr/lib/texli
 ve/texmf-dist/fonts/type1/public/cm-super/sfso1000.pfb>
-Output written on presentation.pdf (18 pages, 1844466 bytes).
+Output written on presentation.pdf (18 pages, 1843917 bytes).
 PDF statistics:
  657 PDF objects out of 1000 (max. 8388607)
  576 compressed objects within 6 object streams
