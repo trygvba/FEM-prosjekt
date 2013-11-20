@@ -50,9 +50,7 @@ for t=linspace(0,m*2*pi,100)
 	x = p+alpha*sin(t)*uvec;
 	writeVTK(['../Animations/HmGPawn/HmGPawnTest'   '/timestep_' num2str(counter)],tetr,x,ones(length(p),1));
     if counter==13
-       trep = TriRep(tetr,x);
-       [stltri stlx] = freeBoundary(trep);
-       stlwrite(['../Animations/HmGPawn/HmGPawnTest/PawnSTL.stl'],stltri,stlx);
+        
     end
 	counter = counter +1;
 end
