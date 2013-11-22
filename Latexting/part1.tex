@@ -1,6 +1,7 @@
 \documentclass[paper=a4, fontsize=11pt]{scrartcl} % A4 paper and 11pt font size
 \usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
 \usepackage[english]{babel} % English language/hyphenation
+\usepackage[utf8]{inputenc}
 \usepackage{multirow}
 \usepackage{graphicx}
 \usepackage{amsmath,amsfonts,amsthm} % Math packages
@@ -29,14 +30,14 @@
 \horrule{2pt} \\[0.5cm] % Thick bottom horizontal rule
 }
 
-\author{Candidate numbers} % Your name
+\author{Trygve Bærland, Geir Amund Svan Hasle \& Eirik Ingebrigtsen} % Your name
 
 \date{\normalsize\today} % Today's date or a custom date
 
 \begin{document}
 \maketitle
 
-Introduction :D
+In part 1 of this project we have looked at how to solve Poisson problems with known analytical solutions in two and three dimensions using the finite element method on simple grids.
 
 \section{Gaussian quadrature}
 Evaluation of definite integrals is an integral part of every finite element code. The integrals vary in complexity and many does not even have known analytical solutions. One general way find approximate solutions to them is by  \textit{Gaussian quadrature}
@@ -56,9 +57,15 @@ takes any point onto a general domain [a,b] and gives the approximation
 \]
 
 \subsection{2D quadrature}
+
+\begin{figure}[!htb]
+\center
+  \includegraphics[width=0.5\linewidth]{areacoord.png}
+  \caption{Barycentric coordinates in 2D}\label{fig:areacoord}
+\end{figure}
 In higher dimensions a bit more care is needed. Consider triangles on the (x,y)-plane with corner points $\mathbf{p_i}=(x_i,y_i), i=1,2,3$. Then define the area coordinates 
 \[ \zeta_i = \frac{A_i}{A}, \; i=1,2,3,\]
-as indicated in figure [FIGURE OF AREA COORDINATES]. Now area coordinates $\zeta_i \in [0,1]$ map to physical coordinates $\mathbf{x}$ via
+as indicated in figure \ref{fig:areacoord}. Now area coordinates $\zeta_i \in [0,1]$ map to physical coordinates $\mathbf{x}$ via
 
 \[ \mathbf{x} = \zeta_1\mathbf{p_1} +\zeta_2\mathbf{p_2} +\zeta_3\mathbf{p_3}.
 \]
@@ -238,16 +245,11 @@ where $\zeta_\alpha(q)$ is the $q$'th element of the quadrature rule and $\mathb
 To force the boundary condition in (\ref{eq:poisson2d}), $u$ has to be zero on the boundary. This can be done in the following way. Seperate the internal nodes and edge nodes into two arrays. Remove the rows and columns in $A$ and element in $\mathbf{f}$ corresponding to the nodes at the boundary. Solve the reduced linear system $A_\mathrm{int}\mathbf{u}_\mathrm{int}=\mathbf{f}_\mathrm{int}$, which is no longer singular. Construct $\mathbf{u}$ again from $\mathbf{u}_\mathrm{int}$ and letting the edge nodes be zero.  
 
 \subsection{Verification}
-TODO: Compare analytical and FE solution
+The results is shown in figure \ref{fig:2h1000}, and we see that the solutions is on the same form as the analytical solution, eq.  \eqref{eq:poisson2danal}. We choose not to go into detail on error analysis in this project as the main goal is getting a functioning code.
 \begin{figure}[!htb]
-\minipage{0.5\textwidth}
-  \includegraphics[width=\linewidth]{2h1000.png}
+\center
+  \includegraphics[width=0.6\linewidth]{2h1000.png}
   \caption{Numerical solution of (\ref{eq:poisson2d}) with 1000 nodes}\label{fig:2h1000}
-\endminipage\hfill
-\minipage{0.5\textwidth}
-  \includegraphics[width=\linewidth]{2d200.png}
-  \caption{ERROR PLOT?}\label{fig:2d200}
-\endminipage\hfill
 \end{figure}
 
 
@@ -297,7 +299,7 @@ And
 where $L$ is the length of the line segment between $p_1$ and $p_2$.
 \subsection{Implementation}
 Now everything is set to solve the 2D Poisson problem with mixed boundary conditions given by \eqref{eq:poisson2d:Neu:problem}.
-The stiffness matrix and loading vector is constructed as before, but now we need to keep track of which part of the boundary that should have Neumann and Dirichlet conditions. To do so we iterate over the edge nodes and split it into two vectors according to if it is above or below the $x$-axis.
+The stiffness matrix is constructed as before, but now we need to keep track of which part of the boundary that should have Neumann and Dirichlet conditions. To do so we iterate over the edge nodes and split it into two vectors according to if it is above or below the $x$-axis.
 
 Consider now one of the line segments on the Neumann boundary. Call this $L$ and let it be determined by its two end points $p_i$ and $p_j$. Each such segment has two basis functions associated with it, $\phi_{\alpha}(x,y)=a_{\alpha}x+b_{\alpha}y$. Now we need $\phi_{i}(p_i)=1$, $\phi_{i}(p_j)=0$, $\phi_{j}(p_j)=1$ and $\phi_{j}(p_i)=0$ or in matrix from for the first case
 
@@ -319,11 +321,10 @@ Now iterate over all the Neumann edges and add the contribution to $\mathbf{f}$.
 The next step is to remove the Dirichlet nodes, solve the system and add the nodes back into the solution vector $\mathbf{u}$.  Since our test problem has a Neumann boundary $g(x,y)$ that corresponds to the analytic solution we expect no difference in this implementation than from the solution of \eqref{eq:poisson2d} shown in figure \ref{fig:2h1000}. The result of the implementation is shown below in figure \ref{fig:3d5000}.
 
 \begin{figure}[!htb]
-  \includegraphics[width=\linewidth]{3d5000.png}
+\center
+  \includegraphics[width=0.6\linewidth]{3d5000.png}
   \caption{Numerical solution of (\ref{eq:poisson2d:Neu:problem}) with 5000 nodes}\label{fig:3d5000}
 \end{figure}
-
-TODO: Compare solutions. How does your solution in the interior compare to the one you got in task 2? How does your solution at the boundary compare?
 
 \section{Problems in 3 dimensions}
 \subsection{The Poisson problem in 3D}
@@ -369,5 +370,7 @@ In 3D it is not as easy to visualize the results, and we therefore consider two 
 
 \subsection{Neumann boundary condition}
 Finally we added the same Neumann condition as in the 2D case, but now for the top half of the ball ($z>0$). Again we need to split the boundary into the nodes with Neumann and Dirichlet conditions. Then we can use the idea from 3.4 adding a component to the spatial coordinates and hence doing a plane integral instead of a line integral for the boundary.
+
+We have now done a finite element implementation, and is set to try the ideas on a real life problem.
 
 \end{document}

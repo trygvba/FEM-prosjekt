@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.10.17)  19 NOV 2013 17:01
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.10.17)  22 NOV 2013 11:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -584,7 +584,7 @@ Package pdftex.def Info: ../Plots/HmgPawn.png used on input line 463.
 Here is how much of TeX's memory you used:
  4544 strings out of 493308
  62748 string characters out of 6140929
- 159728 words of memory out of 5000000
+ 158730 words of memory out of 5000000
  7878 multiletter control sequences out of 15000+600000
  28695 words of font info for 78 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
@@ -612,7 +612,7 @@ uper/sfrm0600.pfb></usr/lib/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm
 /texlive/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/lib/texlive/
 texmf-dist/fonts/type1/public/cm-super/sfrm2074.pfb></usr/lib/texlive/texmf-dis
 t/fonts/type1/public/cm-super/sfti1095.pfb>
-Output written on part2.pdf (13 pages, 664008 bytes).
+Output written on part2.pdf (13 pages, 664064 bytes).
 PDF statistics:
  151 PDF objects out of 1000 (max. 8388607)
  105 compressed objects within 2 object streams

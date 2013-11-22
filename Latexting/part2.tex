@@ -36,7 +36,7 @@
 \horrule{2pt} \\[0.5cm] % Thick bottom horizontal rule
 }
 
-\author{Trygve Bærland, Geir Amund Svan Hasle \& Eirik Ingebritsen} % Your name
+\author{Trygve Bærland, Geir Amund Svan Hasle \& Eirik Ingebrigtsen} % Your name
 
 \date{\normalsize\today} % Today's date or a custom date
 
@@ -107,7 +107,7 @@ working on some domain $\Omega$,
 together with some boundary conditions, which in its general form looks a little something like
 \begin{align*}
 \boldsymbol{u} &= \boldsymbol{g}, \quad \text{on } \partial \Omega_D \\
-\sigma(\boldsymbol{u})\cdot \boldsymbol{\hat{n}} &= \boldsymbol{h}, \quad \text{on } \partial \Omega_N
+\sigma(\boldsymbol{u})\cdot \boldsymbol{\hat{n}} &= \boldsymbol{h}, \quad \text{on } \partial \Omega_N.
 \end{align*}
 
 As is usual procedure when trying to derive a variational formulation, we multiply (\ref{linEl}) with some test function $\boldsymbol{v}\in V$, where the function space $V$ will be determined from what seems useful during the derivation. Then we integrate over the domain to get
@@ -166,8 +166,8 @@ Find $u \in \{H^1 : u=g,$ on $\partial\Omega_D\}$ so that
 \end{equation}
 for all $v\in V$. Here we have now substituted $C\boldsymbol{\varepsilon}$ for $\boldsymbol{\sigma}$.
 
-\section*{Galerking projection}
-Since both function spaces we're looking at er infinite dimensional it is a good idea to let the test function reside in the function space $X_h \subset V$ of piecewise linear functions on a triangulation of $\Omega$. Furthermore, let $X_h =$span$(\varphi_1,\ldots,\varphi_n)$ where $\varphi_i$ are basis function with some compact support. Since the test functions $v$ are now vector functions, there will for each node $\hat{i}$ be two test functions
+\section*{Galerkin projection}
+Since both function spaces we're looking at is infinite dimensional it is a good idea to let the test function reside in the function space $X_h \subset V$ of piecewise linear functions on a triangulation of $\Omega$. Furthermore, let $X_h =$span$(\varphi_1,\ldots,\varphi_n)$ where $\varphi_i$ are basis function with some compact support. Since the test functions $v$ are now vector functions, there will for each node $\hat{i}$ be two test functions
 \begin{align*}
 \varphi_{\hat{i},1} &= \begin{bmatrix}
 \varphi_{\hat{i}} \\ 0
@@ -183,7 +183,7 @@ and there should be some connection between the basis number $i$, node number $\
 \end{equation}
 for all $v\in X_h$.
 
-It is sufficient to find a $u$ where this is true for all the basis frunctions since the right hand side is a bilinear form and the right hand side is a linear functional. That means we can let $\boldsymbol{v} = \varphi_i$ with $i\in\{1,2,\ldots,2N\}$ and $u = \sum_j u_j\varphi_j$. We put this into our Galerking formulation as
+It is sufficient to find a $u$ where this is true for all the basis frunctions since the right hand side is a bilinear form and the right hand side is a linear functional. That means we can let $\boldsymbol{v} = \varphi_i$ with $i\in\{1,2,\ldots,2N\}$ and $u = \sum_j u_j\varphi_j$. We put this into our Galerkin formulation as
 \begin{align*}
 \int_{\Omega}\boldsymbol{\varepsilon}(\boldsymbol{\varphi_i})\cdot C\boldsymbol{\varepsilon}\left(\sum_j u_j\boldsymbol{\varphi_j}\right)d\Omega &= \int_{\Omega}\sum_j u_j\boldsymbol{\varepsilon}(\boldsymbol{\varphi_i})\cdot C\boldsymbol{\varepsilon}(\boldsymbol{\varphi_j})d\Omega \\
 &=\sum_j u_j\int_{\Omega}\boldsymbol{\varepsilon}(\boldsymbol{\varphi_i})\cdot C\boldsymbol{\varepsilon}(\boldsymbol{\varphi_j})d\Omega \\
@@ -201,7 +201,7 @@ b_i &=  \int_{\Omega}\boldsymbol{f}\cdot \boldsymbol{\varphi_i} d\Omega + \int_{
 This linear system is what we will be implementing.
 
 \section*{A simple test case}
-When using a finite element implementation it's in most cases a sound strategy to have compared to a test case where the exact solution is known. To build some confidence in the implementation. As a test example we are going to consider the following:
+When using a finite element implementation it's in most cases a sound strategy to have compared to a test case where the exact solution is known. This is to build some confidence in the implementation. As a test example we are going to consider the following:
 \begin{equation}
 \label{testCase}
 \begin{cases}\nabla \boldsymbol{\sigma}(\boldsymbol{u}) &= -\boldsymbol{f}, \quad \text{in } \Omega \\
@@ -272,7 +272,7 @@ What follows is a tedious calculation, so brace yourself. The gradient of the st
 So we now have a simple problem we know the analytic solution of and we can therefore use this to compare with what will become our finite element implementation.
 
 \section*{Implementation in 2D}
-Every implementation of the finite element method can roughly be separated into three steps: Preprocessing, solving the system and postprocessing the data. As for our test example given by (\ref{testCase}) the triangulated grid is given to us by the matlab script \textit{getPlate.m}, so the next step is constructing both stiffness matrix and the loading vector. As is standard procedure for finite element implementations we go through each element and calculate that element's contribution to both the stiffness matrix and loading vector.  Keep in mind that we are using triangular, linear elements, so every nodal basis function restricted to an element $T_k$ can be written $\varphi_{\hat{i}}\big|_{T_k} = c_0 + c_1x+c_2y$ for some coefficients $c_0,c_1$ and $c_2$. Furthermore, since we will restrict ourselves to using a Lagrangian nodal basis, the function evaluation of some basis function $\varphi_{\hat{i}}$ in the node $\textbf{x}_{\hat{j}}$ is $\varphi_{\hat{i}}(\textbf{x}_{\hat{j}}) = \delta_{\hat{i}\hat{j}}$\footnote{The Kronecker delta.}.
+Every implementation of the finite element method can roughly be separated into three steps: Preprocessing, solving the system and postprocessing the data. As for our test example given by (\ref{testCase}) the triangulated grid is given to us by the matlab script \textit{getPlate.m}, so the next step is constructing both stiffness matrix and the loading vector. As is standard procedure for finite element implementations we go through each element and calculate that element's contribution to both the stiffness matrix and loading vector.  Keep in mind that we are using triangular, linear elements, so every nodal basis function restricted to an element $T_k$ can be written $\varphi_{\hat{i}}\big|_{T_k} = c_0 + c_1x+c_2y$ for some coefficients $c_0,c_1$ and $c_2$. Furthermore, since we will restrict ourselves to using a Lagrangian nodal basis, the function evaluation of some basis function $\varphi_{\hat{i}}$ in the node $\textbf{x}_{\hat{j}}$ is $\varphi_{\hat{i}}(\textbf{x}_{\hat{j}}) = \delta_{\hat{i}\hat{j}}$.\footnote{The Kronecker delta.}
 
 To determine these coefficients, let's say the domain of an element is the triangle with vertices $p_1, p_2$ and $p_3$, then the vector $[c_0, c_1, c_2]^T$ solves
 \begin{equation*}
@@ -290,7 +290,7 @@ c_0 \\ c_1 \\ c_2
 \end{equation*}
 if the vector corresponds to the coefficients of the basis function $\varphi\big|_{T_k}$ that is equal to $1$ in $p_1$. Notice that the right hand side is the first column vector of the three dimensional identity matrix. Similarly we can determine the coefficients of the basis function evaluating to one in the other points by using other column vectors of the identity matrix on the right hand side of the system.
 
-Reiterating the our basis functions are vector valued (see the section on Galerking projection) we have that
+Reiterating that our basis functions are vector valued (see the section on Galerkin projection) we have that
 \begin{equation*}
 \boldsymbol{\varepsilon}\left(\varphi_{\hat{i},d}\right) = \begin{bmatrix}
 c_1 \\ 0 \\ c_2
@@ -303,16 +303,16 @@ depending on whether $d=1$ or $2$ respectively. However, both these vectors are 
 \begin{equation*}
 \boldsymbol{\varepsilon}(\varphi_i)\cdot C \boldsymbol{\varepsilon}(\varphi_j)\cdot \text{area}(T_k),
 \end{equation*}
-which is easily to compute.
+which is easy to compute.
 
-As for the contributions to the loading vector the product $\varphi_i\cdot \boldsymbol{f}$ is not in general constant over any triangle, so we don't end up with as nice of a result as in the stiffness contribution case. To make ut simpler for ourselves we resort to using Gaussian quadrature. We use the same approach as for the stiffness matrix to determine the coefficients for the basis functions. Then simply taking the dot product of $\boldsymbol{f}$ and $\varphi_i$ to make a new function handler in the code, we are in a position to use the 2D numerical integrator we made in part 1 of this project.
+As for the contributions to the loading vector the product $\varphi_i\cdot \boldsymbol{f}$ is not in general constant over any triangle, so we don't end up with as nice of a result as in the stiffness contribution case. To make it simpler for ourselves we resort to using Gaussian quadrature. We use the same approach as for the stiffness matrix to determine the coefficients for the basis functions. Then simply taking the dot product of $\boldsymbol{f}$ and $\varphi_i$ to make a new function handler in the code we are in a position to use the 2D numerical integrator we made in part 1 of this project.
 
-So to sum up thus far: We go through each element on our global domain and calculate the coefficients of each basis function not vanishing on that element. Then we use these coefficients to calculate the contributions to the stiffness matrix and loading vector according to the above description. When this is done, the last thing we need to before solving the resulting system is to remove the rows and columns that corresponds to the Dirichlet boundary. After solving we put in $0$-values in the right place of the solution vector. See fig. \ref{fig:TestCase} for a comparison between the analytical and numerical solution of (\ref{testCase}).
+So to sum up thus far: We go through each element on our global domain and calculate the coefficients of each basis function not vanishing on that element. Then we use these coefficients to calculate the contributions to the stiffness matrix and loading vector according to the above description. When this is done, the last thing we need to before solving the resulting system is to remove the rows and columns that corresponds to the Dirichlet boundary. After solving we put in $0$-values in the right place of the solution vector. See figure \ref{fig:TestCase} for a comparison between the analytical and numerical solution of (\ref{testCase}).
 \begin{figure}
 \centering
 \includegraphics[scale=0.5]{Part2oppg2d20.png}
-\label{fig:TestCase}
 \caption{A comparison between the analytical and numerical solution of (\ref{testCase})}
+\label{fig:TestCase}
 \end{figure}
 Instead of delving into analysing the error of our method we conclude from the figure that it seems to be working satisfactory.
 
@@ -384,12 +384,12 @@ M\ddot{\boldsymbol{u}} = -A\boldsymbol{u}
 \end{equation}
 where
 \begin{align*}
-A_{ij} &= \int_\Omega \boldsymbol{\varepsilon}(\varphi_i)\cdot C\boldsymbol{\varepsilon}(\varphi_j)d\Omega  \\
-M_{ij} &= \rho \int_{\Omega}\varphi_i \cdot \varphi_j d\Omega
+M_{ij} &= \rho \int_{\Omega}\varphi_i \cdot \varphi_j d\Omega \\
+A_{ij} &= \int_\Omega \boldsymbol{\varepsilon}(\varphi_i)\cdot C\boldsymbol{\varepsilon}(\varphi_j)d\Omega
 \end{align*}
 and the matrices are called the mass-- and stiffness matrix respectively.
 
-The implementation of the stiffness matrix is the exact analogue of the 2D case and therefore doesn't need much of an elaboration. So let's spend a bit more time on one possible way of implementing the mass matrix $M$. As with the stiffness matrix we go through the domain $\Omega$ element by element and sum up the contributions. In contrast to how we calculated the contributions to loading vector we now transform the tetrahedral domain into a reference tetrahedron and calculate the contributions there. So consider an arbitrary tetrhedron $T_k$ with vertices $p_1, p_2, p_3$ and $p_4$. Then for any $x\in T_k$ the mapping
+The implementation of the stiffness matrix is the exact analogue of the 2D case and therefore doesn't need much of an elaboration. So let's spend a bit more time on one possible way of implementing the mass matrix $M$. As with the stiffness matrix we go through the domain $\Omega$ element by element and sum up the contributions. In contrast to how we calculated the contributions to loading vector we now transform the tetrahedral domain into a reference tetrahedron and calculate the contributions there. So consider an arbitrary tetrahedron $T_k$ with vertices $p_1, p_2, p_3$ and $p_4$. Then for any $x\in T_k$ the mapping
 \begin{equation*}
 \boldsymbol{\xi} = B(\boldsymbol{x}-p_1)
 \end{equation*}
@@ -457,7 +457,7 @@ This method lends itself not only to the geometries of chess pawn, but to a wide
 See fig. \ref{fig:LargePlate18} for an example of a pattern we managed to create. Here the colour coding corresponds to the magnitude of $\boldsymbol{u}$ in that point. Where it's blue there are small to no displacements and this is where the salt in the experiment would have settled. A slight problem was that we didn't have the time, nor means, to recreate the experiment, and the material of the plate in the video is up to discussion. It would seem that our choice of material (reflected in numerical values of $E$ and $\nu$) is a bit stiffer than that in the video. However, that is not the biggest problem: Say that a plate has $k$ eigenfrequencies in some interval. If $k$ is large enough and the meshing of the plate is coarse you would only get out a few eigenfrequencies in that interval, and they would be crude approximations of any of the actual frequencies. So a coarse mesh of linear elements will not reflect reality well, and in some engineering settings where accuracy is important this can have dire consequences. A natural remedy would of course be to make the mesh finer, and that will yield better results, but this will lengthen the computational time considerably. Fig. \ref{fig:LargePlate18} is the result of a fine mesh that took about a week to process and assemble the mass-- and stiffness matrix of. So better results come at the price of greatly increasing the computation time.
 
 \section*{Adding some boundary conditions}
-Looking back at (\ref{eigenGeneralized}) it's worth noting the lack of boundary conditions. In our system it isn't necessary, but it can be interesting to consider it nonetheless. Since (\ref{eigenGeneralized}) doesn't have any loading vector in which we can put contributions from a possible Neumann or Robin condition these types of conditions seems out of the question. However Dirichlet boundary condition, and especially homogenous Dirichlet seems attractive. If the domain has homogenous Dirichlet conditions on some part of the boundary, this translates to keeping that part immovable (by e.g. welding it fast to some large solid). In the way our code has been structured homogenous Dirichlet is also quite easy to implement. Just identify the nodes that are part of the Dirichlet boundary and remove the corresponding rows and columns from $M$ and $A$, and insert the boundary values in the right places of the resulting eigenvectors.
+Looking back at (\ref{eigenGeneralized}) it's worth noting the lack of boundary conditions. In our system it isn't necessary, but it can be interesting to consider it nonetheless. Since (\ref{eigenGeneralized}) doesn't have any loading vector in which we can put contributions from a possible Neumann or Robin condition these types of conditions seems out of the question. However Dirichlet boundary condition, and especially homogenous Dirichlet seems attractive. If the domain has homogenous Dirichlet conditions on some part of the boundary, this translates to keeping that part immovable (by e.g. welding it to some large solid). In the way our code has been structured homogenous Dirichlet is also quite easy to implement. Just identify the nodes that are part of the Dirichlet boundary and remove the corresponding rows and columns from $M$ and $A$, and insert the boundary values in the right places of the resulting eigenvectors.
 \begin{figure}
 \centering
 \includegraphics[scale=0.3]{HmgPawn.png}
