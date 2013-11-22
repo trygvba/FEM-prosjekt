@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.10.17)  22 NOV 2013 11:01
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.10.17)  22 NOV 2013 12:58
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -598,17 +598,17 @@ Package pdftex.def Info: ../Plots/2d2000.png used on input line 198.
 File: ../Plots/2h1000.png Graphic file (type png)
 
 <use ../Plots/2h1000.png>
-Package pdftex.def Info: ../Plots/2h1000.png used on input line 251.
+Package pdftex.def Info: ../Plots/2h1000.png used on input line 252.
 (pdftex.def)             Requested size: 250.95587pt x 188.21295pt.
  [7] [8 <../Plots/2h1000.png (PNG copy)>]
 <../Plots/3d5000.png, id=51, 578.16pt x 433.62pt>
 File: ../Plots/3d5000.png Graphic file (type png)
  <use ../Plots/3d5000.png>
-Package pdftex.def Info: ../Plots/3d5000.png used on input line 325.
+Package pdftex.def Info: ../Plots/3d5000.png used on input line 326.
 (pdftex.def)             Requested size: 250.95587pt x 188.21295pt.
 
 [9]
-Overfull \hbox (2.84798pt too wide) in paragraph at lines 338--340
+Overfull \hbox (2.84798pt too wide) in paragraph at lines 339--341
 \T1/cmr/m/n/10.95 for $\OML/cmm/m/it/10.95 u\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/1
 0.95 x; y; z\OT1/cmr/m/n/10.95 )$\T1/cmr/m/n/10.95 . We will use tetra-he-dral 
 el-e-ments, solve it on the ball gen-er-ated by \T1/cmtt/m/n/10.95 getSphere
@@ -617,10 +617,10 @@ el-e-ments, solve it on the ball gen-er-ated by \T1/cmtt/m/n/10.95 getSphere
 <../Plots/4b500.png, id=55, 578.16pt x 433.62pt>
 File: ../Plots/4b500.png Graphic file (type png)
  <use ../Plots/4b500.png>
-Package pdftex.def Info: ../Plots/4b500.png used on input line 362.
+Package pdftex.def Info: ../Plots/4b500.png used on input line 363.
 (pdftex.def)             Requested size: 188.21371pt x 141.1564pt.
 
-Underfull \hbox (badness 1448) in paragraph at lines 363--363
+Underfull \hbox (badness 1448) in paragraph at lines 364--364
 \T1/cmr/m/n/10.95 500 nodes us-ing \T1/cmr/m/sc/10.95 Mat-lab\T1/cmr/m/n/10.95 
 's
  []
@@ -628,7 +628,7 @@ Underfull \hbox (badness 1448) in paragraph at lines 363--363
 <../Plots/4b.png, id=56, 803.0pt x 602.25pt>
 File: ../Plots/4b.png Graphic file (type png)
  <use ../Plots/4b.png>
-Package pdftex.def Info: ../Plots/4b.png used on input line 366.
+Package pdftex.def Info: ../Plots/4b.png used on input line 367.
 (pdftex.def)             Requested size: 188.21371pt x 141.16118pt.
  [10 <../Plots/3d5000.png (PNG copy)>] [11 <../Plots/4b500.png (PNG copy)> <../
 Plots/4b.png>] (./part1.aux) ) 
@@ -658,7 +658,7 @@ b/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></usr/lib/texlive
 st/fonts/type1/public/cm-super/sfrm2074.pfb></usr/lib/texlive/texmf-dist/fonts/
 type1/public/cm-super/sfti1095.pfb></usr/lib/texlive/texmf-dist/fonts/type1/pub
 lic/cm-super/sftt1095.pfb>
-Output written on part1.pdf (11 pages, 778638 bytes).
+Output written on part1.pdf (11 pages, 778185 bytes).
 PDF statistics:
  121 PDF objects out of 1000 (max. 8388607)
  81 compressed objects within 1 object stream

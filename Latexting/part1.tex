@@ -231,7 +231,8 @@ This reduces the problem to solving (\ref{eq:poisson2d:C-matrix}) for the gradie
 
 To build the whole matrix A loop over each element and pick out the corner points. Then for each combination of basis functions (9 per element) add the scaled contribution to the full matrix.
 
-TODO: SOMETHING ABOUT WHY THE A-matrix is singular.(Have not removed the nodes corresponding to the boundary conditions)
+Note here that the matrix A is singular. If this was not the case the system could have been solved exactly for any loading vector, ignoring all initial and boundary conditions.
+
 \subsection{Loading vector}
 The elements of vector $\mathbf{f}$ is given by
 \[ f_i = l(\phi_i) = \int_{\Omega}f\phi_i\mathrm{d}x\mathrm{d}y.\]
